@@ -1,0 +1,17 @@
+[settings]
+experimental = true
+idiomatic_version_file_enable_tools = ["node"]
+
+[tools]
+bun = "latest"
+go = "latest"
+java = "oracle-graalvm-21.0.7"
+node = "latest"
+"npm:@abhiz123/todoist-mcp-server" = "latest"
+"npm:@anthropic-ai/claude-code" = "latest"
+"npm:better-commits" = "latest"
+pnpm = "10.8.1"
+python = "3.13.4"
+sbt = "1.10.11"
+uv = "latest"
+yarn = "latest"

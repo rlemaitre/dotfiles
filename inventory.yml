@@ -1,0 +1,28 @@
+packages:
+    bat:
+        install: brew
+        config: true
+    delta:
+        install: brew
+        config: true
+athena:
+    packages:
+        - bat
+          delta
+          eza
+          fd
+          fzf
+          gh
+          gh-dash
+          ghostty
+          git
+          gpg
+          lazygit
+          mise
+          nvim
+          oh-my-posh
+          pistol
+          ssh
+          xcode
+          zed
+          zsh

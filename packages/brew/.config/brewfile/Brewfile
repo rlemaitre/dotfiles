@@ -1,0 +1,177 @@
+
+# tap repositories and their packages
+
+tap homebrew/core
+brew bat
+brew ca-certificates
+brew cairo
+brew cffi
+brew coursier
+brew cryptography
+brew eza
+brew fd
+brew fontconfig
+brew freetype
+brew fzf
+brew gettext
+brew gh
+brew giflib
+brew glib
+brew glow
+brew gmp
+brew gnupg
+brew gnutls
+brew graphite2
+brew gum
+brew harfbuzz
+brew icu4c@77
+brew jpeg-turbo
+brew jq
+brew json-c
+brew just
+brew lazygit
+brew libassuan
+brew libevent
+brew libgcrypt
+brew libgit2
+brew libgpg-error
+brew libidn2
+brew libksba
+brew libnghttp2
+brew libpng
+brew libssh2
+brew libtasn1
+brew libtiff
+brew libunistring
+brew libusb
+brew libuv
+brew libx11
+brew libxau
+brew libxcb
+brew libxdmcp
+brew libxext
+brew libxrender
+brew libyubikey
+brew little-cms2
+brew lpeg
+brew luajit
+brew luv
+brew lz4
+brew lzo
+brew mas
+brew mise
+brew mpdecimal
+brew neovim
+brew nettle
+brew npth
+brew oh-my-posh
+brew oniguruma
+brew openjdk
+brew openssl@3
+brew p11-kit
+brew pcre2
+brew pinentry
+brew pinentry-mac
+brew pixman
+brew pycparser
+brew python@3.13
+brew readline
+brew shellcheck
+brew sqlite
+brew stow
+brew texinfo
+brew tree-sitter
+brew unbound
+brew unibilium
+brew usage
+brew utf8proc
+brew xorgproto
+brew xz
+brew ykman
+brew ykpers
+brew yq
+brew zoxide
+brew zstd
+
+tap homebrew/cask
+cask adguard
+cask beeper
+cask betterdisplay
+cask brainfm
+cask calibre
+cask claude
+cask discord
+cask elgato-camera-hub
+cask elgato-capture-device-utility
+cask elgato-stream-deck
+cask font-fira-code
+cask font-fira-code-nerd-font
+cask font-hack-nerd-font
+cask freedom
+cask ghostty
+cask gpg-suite-no-mail
+cask inkscape
+cask intellij-idea-ce
+cask jetbrains-toolbox
+cask languagetool-desktop
+cask lm-studio
+cask mos
+cask msty
+cask mutedeck
+cask netnewswire
+cask obs
+cask obs-advanced-scene-switcher
+cask obs-backgroundremoval
+cask obsidian
+cask ollama-app
+cask orbstack
+cask orion
+cask pronotes
+cask proton-drive
+cask protonvpn
+cask qlmarkdown
+cask raycast
+cask sensiblesidebuttons
+cask signal
+cask steam
+cask the-unarchiver
+cask vivaldi
+cask yubico-authenticator
+cask zed
+cask zoom
+cask zotero
+
+tap coursier/formulas
+
+tap ksdme/tap
+brew ut
+
+tap loopwork/tap
+cask imcp
+
+tap rcmdnk/file
+brew brew-file
+
+# App Store applications
+appstore 1586435171 Actions (3.8.0)
+appstore 302584613 Amazon Kindle (7.43)
+appstore 937984704 Amphetamine (5.3.2)
+appstore 1545870783 Color Picker (2.1.4)
+appstore 1198176727 ControllerForHomeKit (7.7.5)
+appstore 1453273600 Data Jar (1.1.4)
+appstore 640199958 Developer (10.8.3)
+appstore 1099120373 Exporter (4.0.4)
+appstore 682658836 GarageBand (10.4.12)
+appstore 1324203419 Ground News (3.0.4)
+appstore 408981434 iMovie (10.4.3)
+appstore 1559239914 Joko pour Safari (2.1.85)
+appstore 1622835804 Kagi for Safari (2.2.3)
+appstore 409183694 Keynote (14.4)
+appstore 1437106857 Mes Envies (3.1)
+appstore 1664344174 NEEWER Control Center (3.4.0)
+appstore 409203825 Numbers (14.4)
+appstore 6720708363 Obsidian Web Clipper (0.12.0)
+appstore 1592826205 Open Access Helper (2025.10)
+appstore 409201541 Pages (14.4)
+appstore 1496833156 Swift Playground (4.6.4)
+appstore 497799835 Xcode (26.0.1)

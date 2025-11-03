@@ -1,0 +1,3 @@
+--target=/Users/raphael.lemaitre
+--dir=./packages
+--ignore=.DS_Store

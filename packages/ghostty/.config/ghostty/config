@@ -1,0 +1,5 @@
+theme = light:catppuccin-latte.conf,dark:catppuccin-frappe.conf
+copy-on-select = clipboard
+macos-titlebar-style = tabs
+window-theme = system
+window-inherit-working-directory = false
