@@ -2,12 +2,18 @@
 # tap repositories and their packages
 
 tap homebrew/core
+brew bash-language-server
 brew bat
+brew brotli
+brew c-ares
 brew ca-certificates
 brew cairo
 brew cffi
 brew coursier
 brew cryptography
+brew docker-compose-langserver
+brew dockerfile-language-server
+brew dotnet
 brew eza
 brew fd
 brew fontconfig
@@ -19,16 +25,22 @@ brew giflib
 brew glib
 brew glow
 brew gmp
+brew gnu-sed
 brew gnupg
 brew gnutls
+brew gopls
 brew graphite2
 brew gum
 brew harfbuzz
+brew helix
 brew icu4c@77
+brew icu4c@78
+brew jdtls
 brew jpeg-turbo
 brew jq
 brew json-c
 brew just
+brew kotlin-language-server
 brew lazygit
 brew libassuan
 brew libevent
@@ -38,6 +50,9 @@ brew libgpg-error
 brew libidn2
 brew libksba
 brew libnghttp2
+brew libnghttp3
+brew libngtcp2
+brew libpg_query
 brew libpng
 brew libssh2
 brew libtasn1
@@ -54,39 +69,62 @@ brew libxrender
 brew libyubikey
 brew little-cms2
 brew lpeg
+brew lua-language-server
 brew luajit
 brew luv
 brew lz4
 brew lzo
+brew markdown-oxide
+brew marksman
 brew mas
 brew mise
 brew mpdecimal
+brew ncurses
 brew neovim
 brew nettle
+brew nnn
+brew node
 brew npth
 brew oh-my-posh
 brew oniguruma
 brew openjdk
+brew openjdk@21
 brew openssl@3
 brew p11-kit
 brew pcre2
 brew pinentry
 brew pinentry-mac
 brew pixman
+brew postgres-language-server
 brew pycparser
+brew pyright
+brew python-lsp-server
 brew python@3.13
+brew python@3.14
 brew readline
 brew shellcheck
+brew shfmt
+brew simdjson
+brew sql-language-server
 brew sqlite
 brew stow
+brew superhtml
+brew tailwindcss-language-server
+brew terminal-notifier
 brew texinfo
 brew tree-sitter
+brew typescript
+brew typescript-language-server
 brew unbound
 brew unibilium
 brew usage
 brew utf8proc
+brew uvwasi
+brew vscode-langservers-extracted
+brew vue-language-server
 brew xorgproto
 brew xz
+brew yaml-language-server
 brew ykman
 brew ykpers
 brew yq
@@ -128,7 +166,6 @@ cask orbstack
 cask orion
 cask pronotes
 cask proton-drive
-cask protonvpn
 cask qlmarkdown
 cask raycast
 cask sensiblesidebuttons
@@ -154,24 +191,24 @@ brew brew-file
 
 # App Store applications
 appstore 1586435171 Actions (3.8.0)
-appstore 302584613 Amazon Kindle (7.43)
+appstore 302584613 Amazon Kindle (7.46.1)
 appstore 937984704 Amphetamine (5.3.2)
 appstore 1545870783 Color Picker (2.1.4)
-appstore 1198176727 ControllerForHomeKit (7.7.5)
+appstore 1198176727 ControllerForHomeKit (8.0.1)
 appstore 1453273600 Data Jar (1.1.4)
 appstore 640199958 Developer (10.8.3)
-appstore 1099120373 Exporter (4.0.4)
+appstore 1099120373 Exporter (4.0.5)
 appstore 682658836 GarageBand (10.4.12)
 appstore 1324203419 Ground News (3.0.4)
 appstore 408981434 iMovie (10.4.3)
-appstore 1559239914 Joko pour Safari (2.1.85)
+appstore 1559239914 Joko pour Safari (2.1.91)
 appstore 1622835804 Kagi for Safari (2.2.3)
 appstore 409183694 Keynote (14.4)
 appstore 1437106857 Mes Envies (3.1)
-appstore 1664344174 NEEWER Control Center (3.4.0)
+appstore 1664344174 NEEWER Control Center (3.4.2)
 appstore 409203825 Numbers (14.4)
 appstore 6720708363 Obsidian Web Clipper (0.12.0)
-appstore 1592826205 Open Access Helper (2025.10)
+appstore 1592826205 Open Access Helper (2025.11)
 appstore 409201541 Pages (14.4)
 appstore 1496833156 Swift Playground (4.6.4)
-appstore 497799835 Xcode (26.0.1)
+appstore 497799835 Xcode (26.1.1)

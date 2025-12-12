@@ -15,7 +15,7 @@
     // - "dark": Use the theme indicated by the "dark" field
     "theme": {
         "mode": "light",
-        "light": "Catppuccin Latte",
+        "light": "Nord Dark",
         "dark": "Catppuccin Frappé"
     },
     "icon_theme": "Catppuccin Latte",

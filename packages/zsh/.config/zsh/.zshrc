@@ -74,6 +74,7 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers -
 # eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
+test -r "${XDG_CONFIG_HOME:-$HOME/.config}/dircolors/nord" && eval $(dircolors "${XDG_CONFIG_HOME:-$HOME/.config}/dircolors/nord")
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases.zsh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/env.zsh"
 

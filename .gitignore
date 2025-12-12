@@ -92,3 +92,5 @@ zsdoc/data
 !/tests/_output/.gitkeep
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,vim,zsh
+#
+packages/helix/.config/helix/runtime

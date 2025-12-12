@@ -1,4 +1,4 @@
-theme = light:catppuccin-latte.conf,dark:catppuccin-frappe.conf
+theme = Nord
 copy-on-select = clipboard
 macos-titlebar-style = tabs
 window-theme = system

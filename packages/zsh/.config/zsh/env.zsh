@@ -4,11 +4,11 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
 
 # EDITOR
-export EDITOR=nvim
-export VISUAL=nvim
+export EDITOR=hx
+export VISUAL=hx
 
 # PATH
-export PATH="$(brew --prefix)/bin:$HOME/.local/bin:$PATH"
+export PATH="$(brew --prefix)/bin:$HOME/.local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:$PATH"
 
 # Proton Drive directory
 export PROTON_DRIVE_DIR="$HOME/Library/CloudStorage/ProtonDrive-raphael@rlemaitre.com-folder"
