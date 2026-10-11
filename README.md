@@ -68,7 +68,7 @@ More in [maintenance](docs/maintenance.md).
 │   ├── .chezmoiscripts/       setup scripts, run by chezmoi in numeric order
 │   ├── .chezmoiremove         files chezmoi deletes
 │   ├── dot_config/            ~/.config (zsh, git, nvim, ghostty, zed, lazygit, ...)
-│   ├── dot_claude/            ~/.claude (global instructions, rules, the dotfiles skill, a settings seed)
+│   ├── dot_claude/            ~/.claude (global instructions, rules, agents, commands, the dotfiles skill, a settings seed)
 │   ├── private_dot_ssh/, private_dot_gnupg/, private_Library/   modes 700 or 600
 │   └── dot_zshenv, dot_better-commits.json
 ├── scripts/                   check-*.sh/py, bump-pins.py, gen-tools-doc.py, maintain.sh, inventory.sh

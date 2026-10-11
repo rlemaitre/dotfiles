@@ -9,7 +9,7 @@
 
 Types: feat, fix, refactor, docs, test, chore, perf, ci
 
-Note: Attribution disabled globally via ~/.claude/settings.json.
+Note: no attribution lines in commits or PRs: `attribution` is set to empty strings in ~/.claude/settings.json. Do not add Co-Authored-By or "Generated with" lines.
 
 ## Pull Request Workflow
 

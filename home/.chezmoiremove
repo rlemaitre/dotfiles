@@ -4,3 +4,30 @@
 .config/oh-my-posh/nord.json
 .config/gh-dash/config.yml
 .config/dircolors
+# Claude commands and agents that need tools this setup does not have (codeagent-wrapper, the continuous-learning skill, NanoClaw, PM2, mail and chat access).
+.claude/commands/multi-backend.md
+.claude/commands/multi-execute.md
+.claude/commands/multi-frontend.md
+.claude/commands/multi-plan.md
+.claude/commands/multi-workflow.md
+.claude/commands/learn.md
+.claude/commands/learn-eval.md
+.claude/commands/evolve.md
+.claude/commands/promote.md
+.claude/commands/projects.md
+.claude/commands/skill-create.md
+.claude/commands/instinct-export.md
+.claude/commands/instinct-import.md
+.claude/commands/instinct-status.md
+.claude/commands/claw.md
+.claude/commands/pm2.md
+.claude/agents/chief-of-staff.md
+# Replaced by the superpowers plugin (brainstorming, writing-plans, test-driven-development, requesting-code-review, verification-before-completion).
+.claude/commands/plan.md
+.claude/commands/tdd.md
+.claude/commands/verify.md
+.claude/commands/code-review.md
+.claude/commands/orchestrate.md
+.claude/agents/planner.md
+.claude/agents/tdd-guide.md
+.claude/agents/code-reviewer.md

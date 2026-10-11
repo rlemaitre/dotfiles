@@ -6,23 +6,19 @@ Located in `~/.claude/agents/`:
 
 | Agent | Purpose | When to Use |
 |-------|---------|-------------|
-| planner | Implementation planning | Complex features, refactoring |
 | architect | System design | Architectural decisions |
-| tdd-guide | Test-driven development | New features, bug fixes |
-| code-reviewer | Code review | After writing code |
 | security-reviewer | Security analysis | Before commits |
 | build-error-resolver | Fix build errors | When build fails |
 | e2e-runner | E2E testing | Critical user flows |
 | refactor-cleaner | Dead code cleanup | Code maintenance |
 | doc-updater | Documentation | Updating docs |
 
-## Immediate Agent Usage
+## When to use agents
 
-No user prompt needed:
-1. Complex feature requests - Use **planner** agent
-2. Code just written/modified - Use **code-reviewer** agent
-3. Bug fix or new feature - Use **tdd-guide** agent
-4. Architectural decision - Use **architect** agent
+Use an agent when the user asks, or when the task clearly needs one and the work is in an application code project.
+Claude Code's default is not to spawn agents unprompted; an agent costs a fresh context, so do small tasks inline.
+In a code project, offer **architect** for an architectural decision and **security-reviewer** before a commit that touches
+input handling or auth. Planning, TDD and code review come from the superpowers plugin skills.
 
 ## Parallel Task Execution
 

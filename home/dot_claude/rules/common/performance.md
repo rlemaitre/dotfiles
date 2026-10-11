@@ -2,17 +2,19 @@
 
 ## Model Selection Strategy
 
-**Haiku 4.5** (90% of Sonnet capability, 3x cost savings):
+Choose by tier, and name the alias (`haiku`, `sonnet`, `opus`) in agent frontmatter and settings so versions follow
+the newest release:
+
+**Haiku** (cheapest, fastest):
 - Lightweight agents with frequent invocation
-- Pair programming and code generation
 - Worker agents in multi-agent systems
 
-**Sonnet 4.6** (Best coding model):
+**Sonnet** (best default for coding):
 - Main development work
 - Orchestrating multi-agent workflows
 - Complex coding tasks
 
-**Opus 4.5** (Deepest reasoning):
+**Opus** (deepest reasoning):
 - Complex architectural decisions
 - Maximum reasoning requirements
 - Research and analysis tasks
@@ -32,7 +34,7 @@ Lower context sensitivity tasks:
 
 ## Extended Thinking + Plan Mode
 
-Extended thinking is enabled by default, reserving up to 31,999 tokens for internal reasoning.
+Extended thinking is controlled by the model and the settings below; check the current default before relying on a number.
 
 Control extended thinking via:
 - **Toggle**: Option+T (macOS) / Alt+T (Windows/Linux)
