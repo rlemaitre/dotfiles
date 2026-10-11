@@ -145,6 +145,10 @@ macos_defaults:
     # Xcode: Catppuccin, light and dark (themes are installed from private_Library/.../FontAndColorThemes)
     - {domain: "com.apple.dt.Xcode", key: "XCFontAndColorCurrentTheme", type: string, value: "Catppuccin Latte.xccolortheme"}
     - {domain: "com.apple.dt.Xcode", key: "XCFontAndColorCurrentDarkTheme", type: string, value: "Catppuccin Mocha.xccolortheme"}
+    # Appearance (themes): icons tinted with Catppuccin Latte mauve #8839ef. The tint is one global value, so it cannot follow light/dark.
+    - {domain: "NSGlobalDomain", key: "AppleIconAppearanceTintColor", type: string, value: "Other"}
+    - {domain: "NSGlobalDomain", key: "AppleIconAppearanceCustomTintColor", type: string, value: "0.533333 0.223529 0.937255 0.986909"}
+    - {domain: "NSGlobalDomain", key: "NSGlassTintAmount", type: float, value: 0.765}
   athena: []
   nabla-mac-raphael: []
 
