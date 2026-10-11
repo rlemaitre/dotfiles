@@ -51,6 +51,7 @@ Then open a new terminal.
 | Check whether a workaround can go | `mise run upstream-check` |
 | Bump pinned versions | `mise run bump-pins` (a weekly pull request does it too) |
 | List what is installed on a Mac | `scripts/inventory.sh` |
+| See what needs attention (drift, outdated, undeclared) | `scripts/maintain.sh --report-only` (a weekly agent does it too) |
 
 More in [maintenance](docs/maintenance.md).
 
@@ -70,7 +71,7 @@ More in [maintenance](docs/maintenance.md).
 │   ├── dot_claude/            ~/.claude (global instructions, rules, the dotfiles skill, a settings seed)
 │   ├── private_dot_ssh/, private_dot_gnupg/, private_Library/   modes 700 or 600
 │   └── dot_zshenv, dot_better-commits.json
-├── scripts/                   check-*.sh/py, bump-pins.py, gen-tools-doc.py, inventory.sh
+├── scripts/                   check-*.sh/py, bump-pins.py, gen-tools-doc.py, maintain.sh, inventory.sh
 ├── tests/                     fixture data per machine, used by `mise run check`
 ├── docs/                      the documentation below
 └── .github/workflows/         weekly upstream-watch and bump-pins jobs

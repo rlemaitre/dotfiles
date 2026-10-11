@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# LaunchAgent hash: {{ include "private_Library/LaunchAgents/com.rlemaitre.maintain.plist.tmpl" | sha256sum }}
+# Repo: {{ .chezmoi.workingTree }}
+# Loads the weekly upkeep LaunchAgent: Sundays 10:15, or at wake-up when the Mac was asleep (scripts/maintain.sh).
+set -euo pipefail
+
+readonly LABEL="com.rlemaitre.maintain"
+readonly PLIST="${HOME}/Library/LaunchAgents/${LABEL}.plist"
+uid="$(id -u)"
+
+[[ -f "${PLIST}" ]] || { echo "${PLIST} missing, skipping" >&2; exit 0; }
+
+mkdir -p "${HOME}/Library/Logs/dotfiles"
+launchctl bootout "gui/${uid}/${LABEL}" 2>/dev/null || true
+# bootout returns before the job is fully unloaded; bootstrap fails with I/O error 5 until it is
+for _ in $(seq 1 20); do
+  launchctl print "gui/${uid}/${LABEL}" >/dev/null 2>&1 || break
+  sleep 0.5
+done
+launchctl bootstrap "gui/${uid}" "${PLIST}"

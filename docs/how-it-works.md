@@ -129,6 +129,7 @@ numeric order. `onchange` scripts run only when their rendered text changed, so 
 | `70_macos-defaults` | on change | writes the defaults, deletes the absent keys, restarts Dock, Finder and the menu bar |
 | `75_macos-power` | always | applies the `pmset` values when they differ (needs a terminal) |
 | `80_colima-agent` | on change | loads the LaunchAgent that starts Colima at login |
+| `85_maintain-agent` | on change | loads the LaunchAgent that runs the [weekly upkeep](maintenance.md#weekly-upkeep-on-each-mac) |
 
 "Always" scripts check first and do nothing when the Mac already matches, so they are safe to run repeatedly.
 

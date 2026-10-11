@@ -97,7 +97,7 @@ Add the entry to `quicklook_extensions`, `gh_extensions` or `gh_skills` in `pack
 | What | How |
 |---|---|
 | mise tools | Every entry is pinned: the weekly pull request bumps them (below), or run `mise run bump-pins` now. `mise upgrade` does nothing for them. A new major version: change the pin by hand. |
-| Homebrew | `brew update && brew upgrade` (formulae and casks). `brew bundle` itself never upgrades (`--no-upgrade`). |
+| Homebrew | formulae: the [weekly upkeep](#weekly-upkeep-on-each-mac) upgrades them. Casks: `brew upgrade --cask <name>` (close the app first); the report lists the outdated ones. `brew bundle` itself never upgrades (`--no-upgrade`). |
 | GitHub CLI extensions | pinned too: the weekly pull request bumps `pin` in `gh_extensions`, `chezmoi apply` reinstalls at the new tag |
 | Agent skills | the weekly pull request bumps `pin` in `gh_skills`; then delete `~/.claude/skills/<skill>` and `chezmoi apply` |
 | Neovim plugins | `:Lazy update`, then `chezmoi re-add ~/.config/nvim/lazy-lock.json ~/.config/nvim/lazyvim.json` |
@@ -124,6 +124,22 @@ does not pull); the mise install script re-runs because the tool list changed. P
 start other workflows, so the check is yours to run. One-time setting: repository Settings, Actions, General, enable
 "Allow GitHub Actions to create and approve pull requests". To bump by hand: `mise run bump-pins`
 (`--dry-run` only prints).
+
+## Weekly upkeep on each Mac
+
+The LaunchAgent `com.rlemaitre.maintain` runs `scripts/maintain.sh` on Sundays at 10:15, or when the Mac wakes up if it
+slept then (installed by script 85; the log is `~/Library/Logs/dotfiles/maintain.log`).
+
+1. **Upgrades**: `brew update`, `brew upgrade --formula`, `brew cleanup`, `mise prune` (old versions after a pin
+   bump). Casks, App Store apps and pinned mise tools are never touched: they change through you or the repo.
+2. **Report**: `~/Library/Logs/dotfiles/report.md`, with a macOS notification when something needs attention:
+   the repo is behind GitHub or has unpushed or uncommitted changes, a bump pull request is open, managed files differ
+   from the repo, packages installed but not in `packages.yaml` (and the reverse), outdated casks, and the kotlin-lsp
+   check from [upstream watch](upstream-watch.md). Each section says what to run.
+
+By hand: `scripts/maintain.sh --report-only` prints the report and changes nothing; `scripts/maintain.sh` also upgrades.
+`launchctl kickstart gui/$(id -u)/com.rlemaitre.maintain` runs the agent now. To stop it: `launchctl bootout
+gui/$(id -u)/com.rlemaitre.maintain`, and remove the script and plist from the repo.
 
 ## Drift and conflicts
 
