@@ -30,6 +30,7 @@ packages:
       - "java@oracle-graalvm-21.0.7"
       - "jq"
       - "just"
+      - "lazydocker"
       - "lazygit"
       - "lima"
       - "lua-language-server"
@@ -54,6 +55,7 @@ packages:
       - "shfmt"
       - "tree-sitter"
       - "uv"
+      - "vivid"
       - "worktrunk"
       - "yarn"
       - "yq"
@@ -168,7 +170,7 @@ packages:
     nabla-mac-raphael: {}
   gh_extensions:
     # owner/repo, installed once `gh auth login` has been done
-    common: [dlvhdr/gh-dash]
+    common: [dlvhdr/gh-dash, github/gh-stack]
     athena: []
     nabla-mac-raphael: []
   # TODO remove when `brew install jetbrains/utils/kotlin-lsp` works again

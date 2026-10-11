@@ -1,4 +1,4 @@
-theme = Catppuccin Latte
+theme = light:Catppuccin Latte,dark:Catppuccin Mocha
 copy-on-select = clipboard
 macos-titlebar-style = native
 window-theme = system

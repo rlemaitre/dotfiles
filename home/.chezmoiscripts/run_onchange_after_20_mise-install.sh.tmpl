@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# mise config hash: {{ include "dot_config/mise/config.toml.tmpl" | sha256sum }}
+{{- /* Re-runs when the tool list for this machine changes: the list is in the comment below. */ -}}
+{{- $m := .machine }}
+{{- $tools := concat .packages.mise.common (index .packages.mise $m | default (list)) }}
+# mise tools: {{ $tools | sortAlpha | join " " }}
 set -euo pipefail
 
 command -v mise >/dev/null || { echo "mise not found" >&2; exit 1; }

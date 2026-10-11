@@ -1,0 +1,7 @@
+# ripgrep colours, Catppuccin Latte (loaded through RIPGREP_CONFIG_PATH, see zsh/theme.zsh).
+--colors=path:fg:0x88,0x39,0xef
+--colors=path:style:bold
+--colors=line:fg:0x40,0xa0,0x2b
+--colors=column:fg:0x17,0x92,0x99
+--colors=match:fg:0xd2,0x0f,0x39
+--colors=match:style:bold

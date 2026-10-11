@@ -142,6 +142,9 @@ macos_defaults:
     - {domain: "com.apple.menuextra.clock", key: "ShowSeconds", type: bool, value: false}
     - {domain: "com.apple.AppleMultitouchTrackpad", key: "Clicking", type: bool, value: true}
     - {domain: "com.apple.screencapture", key: "target", type: string, value: "clipboard"}
+    # Xcode: Catppuccin, light and dark (themes are installed from private_Library/.../FontAndColorThemes)
+    - {domain: "com.apple.dt.Xcode", key: "XCFontAndColorCurrentTheme", type: string, value: "Catppuccin Latte.xccolortheme"}
+    - {domain: "com.apple.dt.Xcode", key: "XCFontAndColorCurrentDarkTheme", type: string, value: "Catppuccin Mocha.xccolortheme"}
   athena: []
   nabla-mac-raphael: []
 

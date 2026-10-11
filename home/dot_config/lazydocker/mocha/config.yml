@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://json.schemastore.org/lazydocker.json
+# Catppuccin Mocha (mauve). Colours are the ones of the Catppuccin lazygit theme, which uses the same keys.
+# lazydocker reads this directory through CONFIG_DIR, set per shell in zsh/theme.zsh.
+gui:
+  border: rounded
+  theme:
+    activeBorderColor: ["#cba6f7", "bold"]
+    inactiveBorderColor: ["#a6adc8"]
+    selectedLineBgColor: ["#313244"]
+    optionsTextColor: ["#89b4fa"]

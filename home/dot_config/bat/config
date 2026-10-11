@@ -1,2 +1,4 @@
 --italic-text=always
---theme="Nord"
+--theme=auto:system
+--theme-light="Catppuccin Latte"
+--theme-dark="Catppuccin Mocha"

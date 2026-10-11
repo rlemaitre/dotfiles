@@ -3,4 +3,3 @@
 -- Only what differs from the LazyVim defaults is set here.
 
 vim.opt.swapfile = false
-vim.o.background = "dark"

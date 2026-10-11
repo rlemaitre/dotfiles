@@ -15,4 +15,3 @@ export ZRCDIR=${ZHOMEDIR}/rc
 export ZDATADIR=${XDG_DATA_HOME}/zsh
 export ZCACHEDIR=${XDG_CACHE_HOME}/zsh
 
-export EZA_CONFIG_DIR=${XDG_CONFIG_HOME}/eza

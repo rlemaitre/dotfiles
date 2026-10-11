@@ -1,0 +1,6 @@
+# Targets that earlier versions of this repo created and that are no longer used.
+# chezmoi deletes them on apply when they exist.
+.config/eza/theme.yml
+.config/oh-my-posh/nord.json
+.config/gh-dash/config.yml
+.config/dircolors

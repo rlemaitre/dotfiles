@@ -1,0 +1,7 @@
+# ripgrep colours, Catppuccin Mocha (loaded through RIPGREP_CONFIG_PATH, see zsh/theme.zsh).
+--colors=path:fg:0xcb,0xa6,0xf7
+--colors=path:style:bold
+--colors=line:fg:0xa6,0xe3,0xa1
+--colors=column:fg:0x94,0xe2,0xd5
+--colors=match:fg:0xf3,0x8b,0xa8
+--colors=match:style:bold

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# bat themes hash: {{ include "dot_config/bat/themes/Catppuccin Latte.tmTheme" | sha256sum }} {{ include "dot_config/bat/themes/Catppuccin Mocha.tmTheme" | sha256sum }}
+# bat only sees custom themes after its cache is rebuilt.
+set -euo pipefail
+
+command -v bat >/dev/null || { echo "bat not found, skipping cache build" >&2; exit 0; }
+
+bat cache --build

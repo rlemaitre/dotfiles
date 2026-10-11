@@ -6,6 +6,9 @@ fi
 # Activate mise early: later lines (oh-my-posh, zoxide, atuin) need its tools on PATH
 eval "$(/opt/homebrew/bin/mise activate zsh)"
 
+# Light/dark theme variables (Catppuccin); must come before the plugins and the prompt
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/theme.zsh"
+
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local}/share/zinit/zinit.git"
 
@@ -19,7 +22,6 @@ fi
 source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in zsh plugins
-zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
@@ -36,12 +38,13 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 zinit load atuinsh/atuin
-# Load completions
+# Load completions (generated for the mise tools by chezmoi, see the completions script)
+fpath=("${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions" $fpath)
 autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
-  eval "$(oh-my-posh init zsh --config "${XDG_CONFIG_HOME:-$HOME/.config}"/oh-my-posh/nord.json)"
+  eval "$(oh-my-posh init zsh --config "${XDG_CONFIG_HOME:-$HOME/.config}"/oh-my-posh/catppuccin.omp.json)"
 fi
 # Keybindings
 bindkey -e
@@ -63,7 +66,6 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Completion styling
-export FZF_DEFAULT_OPTS='--height 100%'
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
@@ -74,10 +76,14 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers -
 # eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-test -r "${XDG_CONFIG_HOME:-$HOME/.config}/dircolors/nord" && eval $(gdircolors "${XDG_CONFIG_HOME:-$HOME/.config}/dircolors/nord")
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases.zsh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/env.zsh"
 
 export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+# zsh-syntax-highlighting wraps ZLE widgets, so it must load last: after compinit and after every
+# plugin that defines widgets (autosuggestions, fzf-tab, atuin). Its Catppuccin styles are set
+# earlier, in theme.zsh.
+zinit light zsh-users/zsh-syntax-highlighting

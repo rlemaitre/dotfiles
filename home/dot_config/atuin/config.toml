@@ -1,0 +1,7 @@
+# Atuin. Only the settings that differ from the defaults are kept here.
+# The theme is chosen per shell by ATUIN_THEME__NAME (see zsh/theme.zsh);
+# the theme files are in ./themes.
+enter_accept = true
+
+[sync]
+records = true

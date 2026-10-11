@@ -59,3 +59,16 @@ bookmarks-delete() {
         buku --nostdin --delete $i
     done
 }
+
+# glow ignores GLAMOUR_STYLE when its config style is "auto": pass the themed style explicitly.
+# A later -s on the command line still wins. (gh reads GLAMOUR_STYLE by itself.)
+glow() {
+    command glow -s "${GLAMOUR_STYLE:-auto}" "$@"
+}
+
+# lazydocker reads its config from CONFIG_DIR: pick the themed one for this call only
+# (an exported CONFIG_DIR would leak into every other tool).
+lazydocker() {
+    CONFIG_DIR="${XDG_CONFIG_HOME}/lazydocker/${THEME_FLAVOR:-latte}" command lazydocker "$@"
+}
+alias lzd='lazydocker'
