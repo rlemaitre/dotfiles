@@ -3,5 +3,5 @@
 source ~/.orbstack/shell/init.zsh 2>/dev/null || :
 
 # >>> coursier install directory >>>
-export PATH="$PATH:/Users/raphael.lemaitre/Library/Application Support/Coursier/bin"
+export PATH="$PATH:/Users/raphael.lemaitre/Library/Application Support/Coursier/bin:/Applications/Obsidian.app/Contents/MacOS"
 # <<< coursier install directory <<<

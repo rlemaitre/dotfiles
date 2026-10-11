@@ -2,50 +2,43 @@
 # tap repositories and their packages
 
 tap homebrew/core
-brew bash-language-server
-brew bat
+brew abseil
+brew ada-url
+brew bash
 brew brotli
+brew buku
 brew c-ares
 brew ca-certificates
 brew cairo
+brew certifi
 brew cffi
-brew coursier
+brew coreutils
 brew cryptography
 brew docker-compose-langserver
 brew dockerfile-language-server
-brew dotnet
-brew eza
-brew fd
+brew fmt
 brew fontconfig
 brew freetype
-brew fzf
 brew gettext
-brew gh
 brew giflib
 brew glib
-brew glow
 brew gmp
 brew gnu-sed
 brew gnupg
 brew gnutls
-brew gopls
 brew graphite2
-brew gum
 brew harfbuzz
-brew helix
-brew icu4c@77
+brew hdrhistogram_c
+brew highway
 brew icu4c@78
 brew jdtls
 brew jpeg-turbo
-brew jq
 brew json-c
-brew just
 brew kotlin-language-server
-brew lazygit
+brew krb5
 brew libassuan
-brew libevent
+brew libffi
 brew libgcrypt
-brew libgit2
 brew libgpg-error
 brew libidn2
 brew libksba
@@ -54,7 +47,6 @@ brew libnghttp3
 brew libngtcp2
 brew libpg_query
 brew libpng
-brew libssh2
 brew libtasn1
 brew libtiff
 brew libunistring
@@ -66,106 +58,92 @@ brew libxcb
 brew libxdmcp
 brew libxext
 brew libxrender
+brew libyaml
 brew libyubikey
 brew little-cms2
-brew lpeg
-brew lua-language-server
-brew luajit
-brew luv
+brew llhttp
 brew lz4
 brew lzo
-brew markdown-oxide
-brew marksman
 brew mas
+brew merve
 brew mise
 brew mpdecimal
+brew nbytes
 brew ncurses
-brew neovim
 brew nettle
 brew nnn
 brew node
 brew npth
-brew oh-my-posh
-brew oniguruma
 brew openjdk
 brew openjdk@21
 brew openssl@3
+brew openssl@4
 brew p11-kit
 brew pcre2
 brew pinentry
 brew pinentry-mac
 brew pixman
+brew pkgconf
 brew postgres-language-server
+brew postgresql@18
 brew pycparser
-brew pyright
-brew python-lsp-server
-brew python@3.13
+brew python@3.12
 brew python@3.14
 brew readline
-brew shellcheck
-brew shfmt
+brew rpds-py
 brew simdjson
+brew simdutf
 brew sql-language-server
 brew sqlite
 brew stow
-brew superhtml
-brew tailwindcss-language-server
 brew terminal-notifier
 brew texinfo
-brew tree-sitter
-brew typescript
-brew typescript-language-server
-brew unbound
-brew unibilium
 brew usage
-brew utf8proc
 brew uvwasi
-brew vscode-langservers-extracted
-brew vue-language-server
+brew webp
 brew xorgproto
 brew xz
-brew yaml-language-server
 brew ykman
 brew ykpers
-brew yq
-brew zoxide
 brew zstd
 
 tap homebrew/cask
+cask 1password
 cask adguard
+cask adguard-vpn
+cask anki
+cask anytype
+cask bambu-studio
 cask beeper
 cask betterdisplay
 cask brainfm
 cask calibre
 cask claude
+cask claude-code
+cask cmux
 cask discord
 cask elgato-camera-hub
 cask elgato-capture-device-utility
 cask elgato-stream-deck
+cask finetune
 cask font-fira-code
 cask font-fira-code-nerd-font
 cask font-hack-nerd-font
 cask freedom
 cask ghostty
+cask google-chrome
 cask gpg-suite-no-mail
 cask inkscape
-cask intellij-idea-ce
 cask jetbrains-toolbox
 cask languagetool-desktop
-cask lm-studio
+cask logseq
 cask mos
-cask msty
 cask mutedeck
-cask netnewswire
-cask obs
-cask obs-advanced-scene-switcher
-cask obs-backgroundremoval
 cask obsidian
-cask ollama-app
+cask openscad@snapshot
 cask orbstack
 cask orion
 cask pronotes
-cask proton-drive
 cask qlmarkdown
 cask raycast
 cask sensiblesidebuttons
@@ -180,35 +158,40 @@ cask zotero
 
 tap coursier/formulas
 
-tap ksdme/tap
-brew ut
-
-tap loopwork/tap
-cask imcp
-
 tap rcmdnk/file
 brew brew-file
 
+tap theboredteam/boring-notch
+cask boring-notch
+
+# Other Homebrew packages
+brew bd
+
 # App Store applications
-appstore 1586435171 Actions (3.8.0)
-appstore 302584613 Amazon Kindle (7.46.1)
+appstore 1569813296 1Password for Safari (8.12.41)
+appstore 1586435171 Actions (4.2.1)
+appstore 302584613 Amazon Kindle (7.68)
 appstore 937984704 Amphetamine (5.3.2)
-appstore 1545870783 Color Picker (2.1.4)
-appstore 1198176727 ControllerForHomeKit (8.0.1)
+appstore 1545870783 Color Picker (2.2.3)
+appstore 1198176727 ControllerForHomeKit (9.0.5)
 appstore 1453273600 Data Jar (1.1.4)
-appstore 640199958 Developer (10.8.3)
-appstore 1099120373 Exporter (4.0.5)
-appstore 682658836 GarageBand (10.4.12)
+appstore 640199958 Developer (11.1)
+appstore 1099120373 Exporter (4.0.8)
+appstore 682658836 GarageBand (10.4.14)
 appstore 1324203419 Ground News (3.0.4)
-appstore 408981434 iMovie (10.4.3)
-appstore 1559239914 Joko pour Safari (2.1.91)
+appstore 408981434 iMovie (10.4.5)
+appstore 6758070650 Itsyhome (3.0.0)
+appstore 1559239914 Joko pour Safari (2.2.1)
 appstore 1622835804 Kagi for Safari (2.2.3)
-appstore 409183694 Keynote (14.4)
-appstore 1437106857 Mes Envies (3.1)
-appstore 1664344174 NEEWER Control Center (3.4.2)
-appstore 409203825 Numbers (14.4)
-appstore 6720708363 Obsidian Web Clipper (0.12.0)
-appstore 1592826205 Open Access Helper (2025.11)
-appstore 409201541 Pages (14.4)
-appstore 1496833156 Swift Playground (4.6.4)
-appstore 497799835 Xcode (26.1.1)
+appstore 361285480 Keynote Creator Studio (15.4)
+appstore 409183694 Keynote (14.5)
+appstore 1437106857 Mes Envies (3.2)
+appstore 1664344174 NEEWER Control Center (3.5.4)
+appstore 361304891 Numbers Creator Studio (15.4)
+appstore 6720708363 Obsidian Web Clipper (1.7.1)
+appstore 1592826205 Open Access Helper (2026.8)
+appstore 361309726 Pages Creator Studio (15.4)
+appstore 409201541 Pages (14.5)
+appstore 933627574 Silicio (3.7.3)
+appstore 1496833156 Swift Playground (4.7)
+appstore 497799835 Xcode (27.0)

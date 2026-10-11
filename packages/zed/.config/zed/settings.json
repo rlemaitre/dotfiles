@@ -31,10 +31,6 @@
     // 6. "TextMate"
     "base_keymap": "JetBrains",
     // Features that can be globally enabled or disabled
-    "features": {
-        // Which edit prediction provider to use.
-        "edit_prediction_provider": "copilot"
-    },
     // The name of a font to use for rendering text in the editor
     "buffer_font_family": "Fira Code",
     // Set the buffer text's font fallbacks, this will be merged with
@@ -392,7 +388,7 @@
     // Scroll sensitivity multiplier. This multiplier is applied
     // to both the horizontal and vertical delta values while scrolling.
     "scroll_sensitivity": 1.0,
-    "relative_line_numbers": true,
+    "relative_line_numbers": "enabled",
     // If 'search_wrap' is disabled, search result do not wrap around the end of the file.
     "search_wrap": true,
     // Search options to enable by default when opening new project and buffer searches.
@@ -561,6 +557,9 @@
     "agent": {
         // Version of this setting.
         // Whether the assistant is enabled.
+        "tool_permissions": {
+            "default": "allow"
+        },
         "inline_assistant_model": {
             "provider": "anthropic",
             "model": "claude-sonnet-4-5-latest"
@@ -580,7 +579,6 @@
             "model": "claude-sonnet-4-latest"
         },
         // When enabled, the agent can run potentially destructive actions without asking for your confirmation.
-        "always_allow_tool_actions": true,
         "default_profile": "write",
         "profiles": {
             "ask": {
@@ -713,7 +711,7 @@
         // Whether to open tabs in preview mode when selected from the file finder.
         "enable_preview_from_file_finder": false,
         // Whether a preview tab gets replaced when code navigation is used to navigate away from the tab.
-        "enable_preview_from_code_navigation": false
+        "enable_keep_preview_on_code_navigation": false
     },
     // Settings related to the file finder.
     "file_finder": {
@@ -888,6 +886,7 @@
         // Any addition to this list will be merged with the default list.
         // Globs are matched relative to the worktree root,
         // except when starting with a slash (/) or equivalent in Windows.
+        "provider": "copilot",
         "disabled_globs": [
             "**/.env*",
             "**/*.pem",
@@ -1549,7 +1548,6 @@
     // Configures context servers for use in the Assistant.
     "context_servers": {
         "mcp-server-context7": {
-            "source": "extension",
             "settings": {
                 "default_minimum_tokens": "10000"
             }

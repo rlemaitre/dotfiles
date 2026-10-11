@@ -15,25 +15,47 @@
 # -------
 
 function gwip() {
-  git add -A
-  git rm  2> /dev/null
-  git commit --no-verify --no-gpg-sign --message '--wip-- [skip ci]' $argv
+    git add -A
+    git rm 2>/dev/null
+    git commit --no-verify --no-gpg-sign --message '--wip-- [skip ci]' $argv
 }
 
 function sync() {
-  source $ZDOTDIR/.zshrc
+    source $ZDOTDIR/.zshrc
 }
 
 alias vim="nvim"
 
-alias ls="eza --git --git-repos --color=always --color-scale=all --color-scale-mode=gradient --all --icons always --smart-group --group-directories-first --hyperlink --modified --classify=always";
-alias ll="ls --long";
-alias l="ll --no-user --no-permissions --octal-permissions --time-style=relative";
-alias cat="bat";
-alias grep="rg";
-alias diff="delta";
-alias top="gotop";
+alias ls="eza --git --git-repos --color=always --color-scale=all --color-scale-mode=gradient --all --icons always --smart-group --group-directories-first --hyperlink --modified --classify=always"
+alias ll="ls --long"
+alias l="ll --no-user --no-permissions --octal-permissions --time-style=relative"
+alias cat="bat"
+alias grep="rg"
+alias diff="delta"
+alias top="gotop"
 alias pinentry='pinentry-mac'
 
 # fix fast typing
 alias brwe="brew"
+
+# open bookmarks
+
+bookmarks-select() {
+    buku --print --format 5 | column -ts$'\t' -c 3 | fzf --multi --reverse --preview "buku --nostdin --print {1}" --preview-window=wrap | cut -w -f1
+}
+bookmarks-open() {
+    local websites=("${(@f)$(bookmarks-select)}")
+    for i in "${websites[@]}"; do
+        url="$(buku --nostdin --format 10 --print $i)"
+        echo "Opening $url"
+        open -u "$url"
+    done
+}
+
+bookmarks-delete() {
+    local websites=("${(@f)$(bookmarks-select)}")
+    for i in "${websites[@]}"; do
+        echo "Deleting $i"
+        buku --nostdin --delete $i
+    done
+}

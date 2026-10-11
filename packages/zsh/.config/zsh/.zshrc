@@ -6,6 +6,9 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   fi
 fi
 
+# Activate mise early: later lines (oh-my-posh, zoxide, atuin) need its tools on PATH
+eval "$(/opt/homebrew/bin/mise activate zsh)"
+
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.localdt}/share/zinit/zinit.git"
 
@@ -35,7 +38,7 @@ zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
-
+zinit load atuinsh/atuin
 # Load completions
 autoload -Uz compinit && compinit
 
@@ -74,11 +77,10 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers -
 # eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
-test -r "${XDG_CONFIG_HOME:-$HOME/.config}/dircolors/nord" && eval $(dircolors "${XDG_CONFIG_HOME:-$HOME/.config}/dircolors/nord")
+test -r "${XDG_CONFIG_HOME:-$HOME/.config}/dircolors/nord" && eval $(gdircolors "${XDG_CONFIG_HOME:-$HOME/.config}/dircolors/nord")
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases.zsh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/env.zsh"
 
-# >>> scala-cli completions >>>
-fpath=("/Users/raphael.lemaitre/Library/Application Support/ScalaCli/completions/zsh" $fpath)
-# <<< scala-cli completions <<<
-eval "$(/opt/homebrew/bin/mise activate zsh)"
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi

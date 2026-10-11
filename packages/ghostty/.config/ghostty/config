@@ -1,5 +1,6 @@
-theme = Nord
+theme = Catppuccin Latte
 copy-on-select = clipboard
 macos-titlebar-style = tabs
 window-theme = system
 window-inherit-working-directory = false
+keybind = shift+enter=text:\n
