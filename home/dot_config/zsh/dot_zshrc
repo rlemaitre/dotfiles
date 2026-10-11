@@ -1,9 +1,6 @@
 if [[ -f "/opt/homebrew/bin/brew" ]] then
   # If you're using macOS, you'll want this enabled
   eval "$(/opt/homebrew/bin/brew shellenv)"
-  if [ -f "$(/opt/homebrew/bin/brew --prefix)/etc/brew-wrap" ];then
-      source "$(/opt/homebrew/bin/brew --prefix)/etc/brew-wrap"
-  fi
 fi
 
 # Activate mise early: later lines (oh-my-posh, zoxide, atuin) need its tools on PATH
