@@ -2,19 +2,27 @@
 {{- /* Runs on every apply: cheap, and retries after a late `gh auth login`. */ -}}
 {{- $m := .machine }}
 {{- $exts := concat .packages.gh_extensions.common (index .packages.gh_extensions $m | default (list)) }}
+{{- $skills := concat .packages.gh_skills.common (index .packages.gh_skills $m | default (list)) }}
 set -euo pipefail
-{{ if $exts }}
+{{ if or $exts $skills }}
 command -v gh >/dev/null || { echo "gh not found" >&2; exit 1; }
 
 if ! gh auth status >/dev/null 2>&1; then
   echo "gh is not logged in: run 'gh auth login' then 'chezmoi apply' again" >&2
   exit 0
 fi
-
+{{ if $exts }}
 installed="$(gh extension list)"
 {{ range $exts -}}
 grep -q '{{ . }}' <<<"${installed}" || gh extension install {{ . }}
 {{ end -}}
+{{ end -}}
+{{ if $skills }}
+# Agent skills (gh skill is a preview feature): installed once, pinned to a tag.
+{{ range $skills -}}
+[[ -d "${HOME}/.claude/skills/{{ .skill }}" ]] || gh skill install {{ .repo }} {{ .skill }} --agent claude-code --scope user --pin {{ .pin }}
+{{ end -}}
+{{ end -}}
 {{ else -}}
-echo "no gh extensions for this machine"
+echo "no gh extensions or skills for this machine"
 {{ end -}}
