@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# LaunchAgent hash: {{ include "private_Library/LaunchAgents/com.rlemaitre.colima.plist.tmpl" | sha256sum }}
+# Loads the Colima LaunchAgent: `colima start` runs once at login (RunAtLoad, no supervision),
+# so a manual `colima stop` stays stopped. Start it again with `colima start`.
+set -euo pipefail
+
+readonly LABEL="com.rlemaitre.colima"
+readonly PLIST="${HOME}/Library/LaunchAgents/${LABEL}.plist"
+uid="$(id -u)"
+
+[[ -f "${PLIST}" ]] || { echo "${PLIST} missing, skipping" >&2; exit 0; }
+
+mkdir -p "${HOME}/Library/Logs"
+launchctl bootout "gui/${uid}/${LABEL}" 2>/dev/null || true
+# bootout returns before the job is fully unloaded; bootstrap fails with I/O error 5 until it is
+for _ in $(seq 1 20); do
+  launchctl print "gui/${uid}/${LABEL}" >/dev/null 2>&1 || break
+  sleep 0.5
+done
+launchctl bootstrap "gui/${uid}" "${PLIST}"

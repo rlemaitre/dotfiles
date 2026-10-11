@@ -8,7 +8,7 @@ set -eu
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 shellcheck install.sh scripts/*.sh
-shfmt -d -i 2 install.sh scripts/*.sh
+shfmt -d -i 2 install.sh scripts/*.sh home/.chezmoiscripts/*.sh
 scripts/check-packages.sh
 for f in $(find home -name '*.sh' -not -path '*/.chezmoiscripts/*'); do shellcheck -s bash "$f"; done
 for f in $(find home -name '*.zsh' -o -name 'dot_zshrc' -o -name 'dot_zshenv'); do zsh -n "$f"; done
@@ -22,6 +22,7 @@ for cfg in tests/*.toml; do
     case "$f" in
       */git/config.tmpl) git config --file "$tmp/out" --list > /dev/null ;;
       *.zsh.tmpl|*dot_zprofile.tmpl) zsh -n "$tmp/out" ;;
+      *.plist.tmpl) plutil -lint "$tmp/out" > /dev/null ;;
     esac
   done
 done
