@@ -25,3 +25,14 @@ LSP gives exact results; Grep gives text matches.
 Use Grep/Glob for discovery (finding files, searching patterns). Use LSP for understanding (definitions, references, type info).
 
 After locating a file with Grep/Glob, use LSP to navigate within it rather than reading the whole file.
+
+## Dotfiles
+
+This Mac's configuration is managed by chezmoi. Find the repo with `chezmoi source-path` (its location differs per Mac; the source is the `home/` folder, so the repo root is its parent).
+
+- Do not edit managed files in `~` and leave them: edit the repo, or edit the live file and run `chezmoi re-add <file>`.
+- Before adding or removing a tool, changing a config or a macOS setting, or adding a machine, use the `dotfiles` skill. It points to `docs/maintenance.md` in the repo.
+- Install channel order: mise, Homebrew formula, cask, `mas`. A tool lives in one channel only.
+- Run `mise run check` in the repo before every commit. Never push without asking.
+- Machine differences go in the `athena` / `nabla-mac-raphael` data sections or in templates, never in copied files.
+- The repo is public: no secrets, tokens or private data in it.

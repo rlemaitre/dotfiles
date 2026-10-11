@@ -25,3 +25,10 @@ Never install the same tool through two channels.
 - No secrets in the repo.
 - Shell: `mise activate zsh` must run before any line that calls a mise-installed tool.
 - Files an application rewrites on its own (for example `~/.claude/settings.json`) are `create_` seeds: chezmoi creates them when missing and never overwrites them. Files you edit by hand stay normal managed files: after editing the live copy, run `chezmoi re-add <file>`, otherwise `chezmoi apply` refuses to overwrite it.
+
+## Documentation
+
+- Start at `README.md`; `docs/how-it-works.md` explains the design and `docs/maintenance.md` lists the recipes.
+- `docs/tools.md` is generated: edit `docs/tool-descriptions.yaml`, then run `mise run docs`. `mise run check` fails when a tool
+  has no description, the table is stale, or a link in the docs is broken.
+

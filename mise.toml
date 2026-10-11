@@ -10,6 +10,8 @@ trap 'rm -rf "$tmp"' EXIT
 shellcheck install.sh scripts/*.sh
 shfmt -d -i 2 install.sh scripts/*.sh home/.chezmoiscripts/*.sh
 scripts/check-packages.sh
+python3 scripts/gen-tools-doc.py --check
+python3 scripts/check-links.py
 for f in $(find home -name '*.sh' -not -path '*/.chezmoiscripts/*'); do shellcheck -s bash "$f"; done
 for f in $(find home -name '*.zsh' -o -name 'dot_zshrc' -o -name 'dot_zshenv'); do zsh -n "$f"; done
 for cfg in tests/*.toml; do
@@ -42,3 +44,7 @@ done
 [tasks.upstream-check]
 description = "Check whether upstream bugs worked around in this repo are fixed (kotlin-lsp Homebrew formula)"
 run = "scripts/check-upstream.sh"
+
+[tasks.docs]
+description = "Regenerate docs/tools.md from the package data and docs/tool-descriptions.yaml"
+run = "python3 scripts/gen-tools-doc.py"

@@ -1,0 +1,175 @@
+# One line per tool in home/.chezmoidata/packages.yaml. docs/tools.md is generated from this file and
+# the package data by scripts/gen-tools-doc.py; `mise run check` fails when a tool has no description here
+# or when docs/tools.md is out of date (run `mise run docs`).
+#
+# Keys: mise entries without their @version, brew formulae and casks by name, App Store apps by name.
+
+mise:
+  atuin: Searchable shell history (Ctrl-R), Catppuccin themed
+  bat: cat with syntax highlighting and Git markers; also the man pager
+  bun: JavaScript runtime and package manager
+  chezmoi: The dotfiles manager this repo is built for
+  cmake: Build system generator for C and C++
+  colima: Docker container runtime in a lightweight VM, started at login
+  coursier: Scala and JVM artifact fetcher and launcher
+  delta: Syntax-highlighting pager for git diffs
+  deno: JavaScript and TypeScript runtime
+  docker-cli: Docker client; the engine runs in Colima
+  eza: ls replacement with icons and Git status (aliased to ls)
+  fd: Fast, friendly alternative to find
+  fzf: Fuzzy finder used by fzf-tab, zoxide and the shell
+  gh: GitHub command-line client
+  github:docker/buildx: Docker buildx plugin, linked into ~/.docker/cli-plugins
+  github:docker/compose: Docker Compose plugin, linked into ~/.docker/cli-plugins
+  glow: Markdown renderer for the terminal
+  go: Go toolchain
+  go:golang.org/x/tools/gopls: Go language server (Neovim, Claude Code)
+  gum: Building blocks for pretty shell scripts
+  hexyl: Hex viewer
+  java: JDK, Oracle GraalVM 21 (pinned)
+  jq: JSON processor
+  just: Command runner for justfiles
+  lazydocker: Terminal UI for Docker (alias lzd)
+  lazygit: Terminal UI for git
+  lima: Linux VM engine that Colima runs on
+  lua-language-server: Lua language server (Neovim, Claude Code)
+  maven: Java build tool
+  neovim: Editor, configured with LazyVim
+  node: Node.js runtime
+  npm:better-commits: Interactive conventional commits and branch names (git aliases bc and bb)
+  npm:eslint: JavaScript and TypeScript linter
+  npm:prettier: Code formatter
+  npm:pyright: Python type checker and language server (Neovim, Claude Code)
+  npm:tombi: TOML formatter, linter and language server
+  npm:typescript: TypeScript compiler
+  npm:typescript-language-server: TypeScript language server (Claude Code)
+  oh-my-posh: Prompt renderer; the Catppuccin prompt lives in the repo
+  pnpm: Node package manager (pinned)
+  python: Python 3.12 (pinned)
+  ripgrep: Fast grep alternative (aliased to grep)
+  rust: Rust toolchain through rustup
+  sbt: Scala build tool (pinned)
+  shellcheck: Shell script linter
+  shfmt: Shell script formatter
+  tree-sitter: Parser generator CLI that nvim-treesitter needs
+  uv: Fast Python package and project manager
+  vivid: Generates LS_COLORS from the Catppuccin theme
+  worktrunk: Git worktree manager (wt)
+  yarn: Node package manager
+  yq: YAML, JSON and TOML processor
+  zoxide: Smarter cd that jumps to frequently used directories
+
+taps:
+  theboredteam/boring-notch: Tap that provides the boring-notch cask
+
+formulae:
+  bash: Current bash (macOS ships 3.2)
+  buku: Command-line bookmark manager (used by the bookmark shell functions)
+  coreutils: GNU core utilities with a g prefix; its only known use, gdircolors, was replaced by vivid, so a candidate to drop
+  gnupg: GPG; the agent also serves SSH keys
+  jdtls: Eclipse Java language server (Claude Code)
+  mas: Mac App Store command line, installs the App Store apps
+  mise: Tool manager; installed by brew because mise cannot install itself
+  nnn: Terminal file manager; no use seen, kept for review
+  pinentry-mac: macOS passphrase prompt for GPG
+  pkgconf: Build helper for C libraries; no use seen, kept for review
+  postgresql@18: PostgreSQL 18 server and psql
+  texinfo: GNU info documentation tools; no use seen, kept for review
+  usage: Spec tool that mise uses for task arguments and completions
+  ykman: YubiKey Manager command line
+  ykpers: YubiKey personalization library and tool
+
+casks:
+  1password: Password manager
+  adguard: Ad blocker and DNS filter
+  adguard-vpn: VPN
+  audio-hijack: Records audio from any app
+  autodesk-fusion: CAD, CAM and PCB software
+  bambu-studio: Slicer for Bambu Lab 3D printers
+  beeper: Chat aggregator
+  betterdisplay: Display management
+  boring-notch: Music and shelf widget in the notch
+  brainfm: Focus music
+  calibre: E-book manager
+  claude: Claude desktop app
+  claude-code: Claude Code command line
+  cmux: Ghostty-based terminal with tabs and notifications for AI agents
+  discord: Voice and text chat
+  displaylink: Drivers for DisplayLink docks (needs a reboot)
+  elgato-camera-hub: Elgato camera configuration
+  elgato-capture-device-utility: Elgato capture card configuration
+  elgato-stream-deck: Stream Deck software
+  font-fira-code: Fira Code font
+  font-fira-code-nerd-font: Fira Code with Nerd Font icons
+  font-hack-nerd-font: Hack with Nerd Font icons
+  freedom: App and website blocker
+  ghostty: Terminal emulator
+  google-chrome: Web browser
+  gpg-suite-no-mail: GPG Keychain and tools, without the mail plugin
+  inkscape: Vector graphics editor
+  jetbrains-toolbox: Manager for JetBrains IDEs
+  logi-options+: Logitech device software (needs a reboot)
+  loopback: Virtual audio devices
+  macwhisper: Speech to text
+  mos: Smooth scrolling and per-device scroll direction for mice
+  mutedeck: Mute, video and leave controls for meetings
+  native-access: Native Instruments product manager
+  obsidian: Markdown knowledge base
+  openscad@snapshot: Script-based 3D CAD
+  orion: WebKit browser from Kagi
+  pronotes: Apple Notes extension
+  qlmarkdown: Quick Look previews of rendered Markdown
+  raycast: Launcher
+  rekordbox: DJ software
+  sensiblesidebuttons: Mouse side buttons as back and forward
+  signal: Messenger
+  steam: Game launcher
+  syntax-highlight: Quick Look previews of source and config files
+  the-unarchiver: Archive extractor
+  vivaldi: Web browser
+  vocaster-hub: Focusrite Vocaster interface control
+  yubico-authenticator: YubiKey authenticator
+  zed: Code editor
+  zotero: Reference manager
+
+mas:
+  1Password for Safari: 1Password extension for Safari
+  Actions: Extra actions for Shortcuts
+  Amphetamine: Keeps the Mac awake
+  Color Picker: Color picker for developers
+  Data Jar: Key-value storage for Shortcuts
+  Developer: Apple developer news and WWDC videos
+  Exporter: Exports Apple Notes
+  GarageBand: Music creation
+  iMovie: Video editing
+  Itsyhome: Menu bar control for HomeKit
+  Keynote: Presentations
+  Kindle: E-book reader
+  Kagi for Safari: Kagi search extension for Safari
+  My Desires: Wishlist app (Mes Envies in French) with a Safari extension
+  NEEWER Control Center: Controls NEEWER lights
+  Numbers: Spreadsheets
+  Obsidian Web Clipper: Web clipper for Obsidian, Safari extension
+  Open Access Helper: Education app with a Safari extension for open-access papers
+  Pages: Documents
+  Silicio: Music app with widgets
+  Swift Playground: Learn and experiment with Swift
+  Xcode: Apple IDE and developer tools
+
+gh_extensions:
+  dlvhdr/gh-dash: Dashboard of pull requests and issues (themed per flavour)
+  github/gh-stack: Stacked pull requests for the GitHub CLI
+
+gh_skills:
+  gh-stack: Claude Code skill that teaches the agent to use gh stack
+
+rustup:
+  rust-analyzer: Rust language server (Neovim, Claude Code)
+
+quicklook:
+  org.sbarex.QLMarkdown.QLExtension: Rendered Markdown in Quick Look (QLMarkdown)
+  org.sbarex.SourceCodeSyntaxHighlight.QuickLookExtension: Source and config files in Quick Look (Syntax Highlight)
+  md.obsidian.quicklook: Obsidian's Markdown preview, ignored so QLMarkdown wins
+
+scripts:
+  kotlin-lsp: Kotlin language server (Claude Code), installed from JetBrains' VS Code extension archive while the Homebrew formula is broken (see upstream-watch.md)
