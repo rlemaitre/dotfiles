@@ -18,13 +18,15 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       BRANCH: chore/bump-pins
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: jdx/mise-action@v2
+      - uses: jdx/mise-action@v5
         with:
           install: false
 
       - name: Bump the pins
+        env:
+          MISE_GITHUB_TOKEN: ${{ github.token }} # mise-action v5 no longer exports it; avoids API rate limits
         run: mise exec yq@latest -- python3 scripts/bump-pins.py | tee "${RUNNER_TEMP}/changes.txt"
 
       - name: Open or update the pull request
