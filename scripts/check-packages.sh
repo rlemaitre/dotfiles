@@ -13,7 +13,7 @@ names() {
 
 while read -r machine; do
   [[ "${machine}" == "common" ]] && continue
-  dups="$(names "${machine}" | sed -E 's/^.*[:\/]//' | sort | uniq -d)"
+  dups="$(names "${machine}" | sed -E 's/@[^@\/:]+$//; s/^[a-z]+://; /^@/!s|^.*/||' | sort | uniq -d)"
   if [[ -n "${dups}" ]]; then
     echo "duplicate on ${machine}:" >&2
     while read -r dup; do echo "  ${dup}" >&2; done <<<"${dups}"

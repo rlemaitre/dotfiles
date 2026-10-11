@@ -1,4 +1,5 @@
-{{- /* Rendered from packages.yaml. Do not apply on a machine before phase 4 of the migration:
+{{- /* Rendered from packages.yaml. Entries are `name` (latest) or `name@version`.
+       Do not apply on a machine before phase 4 of the migration:
        it replaces the live ~/.config/mise/config.toml. */ -}}
 {{- $m := .machine -}}
 {{- $tools := concat .packages.mise.common (index .packages.mise $m | default (list)) -}}
@@ -8,5 +9,7 @@ idiomatic_version_file_enable_tools = ["node"]
 
 [tools]
 {{ range $tools | sortAlpha -}}
-{{ . | quote }} = "latest"
+{{- /* a trailing @version has no "/" or ":" after the "@" (scoped npm names do) */ -}}
+{{- $version := regexFind "@[^@/:]+$" . -}}
+{{ trimSuffix $version . | quote }} = {{ if $version }}{{ trimPrefix "@" $version | quote }}{{ else }}"latest"{{ end }}
 {{ end -}}

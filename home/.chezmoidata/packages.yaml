@@ -2,28 +2,184 @@
 # Install channel priority: mise, then brew formula, then brew cask, then mas.
 # A tool must appear in exactly one channel per machine (checked by `mise run check`).
 # Every machine key must exist in every section, even when empty.
+# mise entries use mise CLI syntax: `name` (latest) or `name@version` (pinned).
 packages:
   mise:
-    common: [chezmoi]
-    athena: []
+    common:
+      - "atuin"
+      - "bat"
+      - "bun"
+      - "cargo:just-lsp"
+      - "chezmoi"
+      - "cmake"
+      - "coursier"
+      - "delta"
+      - "deno"
+      - "eza"
+      - "fd"
+      - "fzf"
+      - "gh"
+      - "github:Feel-ix-343/markdown-oxide"
+      - "glow"
+      - "go"
+      - "go:github.com/wader/jq-lsp"
+      - "go:golang.org/x/tools/gopls"
+      - "gum"
+      - "helix"
+      - "hexyl"
+      - "java@oracle-graalvm-21.0.7"
+      - "jq"
+      - "just"
+      - "lazygit"
+      - "lua-language-server"
+      - "marksman"
+      - "maven"
+      - "neovim"
+      - "node"
+      - "npm:@microsoft/compose-language-service"
+      - "npm:@postgrestools/postgrestools"
+      - "npm:@tailwindcss/language-server"
+      - "npm:@vue/language-server"
+      - "npm:awk-language-server"
+      - "npm:bash-language-server"
+      - "npm:better-commits"
+      - "npm:dockerfile-language-server-nodejs"
+      - "npm:eslint"
+      - "npm:prettier"
+      - "npm:pyright"
+      - "npm:sql-language-server"
+      - "npm:tombi"
+      - "npm:typescript"
+      - "npm:typescript-language-server"
+      - "npm:vscode-langservers-extracted"
+      - "npm:yaml-language-server"
+      - "oh-my-posh"
+      - "pipx:python-lsp-server"
+      - "pnpm@10.8.1"
+      - "python@3.12"
+      - "ripgrep"
+      - "rtk"
+      - "rust"
+      - "sbt@1.10.11"
+      - "shellcheck"
+      - "shfmt"
+      - "superhtml"
+      - "uv"
+      - "worktrunk"
+      - "yarn"
+      - "yq"
+      - "zoxide"
+    athena:
+      - "npm:@abhiz123/todoist-mcp-server"
     nabla-mac-raphael: []
   brew:
     taps:
       common: []
-      athena: []
+      athena: [theboredteam/boring-notch]
       nabla-mac-raphael: []
     formulae:
-      common: [mise, usage, mas]
-      athena: []
+      common:
+        - "bash"
+        - "buku"
+        - "coreutils"
+        - "gnupg"
+        - "jdtls"
+        - "kotlin-language-server"
+        - "mas"
+        - "mise"
+        - "pinentry-mac"
+        - "postgresql@18"
+        - "usage"
+        - "ykman"
+        - "ykpers"
+      # athena: unused or undecided, review (steveyegge/beads/bd auto-taps)
+      athena:
+        - "steveyegge/beads/bd"
+        - "nnn"
+        - "pkgconf"
+        - "texinfo"
       nabla-mac-raphael: []
     casks:
-      common: []
-      athena: []
+      common:
+        - "1password"
+        - "claude"
+        - "claude-code"
+        - "cmux"
+        - "font-fira-code"
+        - "font-fira-code-nerd-font"
+        - "font-hack-nerd-font"
+        - "ghostty"
+        - "google-chrome"
+        - "gpg-suite-no-mail"
+        - "jetbrains-toolbox"
+        - "obsidian"
+        - "orbstack"
+        - "qlmarkdown"
+        - "raycast"
+        - "the-unarchiver"
+        - "yubico-authenticator"
+        - "zed"
+      athena:
+        - "adguard"
+        - "adguard-vpn"
+        - "anki"
+        - "anytype"
+        - "bambu-studio"
+        - "beeper"
+        - "betterdisplay"
+        - "boring-notch"
+        - "brainfm"
+        - "calibre"
+        - "discord"
+        - "elgato-camera-hub"
+        - "elgato-capture-device-utility"
+        - "elgato-stream-deck"
+        - "finetune"
+        - "freedom"
+        - "inkscape"
+        - "languagetool-desktop"
+        - "logseq"
+        - "mos"
+        - "mutedeck"
+        - "openscad@snapshot"
+        - "orion"
+        - "pronotes"
+        - "sensiblesidebuttons"
+        - "signal"
+        - "steam"
+        - "vivaldi"
+        - "zoom"
+        - "zotero"
       nabla-mac-raphael: []
   mas:
     # App Store id: name
-    common: {}
-    athena: {}
+    common:
+      "497799835": "Xcode"
+      "1622835804": "Kagi for Safari"
+      "1569813296": "1Password for Safari"
+    athena:
+      "937984704": "Amphetamine"
+      "1586435171": "Actions"
+      "1545870783": "Color Picker"
+      "1198176727": "ControllerForHomeKit"
+      "1453273600": "Data Jar"
+      "640199958": "Developer"
+      "1099120373": "Exporter"
+      "682658836": "GarageBand"
+      "1324203419": "Ground News"
+      "408981434": "iMovie"
+      "6758070650": "Itsyhome"
+      "1559239914": "Joko pour Safari"
+      "361285480": "Keynote"
+      "302584613": "Kindle"
+      "1437106857": "My Desires"
+      "1664344174": "NEEWER Control Center"
+      "361304891": "Numbers"
+      "6720708363": "Obsidian Web Clipper"
+      "1592826205": "Open Access Helper"
+      "361309726": "Pages"
+      "933627574": "Silicio"
+      "1496833156": "Swift Playground"
     nabla-mac-raphael: {}
   gh_extensions:
     # owner/repo, installed once `gh auth login` has been done
