@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
-{{- /* Re-runs only when the rendered component list below changes. */ -}}
+{{- /* Re-runs when the component list or the pinned rust version changes: both are in the text below. */ -}}
 {{- $m := .machine }}
 {{- $components := concat .packages.rustup_components.common (index .packages.rustup_components $m | default (list)) }}
+{{- $tools := concat .packages.mise.common (index .packages.mise $m | default (list)) }}
+{{- $toolchain := "" }}
+{{- range $tools }}{{ if hasPrefix "rust@" . }}{{ $toolchain = trimPrefix "rust@" . }}{{ end }}{{ end }}
 set -euo pipefail
 {{ if $components }}
 command -v rustup >/dev/null || { echo "rustup not found, skipping rustup components" >&2; exit 0; }
 
-rustup component add {{ $components | join " " }}
+# Components belong to a toolchain: add them to the one mise pins ({{ $toolchain | default "default" }}), not to whichever is the rustup default.
+rustup component add {{ if $toolchain }}--toolchain {{ $toolchain }} {{ end }}{{ $components | join " " }}
 {{ else -}}
 echo "no rustup components for this machine"
 {{ end -}}
