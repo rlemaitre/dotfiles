@@ -106,6 +106,7 @@ macos_defaults:
     - {domain: "com.apple.finder", key: "OpenWindowForNewRemovableDisk", type: bool, value: true}
     - {domain: "com.apple.finder", key: "FXPreferredViewStyle", type: string, value: "Nlsv"}
     - {domain: "com.apple.finder", key: "WarnOnEmptyTrash", type: bool, value: false}
+    - {domain: "com.apple.finder", key: "FXInfoPanesExpanded", type: dict, value: {General: true, OpenWith: true, Privileges: true}}
     # com.apple.print.PrintingPrefs
     - {domain: "com.apple.print.PrintingPrefs", key: "Quit When Finished", type: bool, value: true}
     # com.apple.screencapture
@@ -121,3 +122,21 @@ macos_defaults:
     - {domain: "com.apple.universalaccess", key: "closeViewZoomFollowsFocus", type: bool, value: true}
   athena: []
   nabla-mac-raphael: []
+
+macos_defaults_absent:
+  # Keys deleted when present, so a Mac that ran the old set_defaults.sh ends up with macOS defaults
+  # (they turned off the quarantine prompt and disk image checksum verification).
+  common:
+    - {domain: "com.apple.LaunchServices", key: "LSQuarantine"}
+    - {domain: "com.apple.frameworks.diskimages", key: "skip-verify"}
+    - {domain: "com.apple.frameworks.diskimages", key: "skip-verify-locked"}
+    - {domain: "com.apple.frameworks.diskimages", key: "skip-verify-remote"}
+  athena: []
+  nabla-mac-raphael: []
+
+macos_power:
+  # sudo pmset values, applied by run_after_75_macos-power.sh when they differ (needs a terminal).
+  # Minutes; 0 = never. The work laptop keeps its own policy.
+  common: {}
+  athena: {ac_sleep: 0, battery_sleep: 5, display_sleep: 15}
+  nabla-mac-raphael: {}

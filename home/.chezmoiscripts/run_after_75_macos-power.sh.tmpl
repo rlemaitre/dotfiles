@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+{{- /* Power settings need sudo. Runs on every apply (a pmset read is cheap) and only writes when a value differs. */ -}}
+{{- $m := .machine }}
+{{- $p := merge (dict) .macos_power.common (index .macos_power $m | default (dict)) }}
+set -euo pipefail
+{{ if $p }}
+readonly AC_SLEEP={{ index $p "ac_sleep" }}
+readonly BATTERY_SLEEP={{ index $p "battery_sleep" }}
+readonly DISPLAY_SLEEP={{ index $p "display_sleep" }}
+
+# current <section> <key>: value from `pmset -g custom` ("AC Power:" or "Battery Power:")
+current() {
+  pmset -g custom | awk -v section="$1" -v key="$2" '
+    index($0, section) { in_section = 1; next }
+    /Power:/ { in_section = 0 }
+    in_section && $1 == key { print $2; exit }'
+}
+
+if [[ "$(current 'AC Power' sleep)" == "${AC_SLEEP}" &&
+  "$(current 'AC Power' displaysleep)" == "${DISPLAY_SLEEP}" &&
+  "$(current 'Battery Power' sleep)" == "${BATTERY_SLEEP}" &&
+  "$(current 'Battery Power' displaysleep)" == "${DISPLAY_SLEEP}" ]]; then
+  exit 0
+fi
+
+if [[ ! -t 0 ]]; then
+  echo "power settings differ from packages.yaml and no terminal is available: run 'chezmoi apply' from a terminal" >&2
+  exit 0
+fi
+
+echo "Applying power settings (needs your password once)"
+sudo pmset -c sleep "${AC_SLEEP}" displaysleep "${DISPLAY_SLEEP}"
+sudo pmset -b sleep "${BATTERY_SLEEP}" displaysleep "${DISPLAY_SLEEP}"
+{{ else -}}
+echo "no power settings for this machine"
+{{ end -}}

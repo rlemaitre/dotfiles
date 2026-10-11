@@ -2,10 +2,19 @@
 {{- /* Re-runs only when the rendered settings below change. */ -}}
 {{- $m := .machine }}
 {{- $entries := concat .macos_defaults.common (index .macos_defaults $m | default (list)) }}
+{{- $absent := concat .macos_defaults_absent.common (index .macos_defaults_absent $m | default (list)) }}
 set -euo pipefail
 
 {{ range $entries -}}
+{{ if eq .type "dict" -}}
+defaults {{ if index . "host" }}-currentHost {{ end }}write {{ .domain | quote }} {{ .key | quote }} -dict{{ range $k, $v := .value }} {{ $k | quote }} -bool {{ $v }}{{ end }}
+{{ else -}}
 defaults {{ if index . "host" }}-currentHost {{ end }}write {{ .domain | quote }} {{ .key | quote }} -{{ .type }} {{ .value | toString | quote }}
+{{ end -}}
 {{ end }}
+{{- range $absent }}
+defaults delete {{ .domain | quote }} {{ .key | quote }} 2>/dev/null || true
+{{- end }}
+
 # Restart the apps that cache these settings.
 killall Dock Finder SystemUIServer >/dev/null 2>&1 || true
