@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 {{- /* Stopgap: the Homebrew formula for kotlin-lsp is broken upstream (download 404).
-       Remove this script and use `brew install jetbrains/utils/kotlin-lsp` once it works. */ -}}
+       Remove this script and use `brew install jetbrains/utils/kotlin-lsp` once it works:
+       `mise run upstream-check` tells, and docs/upstream-watch.md lists the steps. */ -}}
 {{- $k := .packages.kotlin_lsp }}
 # kotlin-lsp {{ $k.version }}
 set -euo pipefail

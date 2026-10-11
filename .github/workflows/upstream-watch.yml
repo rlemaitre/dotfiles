@@ -1,0 +1,40 @@
+# Weekly check of upstream bugs this repo works around. Opens an issue when one is fixed.
+# Scheduled workflows only run on the default branch. See docs/upstream-watch.md.
+name: upstream-watch
+
+on:
+  schedule:
+    - cron: "17 6 * * 1" # Mondays 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  kotlin-lsp:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the Homebrew formula
+        id: check
+        run: |
+          set +e
+          scripts/check-upstream.sh
+          code=$?
+          echo "code=${code}" >> "${GITHUB_OUTPUT}"
+          # 0 = still broken, 10 = fixed; anything else is a failure of the check itself
+          [ "${code}" -eq 0 ] || [ "${code}" -eq 10 ]
+
+      - name: Open an issue when the formula works again
+        if: steps.check.outputs.code == '10'
+        run: |
+          title="kotlin-lsp: the Homebrew formula works again, switch back"
+          existing="$(gh issue list --state open --search "in:title ${title}" --json number --jq '.[0].number // empty')"
+          if [ -z "${existing}" ]; then
+            gh issue create --title "${title}" \
+              --body "The weekly upstream-watch check found that every download URL of jetbrains/utils/kotlin-lsp answers HTTP 200 again. Follow the steps in docs/upstream-watch.md to drop the install-from-vsix workaround."
+          fi

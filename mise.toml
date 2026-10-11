@@ -38,3 +38,7 @@ for f in home/.chezmoiscripts/*.tmpl home/dot_config/mise/config.toml.tmpl; do
   chezmoi --config "tests/${usage_machine}.toml" --source . execute-template < "$f"
 done
 '''
+
+[tasks.upstream-check]
+description = "Check whether upstream bugs worked around in this repo are fixed (kotlin-lsp Homebrew formula)"
+run = "scripts/check-upstream.sh"

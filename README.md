@@ -41,3 +41,9 @@ chezmoi --source . diff     # preview changes on this machine
 1. Add its hostname to `home/.chezmoi.toml.tmpl`
 2. Add a section for it in every block of `packages.yaml`
 3. Add `tests/<hostname>.toml`
+
+## More
+
+- [docs/themes.md](docs/themes.md): the Catppuccin theme setup
+- [docs/manual-installs.md](docs/manual-installs.md): apps installed by hand
+- [docs/upstream-watch.md](docs/upstream-watch.md): workarounds to remove when upstream is fixed

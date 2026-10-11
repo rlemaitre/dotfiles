@@ -180,7 +180,7 @@ packages:
       - {repo: github/gh-stack, skill: gh-stack, pin: v0.2.1}
     athena: []
     nabla-mac-raphael: []
-  # TODO remove when `brew install jetbrains/utils/kotlin-lsp` works again
+  # TODO remove when `brew install jetbrains/utils/kotlin-lsp` works again: `mise run upstream-check` and docs/upstream-watch.md.
   # (upstream: github.com/Kotlin/kotlin-lsp issue 282, the formula's download returns 404).
   # Until then the server is installed from JetBrains' VS Code extension archive.
   kotlin_lsp:
