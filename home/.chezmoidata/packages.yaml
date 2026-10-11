@@ -69,13 +69,12 @@ packages:
       - "yarn"
       - "yq"
       - "zoxide"
-    athena:
-      - "npm:@abhiz123/todoist-mcp-server"
+    athena: []
     nabla-mac-raphael: []
   brew:
     taps:
-      common: []
-      athena: [theboredteam/boring-notch]
+      common: [theboredteam/boring-notch]
+      athena: []
       nabla-mac-raphael: []
     formulae:
       common:
@@ -94,7 +93,6 @@ packages:
         - "ykpers"
       # athena: unused or undecided, review
       athena:
-        - "beads"
         - "nnn"
         - "pkgconf"
         - "texinfo"
@@ -102,9 +100,15 @@ packages:
     casks:
       common:
         - "1password"
+        - "adguard"
+        - "beeper"
+        - "boring-notch"
+        - "brainfm"
         - "claude"
         - "claude-code"
         - "cmux"
+        - "elgato-camera-hub"
+        - "elgato-stream-deck"
         - "font-fira-code"
         - "font-fira-code-nerd-font"
         - "font-hack-nerd-font"
@@ -112,54 +116,40 @@ packages:
         - "google-chrome"
         - "gpg-suite-no-mail"
         - "jetbrains-toolbox"
+        - "mos"
         - "obsidian"
-        - "orbstack"
         - "qlmarkdown"
         - "raycast"
+        - "sensiblesidebuttons"
+        - "signal"
         - "the-unarchiver"
         - "yubico-authenticator"
         - "zed"
+        - "zotero"
       athena:
-        - "adguard"
         - "adguard-vpn"
-        - "anki"
-        - "anytype"
         - "audio-hijack"
         - "autodesk-fusion"
         - "bambu-studio"
-        - "beeper"
         - "betterdisplay"
-        - "boring-notch"
-        - "brainfm"
         - "calibre"
         - "discord"
         - "displaylink"
-        - "elgato-camera-hub"
         - "elgato-capture-device-utility"
-        - "elgato-stream-deck"
-        - "finetune"
         - "freedom"
         - "inkscape"
-        - "languagetool-desktop"
         - "logi-options+"
-        - "logseq"
         - "loopback"
         - "macwhisper"
-        - "mos"
         - "mutedeck"
         - "native-access"
         - "openscad@snapshot"
         - "orion"
         - "pronotes"
         - "rekordbox"
-        - "sensiblesidebuttons"
-        - "signal"
         - "steam"
-        - "tolaria"
         - "vivaldi"
         - "vocaster-hub"
-        - "zoom"
-        - "zotero"
       nabla-mac-raphael: []
   mas:
     # App Store id: name
@@ -167,27 +157,24 @@ packages:
       "497799835": "Xcode"
       "1622835804": "Kagi for Safari"
       "1569813296": "1Password for Safari"
+      "1664344174": "NEEWER Control Center"
+      "6758070650": "Itsyhome"
+      "361285480": "Keynote"
+      "361304891": "Numbers"
+      "361309726": "Pages"
     athena:
       "937984704": "Amphetamine"
       "1586435171": "Actions"
       "1545870783": "Color Picker"
-      "1198176727": "ControllerForHomeKit"
       "1453273600": "Data Jar"
       "640199958": "Developer"
       "1099120373": "Exporter"
       "682658836": "GarageBand"
-      "1324203419": "Ground News"
       "408981434": "iMovie"
-      "6758070650": "Itsyhome"
-      "1559239914": "Joko pour Safari"
-      "361285480": "Keynote"
       "302584613": "Kindle"
       "1437106857": "My Desires"
-      "1664344174": "NEEWER Control Center"
-      "361304891": "Numbers"
       "6720708363": "Obsidian Web Clipper"
       "1592826205": "Open Access Helper"
-      "361309726": "Pages"
       "933627574": "Silicio"
       "1496833156": "Swift Playground"
     nabla-mac-raphael: {}
