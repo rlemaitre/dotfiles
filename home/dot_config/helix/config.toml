@@ -1,0 +1,44 @@
+theme = "nord"
+
+[editor]
+line-number = "relative"
+cursorline = true
+color-modes = true
+mouse = true
+default-yank-register = "+"
+text-width = 120
+bufferline = "always"
+shell = ["zsh", "-c"]
+auto-completion=true
+auto-save=true
+auto-format=true
+gutters = ["diff", "diagnostics", "line-numbers", "spacer"]
+soft-wrap.enable = true
+soft-wrap.max-indent-retain=120
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left = ["mode", "spinner", "version-control", "file-modification-indicator", "read-only-indicator"]
+center = ["file-name"]
+right = ["diagnostics", "register", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+separator = "│"
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "VISUAL"
+
+[editor.lsp]
+enable=true
+auto-signature-help=true
+display-messages = true
+
+[editor.indent-guides]
+render = true
+character = "┊"
+skip-levels = 1

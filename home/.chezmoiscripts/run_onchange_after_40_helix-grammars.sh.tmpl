@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# languages.toml hash: {{ include "dot_config/helix/languages.toml" | sha256sum }}
+set -euo pipefail
+
+command -v hx >/dev/null || { echo "hx not found, skipping helix grammars" >&2; exit 0; }
+
+hx --grammar fetch
+hx --grammar build
