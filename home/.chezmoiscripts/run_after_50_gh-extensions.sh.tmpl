@@ -12,9 +12,15 @@ if ! gh auth status >/dev/null 2>&1; then
   exit 0
 fi
 {{ if $exts }}
-installed="$(gh extension list)"
+# An extension is installed pinned to a tag; when the tag changes (or it was installed unpinned) it is reinstalled.
+ext_dir="${XDG_DATA_HOME:-${HOME}/.local/share}/gh/extensions"
 {{ range $exts -}}
-grep -q '{{ . }}' <<<"${installed}" || gh extension install {{ . }}
+{{- $name := base .repo | trimPrefix "gh-" -}}
+manifest="${ext_dir}/gh-{{ $name }}/manifest.yml"
+if ! { grep -qx 'tag: {{ .pin }}' "${manifest}" && grep -qx 'ispinned: true' "${manifest}"; } 2>/dev/null; then
+  [[ ! -e "${manifest}" ]] || gh extension remove {{ $name }}
+  gh extension install {{ .repo }} --pin {{ .pin }}
+fi
 {{ end -}}
 {{ end -}}
 {{ if $skills }}

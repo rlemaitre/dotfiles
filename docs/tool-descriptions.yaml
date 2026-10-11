@@ -26,7 +26,7 @@ mise:
   go:golang.org/x/tools/gopls: Go language server (Neovim, Claude Code)
   gum: Building blocks for pretty shell scripts
   hexyl: Hex viewer
-  java: JDK, Oracle GraalVM 21 (pinned)
+  java: JDK, Oracle GraalVM 21
   jq: JSON processor
   just: Command runner for justfiles
   lazydocker: Terminal UI for Docker (alias lzd)
@@ -44,11 +44,11 @@ mise:
   npm:typescript: TypeScript compiler
   npm:typescript-language-server: TypeScript language server (Claude Code)
   oh-my-posh: Prompt renderer; the Catppuccin prompt lives in the repo
-  pnpm: Node package manager (pinned)
-  python: Python 3.12 (pinned)
+  pnpm: Node package manager
+  python: Python 3.12
   ripgrep: Fast grep alternative (aliased to grep)
   rust: Rust toolchain through rustup
-  sbt: Scala build tool (pinned)
+  sbt: Scala build tool
   shellcheck: Shell script linter
   shfmt: Shell script formatter
   tree-sitter: Parser generator CLI that nvim-treesitter needs

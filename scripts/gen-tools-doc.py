@@ -64,7 +64,7 @@ def main():
         ("Homebrew formulae", "formulae", collect(pk["brew"]["formulae"]), lambda x: x),
         ("Homebrew casks (apps and fonts)", "casks", collect(pk["brew"]["casks"]), lambda x: x),
         ("App Store apps (mas)", "mas", collect_mas(pk["mas"]), lambda x: x),
-        ("GitHub CLI extensions", "gh_extensions", collect(pk["gh_extensions"]), lambda x: x),
+        ("GitHub CLI extensions", "gh_extensions", collect(pk["gh_extensions"], key=lambda x: x["repo"]), lambda x: x),
         ("Agent skills for Claude Code", "gh_skills", collect(pk["gh_skills"], key=lambda x: x["skill"]), lambda x: x),
         ("rustup components", "rustup", collect(pk["rustup_components"]), lambda x: x),
         (

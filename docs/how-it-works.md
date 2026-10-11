@@ -91,10 +91,10 @@ Templates also see `.machine`. In the data files each section has three keys: `c
 
 | Key | Meaning |
 |---|---|
-| `mise` | tools; `name` is "latest", `name@version` is pinned |
+| `mise` | tools, always pinned as `name@version` (checked) |
 | `brew.taps`, `brew.formulae`, `brew.casks` | Homebrew; listed taps are tapped and trusted before the bundle |
 | `mas` | App Store apps as `id: name` |
-| `gh_extensions`, `gh_skills` | GitHub CLI extensions; Claude Code skills (`repo`, `skill`, `pin`) |
+| `gh_extensions`, `gh_skills` | GitHub CLI extensions (`repo`, `pin`); Claude Code skills (`repo`, `skill`, `pin`) |
 | `kotlin_lsp` | version, URL and checksum of the stopgap install |
 | `rustup_components` | rustup components |
 | `quicklook_extensions` | extension id, bundle path, `use` or `ignore` |
@@ -123,7 +123,7 @@ numeric order. `onchange` scripts run only when their rendered text changed, so 
 | `45_kotlin-lsp` | on change | downloads and checks JetBrains' server archive (stopgap) |
 | `46_bat-cache` | on change | `bat cache --build` for the Catppuccin themes |
 | `47_zsh-completions` | on change | generates completion files for mise tools |
-| `50_gh-extensions` | always | installs missing `gh` extensions and skills once `gh` is logged in |
+| `50_gh-extensions` | always | installs the `gh` extensions at their pinned tag (reinstalls when it changes) and the skills, once `gh` is logged in |
 | `55_quicklook-extensions` | always | registers the Quick Look extensions and sets use or ignore |
 | `60_sudo-touchid` | always | enables Touch ID for `sudo` (needs a terminal) |
 | `70_macos-defaults` | on change | writes the defaults, deletes the absent keys, restarts Dock, Finder and the menu bar |

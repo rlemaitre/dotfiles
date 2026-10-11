@@ -24,7 +24,8 @@ description and `docs/tools.md` is current), `scripts/check-links.py` (links and
 
 1. Pick the channel: mise first, then formula, cask, App Store ([policy](how-it-works.md#install-policy)).
 2. Add it to the right list in `home/.chezmoidata/packages.yaml`: `common` for both Macs, or `athena` or
-   `nabla-mac-raphael`. mise pins a version with `name@version`. App Store apps are `"id": "Name"`
+   `nabla-mac-raphael`. A mise entry must be pinned, `name@version` (`mise latest <name>` prints the version;
+   `mise run check` fails without it). App Store apps are `"id": "Name"`
    (`mas search <name>` finds the id). A tool from a third-party tap needs the tap in `brew.taps` too.
 3. Add one line for it in `docs/tool-descriptions.yaml`, then `mise run docs`.
 4. `chezmoi apply`, then `mise run check`.
@@ -95,9 +96,9 @@ Add the entry to `quicklook_extensions`, `gh_extensions` or `gh_skills` in `pack
 
 | What | How |
 |---|---|
-| mise tools | `mise upgrade`. Pinned entries (`java`, `pnpm`, `python`, `sbt`) stay: a weekly pull request bumps them (below), or run `mise run bump-pins`. |
+| mise tools | Every entry is pinned: the weekly pull request bumps them (below), or run `mise run bump-pins` now. `mise upgrade` does nothing for them. A new major version: change the pin by hand. |
 | Homebrew | `brew update && brew upgrade` (formulae and casks). `brew bundle` itself never upgrades (`--no-upgrade`). |
-| GitHub CLI extensions | `gh extension upgrade --all` |
+| GitHub CLI extensions | pinned too: the weekly pull request bumps `pin` in `gh_extensions`, `chezmoi apply` reinstalls at the new tag |
 | Agent skills | the weekly pull request bumps `pin` in `gh_skills`; then delete `~/.claude/skills/<skill>` and `chezmoi apply` |
 | Neovim plugins | `:Lazy update`, then `chezmoi re-add ~/.config/nvim/lazy-lock.json ~/.config/nvim/lazyvim.json` |
 | Neovim tools | `:Mason`, then `U` (updates the language servers and formatters Mason installed) |
@@ -108,14 +109,21 @@ Add the entry to `quicklook_extensions`, `gh_extensions` or `gh_skills` in `pack
 
 ### Automatic pin bumps
 
-`.github/workflows/bump-pins.yml` runs every Monday (or by hand: Actions, bump-pins, Run workflow). It runs
-`scripts/bump-pins.py`, which moves each pin to the newest release of the same line (`pnpm@10.x`, `sbt@1.x`, Java 21,
-the newest release of a skill's repository), regenerates `docs/tools.md` and keeps one pull request,
-`chore/bump-pins`, up to date. A partial pin such as `python@3.12` follows its line by itself and `kotlin_lsp` is not touched.
+Every mise tool, `gh` extension and agent skill is pinned in `packages.yaml`, so both Macs run the same versions and
+nothing changes unless the repo does. `.github/workflows/bump-pins.yml` runs every Monday (or by hand: Actions,
+bump-pins, Run workflow) and runs `scripts/bump-pins.py`:
+
+- a newer release in the same **line** is applied: the major version (`pnpm@10.8.1` follows 10.x.y), or major.minor for
+  `python` and for 0.x versions, because a 0.x minor may break;
+- a newer line is **only listed** in the pull request ("not applied"): read the changelog, then change the pin by hand;
+- it regenerates `docs/tools.md` and keeps one pull request, `chore/bump-pins`, up to date. No pull request when
+  nothing can be applied. `kotlin_lsp` is not touched, and Homebrew formulae and casks cannot be pinned (`brew upgrade`).
 
 To merge: `gh pr checkout <number> && mise run check`, merge, then `chezmoi update` on each Mac (`chezmoi apply` alone
-does not pull). Pull requests opened by Actions do not start other workflows, so the check is yours to run.
-One-time setting: repository Settings, Actions, General, enable "Allow GitHub Actions to create and approve pull requests".
+does not pull); the mise install script re-runs because the tool list changed. Pull requests opened by Actions do not
+start other workflows, so the check is yours to run. One-time setting: repository Settings, Actions, General, enable
+"Allow GitHub Actions to create and approve pull requests". To bump by hand: `mise run bump-pins`
+(`--dry-run` only prints).
 
 ## Drift and conflicts
 

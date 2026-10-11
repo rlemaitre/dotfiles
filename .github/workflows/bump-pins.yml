@@ -1,4 +1,5 @@
-# Weekly: bump the pinned versions in packages.yaml and open (or update) one pull request.
+# Weekly: bump the pinned versions in packages.yaml (mise tools, gh extensions, agent skills) within their major
+# line and open (or update) one pull request. Newer majors are listed in the pull request, not applied.
 # Review it locally before merging: gh pr checkout <number> && mise run check. See docs/maintenance.md.
 name: bump-pins
 
@@ -27,12 +28,16 @@ jobs:
       - name: Bump the pins
         env:
           MISE_GITHUB_TOKEN: ${{ github.token }} # mise-action v5 no longer exports it; avoids API rate limits
-        run: mise exec yq@latest -- python3 scripts/bump-pins.py | tee "${RUNNER_TEMP}/changes.txt"
+        run: mise exec yq@latest -- python3 scripts/bump-pins.py --summary "${RUNNER_TEMP}/summary.md"
+
+      - name: Show the summary
+        run: |
+          [ ! -f "${RUNNER_TEMP}/summary.md" ] || tee -a "${GITHUB_STEP_SUMMARY}" < "${RUNNER_TEMP}/summary.md"
 
       - name: Open or update the pull request
         run: |
           if git diff --quiet; then
-            echo "pins are current"
+            echo "nothing to apply"
             exit 0
           fi
           git config user.name "github-actions[bot]"
@@ -40,7 +45,7 @@ jobs:
           git switch -c "${BRANCH}"
           git commit -am "chore: bump pinned versions"
           git push --force origin "${BRANCH}"
-          body="$(printf 'Pinned versions moved to the newest release of the same line:\n\n%s\n\nCheck before merging: `gh pr checkout <number> && mise run check`. Then `chezmoi update` on each Mac.\n' "$(sed 's/^/- /' "${RUNNER_TEMP}/changes.txt")")"
+          body="$(printf '%s\n\nCheck before merging: `gh pr checkout <number> && mise run check`. Then `chezmoi update` on each Mac.\n' "$(cat "${RUNNER_TEMP}/summary.md")")"
           if [ -z "$(gh pr list --head "${BRANCH}" --state open --json number --jq '.[0].number // empty')" ]; then
             gh pr create --head "${BRANCH}" --title "chore: bump pinned versions" --body "${body}"
           else
