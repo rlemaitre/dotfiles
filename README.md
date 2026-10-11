@@ -20,6 +20,7 @@ Non-interactive: `chezmoi init --apply --promptString "Git email for this machin
 
 Packages live in `home/.chezmoidata/packages.yaml`, with `common` plus one section per machine.
 A tool appears in exactly one channel.
+Third-party brew taps listed in that file are tapped and trusted (`brew trust --tap`) before `brew bundle`, so a fresh Mac needs no manual step.
 
 ## Layout
 

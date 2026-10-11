@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-{{- /* Re-runs only when the rendered Brewfile below changes. */ -}}
+{{- /* Re-runs only when the rendered taps/Brewfile below change. */ -}}
 {{- $m := .machine }}
 {{- $taps := concat .packages.brew.taps.common (index .packages.brew.taps $m | default (list)) }}
 {{- $formulae := concat .packages.brew.formulae.common (index .packages.brew.formulae $m | default (list)) }}
@@ -7,7 +7,20 @@
 set -euo pipefail
 
 command -v brew >/dev/null || { echo "brew not found" >&2; exit 1; }
+{{ if $taps }}
+# Recent Homebrew refuses to load third-party taps until they are trusted.
+# Only the taps listed in packages.yaml are trusted; older brew has no `trust` command.
+trust_tap() {
+  brew tap "$1"
+  if brew trust --help >/dev/null 2>&1; then
+    brew trust --tap "$1"
+  fi
+}
 
+{{ range $taps -}}
+trust_tap {{ . | quote }}
+{{ end }}
+{{- end }}
 brew bundle --file=- --no-upgrade <<'BREWFILE'
 {{ range $taps }}tap {{ . | quote }}
 {{ end }}{{ range $formulae }}brew {{ . | quote }}

@@ -92,9 +92,9 @@ packages:
         - "usage"
         - "ykman"
         - "ykpers"
-      # athena: unused or undecided, review (steveyegge/beads/bd auto-taps)
+      # athena: unused or undecided, review
       athena:
-        - "steveyegge/beads/bd"
+        - "beads"
         - "nnn"
         - "pkgconf"
         - "texinfo"

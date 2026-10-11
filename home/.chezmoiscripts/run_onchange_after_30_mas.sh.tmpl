@@ -8,7 +8,7 @@ command -v mas >/dev/null || { echo "mas not found" >&2; exit 1; }
 installed="$(mas list)"
 {{ range $id, $name := $apps -}}
 # {{ $name }}
-grep -q '^{{ $id }} ' <<<"${installed}" || mas install {{ $id }}
+grep -qE '^ *{{ $id }} ' <<<"${installed}" || mas install {{ $id }}
 {{ end -}}
 {{ else -}}
 echo "no App Store apps for this machine"

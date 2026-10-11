@@ -11,8 +11,11 @@
 -}}
 {{- $d := index $defaults $host -}}
 {{- $email := promptStringOnce . "email" "Git email for this machine" (index $d "email") -}}
-{{- $sshKey := promptStringOnce . "ssh_key" "SSH key file name in ~/.ssh (empty = none)" (index $d "ssh_key") -}}
-{{- $gpgKey := promptStringOnce . "gpg_key" "GPG signing key id (empty = no signing)" (index $d "gpg_key") -}}
+{{- $sshKey := promptStringOnce . "ssh_key" "SSH key file name in ~/.ssh (leave empty for none)" (index $d "ssh_key") -}}
+{{- $gpgKey := promptStringOnce . "gpg_key" "GPG signing key id (leave empty for no signing)" (index $d "gpg_key") -}}
+
+# Keep the source dir where it is when `chezmoi init --source <dir>` was used.
+sourceDir = {{ .chezmoi.sourceDir | quote }}
 
 [data]
   machine = {{ $host | quote }}
