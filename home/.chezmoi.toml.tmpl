@@ -4,8 +4,18 @@
 {{- if not (has $host $knownHosts) -}}
 {{-   fail (printf "unknown host %q: add it to .chezmoi.toml.tmpl and .chezmoidata/packages.yaml" $host) -}}
 {{- end -}}
-{{- $email := promptStringOnce . "email" "Git email for this machine" -}}
+{{- /* Defaults offered at the first prompt. Empty = ask. */ -}}
+{{- $defaults := dict
+      "athena" (dict "email" "raphael@rlemaitre.com" "ssh_key" "rlemaitre" "gpg_key" "FA8F2AA7A6D1C219")
+      "nabla-mac-raphael" (dict "email" "" "ssh_key" "" "gpg_key" "")
+-}}
+{{- $d := index $defaults $host -}}
+{{- $email := promptStringOnce . "email" "Git email for this machine" (index $d "email") -}}
+{{- $sshKey := promptStringOnce . "ssh_key" "SSH key file name in ~/.ssh (empty = none)" (index $d "ssh_key") -}}
+{{- $gpgKey := promptStringOnce . "gpg_key" "GPG signing key id (empty = no signing)" (index $d "gpg_key") -}}
 
 [data]
   machine = {{ $host | quote }}
   email = {{ $email | quote }}
+  ssh_key = {{ $sshKey | quote }}
+  gpg_key = {{ $gpgKey | quote }}

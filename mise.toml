@@ -5,15 +5,24 @@ chezmoi = "latest"
 description = "Lint shell scripts, check package duplicates, render every template for every machine"
 run = '''
 set -eu
+tmp="$(mktemp -d)"
+trap 'rm -rf "$tmp"' EXIT
 shellcheck install.sh scripts/*.sh
 shfmt -d -i 2 install.sh scripts/*.sh
 scripts/check-packages.sh
+for f in $(find home -name '*.sh' -not -path '*/.chezmoiscripts/*'); do shellcheck -s bash "$f"; done
+for f in $(find home -name '*.zsh' -o -name 'dot_zshrc' -o -name 'dot_zshenv'); do zsh -n "$f"; done
 for cfg in tests/*.toml; do
   echo "== $cfg"
-  for f in home/.chezmoiscripts/*.tmpl; do
-    chezmoi --config "$cfg" --source . execute-template < "$f" | shellcheck -s bash -
+  render() { chezmoi --config "$cfg" --source . execute-template < "$1"; }
+  for f in home/.chezmoiscripts/*.tmpl; do render "$f" | shellcheck -s bash -; done
+  for f in $(find home -name '*.tmpl' -not -path '*/.chezmoiscripts/*' -not -name '.chezmoi.toml.tmpl'); do
+    render "$f" > "$tmp/out"
+    case "$f" in
+      */git/config.tmpl) git config --file "$tmp/out" --list > /dev/null ;;
+      *.zsh.tmpl|*dot_zprofile.tmpl) zsh -n "$tmp/out" ;;
+    esac
   done
-  chezmoi --config "$cfg" --source . execute-template < home/dot_config/mise/config.toml.tmpl > /dev/null
 done
 echo "check ok"
 '''

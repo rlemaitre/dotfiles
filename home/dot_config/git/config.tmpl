@@ -1,0 +1,100 @@
+[alias]
+	bb = "!better-branch"
+	bc = "!better-commits"
+
+[branch]
+	sort = "-committerdate"
+
+[column]
+	ui = "auto"
+
+[commit]
+	gpgSign = false
+	verbose = true
+
+[core]
+	fsmonitor = true
+	pager = "delta"
+	untrackedCache = true
+{{- if .ssh_key }}
+	sshCommand = "ssh -i ~/.ssh/{{ .ssh_key }}"
+{{- end }}
+
+[github]
+	user = "rlemaitre"
+
+[user]
+	email = {{ .email | quote }}
+	name = "Raphaël Lemaitre"
+{{- if .gpg_key }}
+	signingKey = {{ .gpg_key | quote }}
+{{- end }}
+
+[credential]
+	helper = "cache"
+
+[credential "https://gist.github.com"]
+	helper = "gh auth git-credential"
+
+[credential "https://github.com"]
+	helper = "gh auth git-credential"
+
+[delta]
+	line-numbers = true
+	navigate = true
+	side-by-side = true
+
+[diff]
+	algorithm = "histogram"
+	colorMoved = "plain"
+	mnemonicPrefix = true
+	renames = true
+
+[fetch]
+	all = true
+	prune = true
+	pruneTags = true
+
+[format]
+	pretty = "oneline"
+
+[gpg]
+	format = "openpgp"
+
+[gpg "openpgp"]
+	program = "gpg"
+
+[help]
+	autocorrect = "prompt"
+
+[init]
+	defaultBranch = "main"
+
+[interactive]
+	diffFilter = "delta --color-only"
+
+[maintenance]
+
+[merge]
+	conflictstyle = "zdiff3"
+
+[pull]
+	rebase = true
+
+[push]
+	autoSetupRemote = true
+	default = "upstream"
+	followTags = true
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
+
+[rerere]
+	autoupdate = true
+	enabled = true
+
+[tag]
+	gpgSign = {{ if .gpg_key }}true{{ else }}false{{ end }}
+	sort = "version:refname"

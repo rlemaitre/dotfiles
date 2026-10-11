@@ -1,3 +1,5 @@
 [data]
   machine = "athena"
   email = "test@example.com"
+  ssh_key = "testkey"
+  gpg_key = "ABCDEF"
