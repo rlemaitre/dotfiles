@@ -24,3 +24,4 @@ Never install the same tool through two channels.
 - Package lists use plain `brew bundle`, not `brew-file`.
 - No secrets in the repo.
 - Shell: `mise activate zsh` must run before any line that calls a mise-installed tool.
+- Files an application rewrites on its own (for example `~/.claude/settings.json`) are `create_` seeds: chezmoi creates them when missing and never overwrites them. Files you edit by hand stay normal managed files: after editing the live copy, run `chezmoi re-add <file>`, otherwise `chezmoi apply` refuses to overwrite it.

@@ -48,7 +48,6 @@ packages:
       - "pnpm@10.8.1"
       - "python@3.12"
       - "ripgrep"
-      - "rtk"
       - "rust"
       - "sbt@1.10.11"
       - "shellcheck"
@@ -112,6 +111,7 @@ packages:
         - "raycast"
         - "sensiblesidebuttons"
         - "signal"
+        - "syntax-highlight"
         - "the-unarchiver"
         - "yubico-authenticator"
         - "zed"
@@ -192,5 +192,14 @@ packages:
   # shadows a mise copy in PATH, and the component matches the toolchain version.
   rustup_components:
     common: [rust-analyzer]
+    athena: []
+    nabla-mac-raphael: []
+  # Quick Look preview extensions: `use` = enabled, `ignore` = disabled. Applied by run_after_55_quicklook-extensions.sh.
+  # Two extensions claiming one content type (Markdown) leave the winner to macOS, so the loser is set to `ignore`.
+  quicklook_extensions:
+    common:
+      - {id: "org.sbarex.QLMarkdown.QLExtension", appex: "/Applications/QLMarkdown.app/Contents/PlugIns/Markdown QL Extension.appex", state: use}
+      - {id: "org.sbarex.SourceCodeSyntaxHighlight.QuickLookExtension", appex: "/Applications/Syntax Highlight.app/Contents/PlugIns/Syntax Highlight Quick Look Extension.appex", state: use}
+      - {id: "md.obsidian.quicklook", appex: "/Applications/Obsidian.app/Contents/PlugIns/ObsidianQuickLook.appex", state: ignore}
     athena: []
     nabla-mac-raphael: []

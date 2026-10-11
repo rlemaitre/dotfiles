@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+{{- /* Runs on every apply: a pluginkit read is cheap, and the apps may be installed later by brew bundle. */ -}}
+{{- $m := .machine }}
+{{- $exts := concat .packages.quicklook_extensions.common (index .packages.quicklook_extensions $m | default (list)) }}
+set -uo pipefail
+{{ if $exts }}
+changed=0
+
+# set_state <id> <appex> <use|ignore>: register the extension without launching its app, then enable or disable it
+set_state() {
+  local id="$1" appex="$2" state="$3" want current
+  if [[ ! -e "${appex}" ]]; then
+    echo "skip ${id}: ${appex} is not installed" >&2
+    return 0
+  fi
+  pluginkit -a "${appex}" 2>/dev/null
+  case "${state}" in
+    use) want="+" ;;
+    ignore) want="-" ;;
+    *) echo "unknown state ${state} for ${id}" >&2; return 1 ;;
+  esac
+  current="$(pluginkit -m -v -i "${id}" 2>/dev/null | head -n 1 | cut -c1)"
+  if [[ "${current}" != "${want}" ]]; then
+    pluginkit -e "${state}" -i "${id}"
+    changed=1
+  fi
+}
+
+{{ range $exts -}}
+set_state {{ .id | quote }} {{ .appex | quote }} {{ .state | quote }}
+{{ end }}
+if ((changed)); then
+  qlmanage -r >/dev/null 2>&1
+  qlmanage -r cache >/dev/null 2>&1
+fi
+{{ else -}}
+echo "no Quick Look extensions for this machine"
+{{ end -}}
