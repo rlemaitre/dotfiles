@@ -9,7 +9,6 @@ packages:
       - "atuin"
       - "bat"
       - "bun"
-      - "cargo:just-lsp"
       - "chezmoi"
       - "cmake"
       - "colima"
@@ -23,10 +22,8 @@ packages:
       - "gh"
       - "github:docker/buildx"
       - "github:docker/compose"
-      - "github:Feel-ix-343/markdown-oxide"
       - "glow"
       - "go"
-      - "go:github.com/wader/jq-lsp"
       - "go:golang.org/x/tools/gopls"
       - "gum"
       - "hexyl"
@@ -36,29 +33,17 @@ packages:
       - "lazygit"
       - "lima"
       - "lua-language-server"
-      - "marksman"
       - "maven"
       - "neovim"
       - "node"
-      - "npm:@microsoft/compose-language-service"
-      - "npm:@postgrestools/postgrestools"
-      - "npm:@tailwindcss/language-server"
-      - "npm:@vue/language-server"
-      - "npm:awk-language-server"
-      - "npm:bash-language-server"
       - "npm:better-commits"
-      - "npm:dockerfile-language-server-nodejs"
       - "npm:eslint"
       - "npm:prettier"
       - "npm:pyright"
-      - "npm:sql-language-server"
       - "npm:tombi"
       - "npm:typescript"
       - "npm:typescript-language-server"
-      - "npm:vscode-langservers-extracted"
-      - "npm:yaml-language-server"
       - "oh-my-posh"
-      - "pipx:python-lsp-server"
       - "pnpm@10.8.1"
       - "python@3.12"
       - "ripgrep"
@@ -67,7 +52,6 @@ packages:
       - "sbt@1.10.11"
       - "shellcheck"
       - "shfmt"
-      - "superhtml"
       - "tree-sitter"
       - "uv"
       - "worktrunk"
@@ -88,7 +72,6 @@ packages:
         - "coreutils"
         - "gnupg"
         - "jdtls"
-        - "kotlin-language-server"
         - "mas"
         - "mise"
         - "pinentry-mac"
@@ -186,5 +169,19 @@ packages:
   gh_extensions:
     # owner/repo, installed once `gh auth login` has been done
     common: [dlvhdr/gh-dash]
+    athena: []
+    nabla-mac-raphael: []
+  # TODO remove when `brew install jetbrains/utils/kotlin-lsp` works again
+  # (upstream: github.com/Kotlin/kotlin-lsp issue 282, the formula's download returns 404).
+  # Until then the server is installed from JetBrains' VS Code extension archive.
+  kotlin_lsp:
+    version: "263.6379.0"
+    url: "https://download.jetbrains.com/language-server/kotlin-server/263.6379.0/kotlin-server-0.0.13-mac-aarch64.vsix"
+    sha256: "bf31bf940546aeb15ad4d9361a0a3c32b796345d8af60d86aed551c1c7adface"
+  # rustup components for the `rust` toolchain installed by mise.
+  # rust-analyzer comes from rustup (not mise): ~/.cargo/bin/rust-analyzer is a rustup proxy that
+  # shadows a mise copy in PATH, and the component matches the toolchain version.
+  rustup_components:
+    common: [rust-analyzer]
     athena: []
     nabla-mac-raphael: []

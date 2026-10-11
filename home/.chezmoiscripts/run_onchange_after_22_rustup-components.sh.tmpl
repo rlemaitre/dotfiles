@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+{{- /* Re-runs only when the rendered component list below changes. */ -}}
+{{- $m := .machine }}
+{{- $components := concat .packages.rustup_components.common (index .packages.rustup_components $m | default (list)) }}
+set -euo pipefail
+{{ if $components }}
+command -v rustup >/dev/null || { echo "rustup not found, skipping rustup components" >&2; exit 0; }
+
+rustup component add {{ $components | join " " }}
+{{ else -}}
+echo "no rustup components for this machine"
+{{ end -}}

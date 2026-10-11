@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+{{- /* Stopgap: the Homebrew formula for kotlin-lsp is broken upstream (download 404).
+       Remove this script and use `brew install jetbrains/utils/kotlin-lsp` once it works. */ -}}
+{{- $k := .packages.kotlin_lsp }}
+# kotlin-lsp {{ $k.version }}
+set -euo pipefail
+
+readonly VERSION={{ $k.version | quote }}
+readonly URL={{ $k.url | quote }}
+readonly SHA256={{ $k.sha256 | quote }}
+readonly ROOT="${HOME}/.local/share/kotlin-lsp"
+readonly TARGET="${ROOT}/${VERSION}"
+readonly LINK="${HOME}/.local/bin/kotlin-lsp"
+
+if [[ -x "${TARGET}/bin/intellij-server" && -f "${TARGET}/.installed" ]]; then
+  echo "kotlin-lsp ${VERSION} already installed"
+else
+  tmp="$(mktemp -d)"
+  trap 'rm -rf "${tmp}"' EXIT
+
+  echo "Downloading kotlin-lsp ${VERSION} (about 350 MB)"
+  curl -fSL --progress-bar -o "${tmp}/kotlin-lsp.vsix" "${URL}"
+
+  actual="$(shasum -a 256 "${tmp}/kotlin-lsp.vsix" | cut -d' ' -f1)"
+  if [[ "${actual}" != "${SHA256}" ]]; then
+    echo "checksum mismatch for kotlin-lsp: expected ${SHA256}, got ${actual}" >&2
+    exit 1
+  fi
+
+  unzip -q "${tmp}/kotlin-lsp.vsix" 'extension/server/*' -d "${tmp}/x"
+  rm -rf "${TARGET}"
+  mkdir -p "${ROOT}"
+  mv "${tmp}/x/extension/server" "${TARGET}"
+  chmod +x "${TARGET}/bin/intellij-server"
+  touch "${TARGET}/.installed"
+fi
+
+mkdir -p "$(dirname "${LINK}")"
+ln -sfn "${TARGET}/bin/intellij-server" "${LINK}"
+
+# Keep only the version in use.
+for old in "${ROOT}"/*/; do
+  [[ "${old%/}" == "${TARGET}" ]] || rm -rf "${old}"
+done
