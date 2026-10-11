@@ -29,7 +29,7 @@ an empty answer means none. It is safe to run again. Expect:
 
 - your password several times (Homebrew, Touch ID for `sudo`, vendor installers), and a long first run
   (dozens of apps; the [tools list](docs/tools.md) shows which go on which Mac);
-- `gh auth login`, then `chezmoi apply` once more: GitHub extensions and agent skills wait for a logged-in `gh`;
+- `gh auth login`, then `chezmoi apply` once more: GitHub extensions, agent skills and the clone of the private workspace repository (`~/Developer/workspace`) wait for a logged-in `gh`;
 - a reboot if DisplayLink or Logitech Options+ got installed;
 - the apps in [manual installs](docs/manual-installs.md).
 

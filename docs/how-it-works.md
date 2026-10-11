@@ -124,6 +124,7 @@ numeric order. `onchange` scripts run only when their rendered text changed, so 
 | `46_bat-cache` | on change | `bat cache --build` for the Catppuccin themes |
 | `47_zsh-completions` | on change | generates completion files for mise tools |
 | `50_gh-extensions` | always | installs the `gh` extensions at their pinned tag (reinstalls when it changes) and the skills, once `gh` is logged in |
+| `52_workspace` | always | clones the private `rlemaitre/workspace` repository to `~/Developer/workspace` when it is missing (needs `gh` logged in), never pulls or overwrites |
 | `55_quicklook-extensions` | always | registers the Quick Look extensions and sets use or ignore |
 | `60_sudo-touchid` | always | enables Touch ID for `sudo` (needs a terminal) |
 | `70_macos-defaults` | on change | writes the defaults, deletes the absent keys, restarts Dock, Finder and the menu bar |
@@ -152,6 +153,7 @@ numeric order. `onchange` scripts run only when their rendered text changed, so 
 - **Credentials and identity**: SSH and GPG keys, `~/.docker/config.json`, `~/.claude.json`, GitHub Copilot's `apps.json`.
 - **State and caches**: `~/.cache`, `~/.local`, shell histories, Raycast's data, `~/.npm`, `~/.gradle`.
 - **App-owned settings** in `~/Library`.
+- **The contents of `~/Developer/workspace`**: it is its own private repository, cloned once by script 52. Its projects stay local to each Mac.
 - **Apps you launch from `~/Applications`** (JetBrains IDEs through Toolbox, Steam games).
 
 ## Safety nets
