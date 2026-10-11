@@ -1,0 +1,11 @@
+{{- /* Per-machine data. Add a new machine here AND in .chezmoidata/packages.yaml. */ -}}
+{{- $knownHosts := list "athena" "nabla-mac-raphael" -}}
+{{- $host := .chezmoi.hostname -}}
+{{- if not (has $host $knownHosts) -}}
+{{-   fail (printf "unknown host %q: add it to .chezmoi.toml.tmpl and .chezmoidata/packages.yaml" $host) -}}
+{{- end -}}
+{{- $email := promptStringOnce . "email" "Git email for this machine" -}}
+
+[data]
+  machine = {{ $host | quote }}
+  email = {{ $email | quote }}

@@ -1,0 +1,29 @@
+[tools]
+chezmoi = "latest"
+
+[tasks.check]
+description = "Lint shell scripts, check package duplicates, render every template for every machine"
+run = '''
+set -eu
+shellcheck install.sh scripts/*.sh
+shfmt -d -i 2 install.sh scripts/*.sh
+scripts/check-packages.sh
+for cfg in tests/*.toml; do
+  echo "== $cfg"
+  for f in home/.chezmoiscripts/*.tmpl; do
+    chezmoi --config "$cfg" --source . execute-template < "$f" | shellcheck -s bash -
+  done
+  chezmoi --config "$cfg" --source . execute-template < home/dot_config/mise/config.toml.tmpl > /dev/null
+done
+echo "check ok"
+'''
+
+[tasks.render]
+description = "Print the rendered scripts for one machine"
+usage = 'arg "<machine>" help="athena or nabla-mac-raphael"'
+run = '''
+for f in home/.chezmoiscripts/*.tmpl home/dot_config/mise/config.toml.tmpl; do
+  echo "##### $f"
+  chezmoi --config "tests/${usage_machine}.toml" --source . execute-template < "$f"
+done
+'''

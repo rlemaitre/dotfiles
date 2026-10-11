@@ -1,0 +1,12 @@
+{{- /* Rendered from packages.yaml. Do not apply on a machine before phase 4 of the migration:
+       it replaces the live ~/.config/mise/config.toml. */ -}}
+{{- $m := .machine -}}
+{{- $tools := concat .packages.mise.common (index .packages.mise $m | default (list)) -}}
+[settings]
+experimental = true
+idiomatic_version_file_enable_tools = ["node"]
+
+[tools]
+{{ range $tools | sortAlpha -}}
+{{ . | quote }} = "latest"
+{{ end -}}

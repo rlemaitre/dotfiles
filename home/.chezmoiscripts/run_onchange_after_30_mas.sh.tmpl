@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+{{- /* Re-runs only when the rendered app list below changes. */ -}}
+{{- $apps := merge (dict) .packages.mas.common (index .packages.mas .machine | default (dict)) }}
+set -euo pipefail
+{{ if $apps }}
+command -v mas >/dev/null || { echo "mas not found" >&2; exit 1; }
+
+installed="$(mas list)"
+{{ range $id, $name := $apps -}}
+# {{ $name }}
+grep -q '^{{ $id }} ' <<<"${installed}" || mas install {{ $id }}
+{{ end -}}
+{{ else -}}
+echo "no App Store apps for this machine"
+{{ end -}}

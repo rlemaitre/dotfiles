@@ -1,0 +1,2 @@
+{{- /* One pattern per line. Use {{ if eq .machine "athena" }} blocks for host-only files. */ -}}
+.DS_Store

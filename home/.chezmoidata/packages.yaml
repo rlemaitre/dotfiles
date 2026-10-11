@@ -1,0 +1,27 @@
+# Single source of truth for installed packages.
+# Install channel priority: mise, then brew formula, then brew cask, then mas.
+# A tool must appear in exactly one channel per machine (checked by `mise run check`).
+# Every machine key must exist in every section, even when empty.
+packages:
+  mise:
+    common: [chezmoi]
+    athena: []
+    nabla-mac-raphael: []
+  brew:
+    taps:
+      common: []
+      athena: []
+      nabla-mac-raphael: []
+    formulae:
+      common: [mise, usage, mas]
+      athena: []
+      nabla-mac-raphael: []
+    casks:
+      common: []
+      athena: []
+      nabla-mac-raphael: []
+  mas:
+    # App Store id: name
+    common: {}
+    athena: {}
+    nabla-mac-raphael: {}

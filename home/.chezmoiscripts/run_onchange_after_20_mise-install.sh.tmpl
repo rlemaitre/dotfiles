@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# mise config hash: {{ include "dot_config/mise/config.toml.tmpl" | sha256sum }}
+set -euo pipefail
+
+command -v mise >/dev/null || { echo "mise not found" >&2; exit 1; }
+
+mise install --yes

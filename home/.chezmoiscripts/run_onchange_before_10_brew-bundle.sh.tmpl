@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+{{- /* Re-runs only when the rendered Brewfile below changes. */ -}}
+{{- $m := .machine }}
+{{- $taps := concat .packages.brew.taps.common (index .packages.brew.taps $m | default (list)) }}
+{{- $formulae := concat .packages.brew.formulae.common (index .packages.brew.formulae $m | default (list)) }}
+{{- $casks := concat .packages.brew.casks.common (index .packages.brew.casks $m | default (list)) }}
+set -euo pipefail
+
+command -v brew >/dev/null || { echo "brew not found" >&2; exit 1; }
+
+brew bundle --file=- --no-upgrade <<'BREWFILE'
+{{ range $taps }}tap {{ . | quote }}
+{{ end }}{{ range $formulae }}brew {{ . | quote }}
+{{ end }}{{ range $casks }}cask {{ . | quote }}
+{{ end }}BREWFILE
