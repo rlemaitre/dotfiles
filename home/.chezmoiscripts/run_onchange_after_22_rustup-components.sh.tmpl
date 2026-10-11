@@ -9,6 +9,12 @@ set -euo pipefail
 {{ if $components }}
 command -v rustup >/dev/null || { echo "rustup not found, skipping rustup components" >&2; exit 0; }
 
+{{ if $toolchain -}}
+# The rustup default follows the pin: `mise prune` removes the old toolchain, and a default that still names it makes
+# rustup download it again the next time cargo runs outside a mise-activated shell (IDEs, launchd).
+rustup default {{ $toolchain }}
+
+{{ end -}}
 # Components belong to a toolchain: add them to the one mise pins ({{ $toolchain | default "default" }}), not to whichever is the rustup default.
 rustup component add {{ if $toolchain }}--toolchain {{ $toolchain }} {{ end }}{{ $components | join " " }}
 {{ else -}}

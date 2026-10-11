@@ -132,6 +132,8 @@ slept then (installed by script 85; the log is `~/Library/Logs/dotfiles/maintain
 
 1. **Upgrades**: `brew update`, `brew upgrade --formula`, `brew cleanup`, `mise prune` (old versions after a pin
    bump). Casks, App Store apps and pinned mise tools are never touched: they change through you or the repo.
+   `mise prune` also removes any tool version that no config file lists (a `mise use` tried by hand, a project
+   that was deleted): list a tool in `packages.yaml` or in the project's `mise.toml` to keep it.
 2. **Report**: `~/Library/Logs/dotfiles/report.md`, with a macOS notification when something needs attention:
    the repo is behind GitHub or has unpushed or uncommitted changes, a bump pull request is open, managed files differ
    from the repo, packages installed but not in `packages.yaml` (and the reverse), outdated casks, and the kotlin-lsp
