@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# gpg-agent.conf hash: {{ include "private_dot_gnupg/gpg-agent.conf" | sha256sum }}
+set -euo pipefail
+
+command -v gpgconf >/dev/null || { echo "gpgconf not found, skipping" >&2; exit 0; }
+
+gpgconf --kill gpg-agent

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+{{- /* Re-runs only when the rendered settings below change. */ -}}
+{{- $m := .machine }}
+{{- $entries := concat .macos_defaults.common (index .macos_defaults $m | default (list)) }}
+set -euo pipefail
+
+{{ range $entries -}}
+defaults {{ if index . "host" }}-currentHost {{ end }}write {{ .domain | quote }} {{ .key | quote }} -{{ .type }} {{ .value | toString | quote }}
+{{ end }}
+# Restart the apps that cache these settings.
+killall Dock Finder SystemUIServer >/dev/null 2>&1 || true

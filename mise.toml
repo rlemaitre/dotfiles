@@ -15,7 +15,8 @@ for f in $(find home -name '*.zsh' -o -name 'dot_zshrc' -o -name 'dot_zshenv'); 
 for cfg in tests/*.toml; do
   echo "== $cfg"
   render() { chezmoi --config "$cfg" --source . execute-template < "$1"; }
-  for f in home/.chezmoiscripts/*.tmpl; do render "$f" | shellcheck -s bash -; done
+  for f in home/.chezmoiscripts/*.tmpl; do render "$f" > "$tmp/script.sh"; shellcheck -s bash "$tmp/script.sh"; done
+  for f in home/.chezmoiscripts/*.sh; do shellcheck -s bash "$f"; done
   for f in $(find home -name '*.tmpl' -not -path '*/.chezmoiscripts/*' -not -name '.chezmoi.toml.tmpl'); do
     render "$f" > "$tmp/out"
     case "$f" in
