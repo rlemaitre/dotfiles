@@ -45,6 +45,10 @@ done
 description = "Check whether upstream bugs worked around in this repo are fixed (kotlin-lsp Homebrew formula)"
 run = "scripts/check-upstream.sh"
 
+[tasks.bump-pins]
+description = "Bump pinned versions (mise pins, gh skills) in packages.yaml; --dry-run only prints"
+run = "python3 scripts/bump-pins.py"
+
 [tasks.docs]
 description = "Regenerate docs/tools.md from the package data and docs/tool-descriptions.yaml"
 run = "python3 scripts/gen-tools-doc.py"

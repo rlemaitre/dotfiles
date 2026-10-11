@@ -1,0 +1,46 @@
+# Weekly: bump the pinned versions in packages.yaml and open (or update) one pull request.
+# Review it locally before merging: gh pr checkout <number> && mise run check. See docs/maintenance.md.
+name: bump-pins
+
+on:
+  schedule:
+    - cron: "43 6 * * 1" # Mondays 06:43 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BRANCH: chore/bump-pins
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: jdx/mise-action@v2
+        with:
+          install: false
+
+      - name: Bump the pins
+        run: mise exec yq@latest -- python3 scripts/bump-pins.py | tee "${RUNNER_TEMP}/changes.txt"
+
+      - name: Open or update the pull request
+        run: |
+          if git diff --quiet; then
+            echo "pins are current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "${BRANCH}"
+          git commit -am "chore: bump pinned versions"
+          git push --force origin "${BRANCH}"
+          body="$(printf 'Pinned versions moved to the newest release of the same line:\n\n%s\n\nCheck before merging: `gh pr checkout <number> && mise run check`. Then `chezmoi update` on each Mac.\n' "$(sed 's/^/- /' "${RUNNER_TEMP}/changes.txt")")"
+          if [ -z "$(gh pr list --head "${BRANCH}" --state open --json number --jq '.[0].number // empty')" ]; then
+            gh pr create --head "${BRANCH}" --title "chore: bump pinned versions" --body "${body}"
+          else
+            gh pr edit "${BRANCH}" --body "${body}"
+          fi

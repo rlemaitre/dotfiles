@@ -49,6 +49,7 @@ Then open a new terminal.
 | Print the scripts rendered for one machine | `mise run render athena` |
 | Regenerate the tools list | `mise run docs` |
 | Check whether a workaround can go | `mise run upstream-check` |
+| Bump pinned versions | `mise run bump-pins` (a weekly pull request does it too) |
 | List what is installed on a Mac | `scripts/inventory.sh` |
 
 More in [maintenance](docs/maintenance.md).
@@ -58,7 +59,7 @@ More in [maintenance](docs/maintenance.md).
 ```text
 .
 ├── install.sh                 bootstrap for a fresh Mac
-├── mise.toml                  repo tasks: check, render, docs, upstream-check
+├── mise.toml                  repo tasks: check, render, docs, bump-pins, upstream-check
 ├── .chezmoiroot               makes home/ the chezmoi source directory
 ├── home/                      what chezmoi manages (a mirror of ~)
 │   ├── .chezmoi.toml.tmpl     per-machine questions and data
@@ -69,10 +70,10 @@ More in [maintenance](docs/maintenance.md).
 │   ├── dot_claude/            ~/.claude (global instructions, rules, the dotfiles skill, a settings seed)
 │   ├── private_dot_ssh/, private_dot_gnupg/, private_Library/   modes 700 or 600
 │   └── dot_zshenv, dot_better-commits.json
-├── scripts/                   check-packages.sh, check-upstream.sh, gen-tools-doc.py, inventory.sh
+├── scripts/                   check-*.sh/py, bump-pins.py, gen-tools-doc.py, inventory.sh
 ├── tests/                     fixture data per machine, used by `mise run check`
 ├── docs/                      the documentation below
-└── .github/workflows/         weekly upstream-watch job
+└── .github/workflows/         weekly upstream-watch and bump-pins jobs
 ```
 
 ## Documentation

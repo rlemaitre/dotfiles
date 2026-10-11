@@ -95,16 +95,27 @@ Add the entry to `quicklook_extensions`, `gh_extensions` or `gh_skills` in `pack
 
 | What | How |
 |---|---|
-| mise tools | `mise upgrade`. Pinned entries (`java`, `pnpm`, `python`, `sbt`) stay: change the pin in `packages.yaml`. |
+| mise tools | `mise upgrade`. Pinned entries (`java`, `pnpm`, `python`, `sbt`) stay: a weekly pull request bumps them (below), or run `mise run bump-pins`. |
 | Homebrew | `brew update && brew upgrade` (formulae and casks). `brew bundle` itself never upgrades (`--no-upgrade`). |
 | GitHub CLI extensions | `gh extension upgrade --all` |
-| Agent skills | change `pin` in `gh_skills`, delete `~/.claude/skills/<skill>`, `chezmoi apply` |
+| Agent skills | the weekly pull request bumps `pin` in `gh_skills`; then delete `~/.claude/skills/<skill>` and `chezmoi apply` |
 | Neovim plugins | `:Lazy update`, then `chezmoi re-add ~/.config/nvim/lazy-lock.json ~/.config/nvim/lazyvim.json` |
 | Neovim tools | `:Mason`, then `U` (updates the language servers and formatters Mason installed) |
 | Colima | edits to the template apply to new instances only: `colima delete` then `colima start` |
 | Catppuccin theme files | see [themes](themes.md#changing-things) |
 | kotlin-lsp | bump `kotlin_lsp` in `packages.yaml` (version, URL, sha256) while the stopgap exists |
 | Upstream workarounds | `mise run upstream-check`; a weekly GitHub Actions job opens an issue when one is fixed |
+
+### Automatic pin bumps
+
+`.github/workflows/bump-pins.yml` runs every Monday (or by hand: Actions, bump-pins, Run workflow). It runs
+`scripts/bump-pins.py`, which moves each pin to the newest release of the same line (`pnpm@10.x`, `sbt@1.x`, Java 21,
+the newest release of a skill's repository), regenerates `docs/tools.md` and keeps one pull request,
+`chore/bump-pins`, up to date. A partial pin such as `python@3.12` follows its line by itself and `kotlin_lsp` is not touched.
+
+To merge: `gh pr checkout <number> && mise run check`, merge, then `chezmoi update` on each Mac (`chezmoi apply` alone
+does not pull). Pull requests opened by Actions do not start other workflows, so the check is yours to run.
+One-time setting: repository Settings, Actions, General, enable "Allow GitHub Actions to create and approve pull requests".
 
 ## Drift and conflicts
 
@@ -156,7 +167,7 @@ that differ (`M` modified, `A` would be added, `D` would be deleted, `R` a scrip
 - The history before the rewrite is the branch `backup/pre-rewrite-2026-10-11`.
 - To undo a change: `git revert <commit>` and `chezmoi apply`. A file removed through `.chezmoiremove` is not restored by
   that; take it from git history or a backup.
-- The weekly job `.github/workflows/upstream-watch.yml` only opens issues; nothing deploys from CI.
+- The weekly jobs `upstream-watch.yml` (issues) and `bump-pins.yml` (a pull request) never push to `main`; nothing deploys from CI.
 
 ## Claude on each Mac
 
