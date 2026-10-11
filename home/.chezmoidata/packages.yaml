@@ -25,3 +25,8 @@ packages:
     common: {}
     athena: {}
     nabla-mac-raphael: {}
+  gh_extensions:
+    # owner/repo, installed once `gh auth login` has been done
+    common: [dlvhdr/gh-dash]
+    athena: []
+    nabla-mac-raphael: []
