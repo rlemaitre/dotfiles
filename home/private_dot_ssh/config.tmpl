@@ -1,6 +1,0 @@
-Host github.com
-  AddKeysToAgent yes
-  UseKeychain yes
-{{- if .ssh_key }}
-  IdentityFile ~/.ssh/{{ .ssh_key }}
-{{- end }}
