@@ -2,6 +2,35 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code.
 
+## Behavior
+
+1. Don’t assume. Don’t hide confusion. Surface tradeoffs
+2. Minimum code that solves the problem. Nothing speculative
+3. Touch only what you must. Clean up only your own mess
+4. Define success criteria. Loop until verified
+
+## Language Standards
+
+- **All English**: Code, comments, documentation, commits, configs, errors, tests
+
+## About me
+
+- Name: Raph
+- GitHub username: rlemaitre
+
+## PR Workflow
+
+- When creating PRs, organize work into logical separate commits BEFORE opening
+  the PR (don't squash everything into one commit)
+- PR descriptions must cover the entire branch diff, not just the latest commit
+- Never force-push; let the user push manually when force-push is needed
+
+## Code Review Scope
+
+When reviewing a branch, review the FULL diff against the base branch (not just
+recent commits or a sampled subset of files); explicitly enumerate all changed
+files first
+
 ## Code Intelligence
 
 Prefer LSP over Grep/Glob/Read to understand code: it gives exact results, Grep gives text matches.
