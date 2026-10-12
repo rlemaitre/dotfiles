@@ -28,7 +28,7 @@ mise:
   go:golang.org/x/tools/gopls: Go language server (Neovim, Claude Code)
   gum: Building blocks for pretty shell scripts
   hexyl: Hex viewer
-  java: JDK, Oracle GraalVM 21
+  java: JDK, Oracle GraalVM 21 on athena, OpenJDK 25 on nabla-mac-raphael
   jq: JSON processor
   just: Command runner for justfiles
   lazydocker: Terminal UI for Docker (alias lzd)
@@ -85,7 +85,6 @@ formulae:
   mise: Tool manager; installed by brew because mise cannot install itself
   nnn: Terminal file manager; no use seen, kept for review
   openconnect: VPN client for Cisco AnyConnect and compatible servers
-  openjdk@25: JDK 25, the JAVA_HOME of the work shell
   pinentry-mac: macOS passphrase prompt for GPG
   pkgconf: Build helper for C libraries; no use seen, kept for review
   postgresql@18: PostgreSQL 18 server and psql
