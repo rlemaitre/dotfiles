@@ -136,7 +136,6 @@ casks:
   notion: Notes and docs workspace
   obsidian: Markdown knowledge base
   openscad@snapshot: Script-based 3D CAD
-  orbstack: Docker and Linux VMs for macOS
   orion: WebKit browser from Kagi
   postico: PostgreSQL client
   pronotes: Apple Notes extension
