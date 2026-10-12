@@ -5,7 +5,13 @@
 {{- $absent := concat .macos_defaults_absent.common (index .macos_defaults_absent $m | default (list)) }}
 set -euo pipefail
 
+# Privacy-protected domains need Full Disk Access for the terminal: warn instead of stopping the apply.
+protected() {
+  "$@" || echo "warning: could not write $3 $4: give the terminal Full Disk Access, then run chezmoi apply again" >&2
+}
+
 {{ range $entries -}}
+{{ if index . "protected" }}protected {{ end -}}
 {{ if eq .type "dict" -}}
 defaults {{ if index . "host" }}-currentHost {{ end }}write {{ .domain | quote }} {{ .key | quote }} -dict{{ range $k, $v := .value }} {{ $k | quote }} -bool {{ $v }}{{ end }}
 {{ else -}}

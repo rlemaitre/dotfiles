@@ -116,10 +116,10 @@ macos_defaults:
     # com.apple.screensaver
     - {domain: "com.apple.screensaver", key: "askForPassword", type: int, value: 1}
     - {domain: "com.apple.screensaver", key: "askForPasswordDelay", type: int, value: 0}
-    # com.apple.universalaccess
-    - {domain: "com.apple.universalaccess", key: "closeViewScrollWheelToggle", type: bool, value: true}
-    - {domain: "com.apple.universalaccess", key: "HIDScrollZoomModifierMask", type: int, value: 262144}
-    - {domain: "com.apple.universalaccess", key: "closeViewZoomFollowsFocus", type: bool, value: true}
+    # com.apple.universalaccess: privacy-protected, writing it needs Full Disk Access for the terminal
+    - {domain: "com.apple.universalaccess", key: "closeViewScrollWheelToggle", type: bool, value: true, protected: true}
+    - {domain: "com.apple.universalaccess", key: "HIDScrollZoomModifierMask", type: int, value: 262144, protected: true}
+    - {domain: "com.apple.universalaccess", key: "closeViewZoomFollowsFocus", type: bool, value: true, protected: true}
     # from the settings audit (2026-10-11)
     - {domain: "NSGlobalDomain", key: "com.apple.keyboard.fnState", type: bool, value: true}
     - {domain: "com.apple.HIToolbox", key: "AppleFnUsageType", type: int, value: 2}

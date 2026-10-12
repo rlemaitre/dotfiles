@@ -173,6 +173,7 @@ that differ (`M` modified, `A` would be added, `D` would be deleted, `R` a scrip
 | `oh-my-posh --config` ignores the file | A `POSH_CONFIG` variable inherited from a running prompt overrides the flag: `env -u POSH_CONFIG ...`. |
 | `~/Library` became world-readable | Its source directory must be `private_Library` (mode 700). |
 | Colima keeps editing `~/.ssh/config` | `sshConfig: false` in the Colima template and in `~/.config/colima/default/colima.yaml`. |
+| `Could not write domain com.apple.universalaccess` | The domain is privacy-protected. Give the terminal app Full Disk Access (System Settings, Privacy & Security), restart it, then `chezmoi apply`. Entries marked `protected: true` only warn. |
 | Homebrew warns that a tap is not trusted | Taps listed in `packages.yaml` are trusted by script 10. For another one: `brew trust --tap <name>`. |
 | A cask install fails because the app exists | [Adopt or replace it](#add-a-tool). |
 | A dotfolder of an uninstalled tool remains | Uninstalling does not delete app data: delete it by hand ([remove a tool](#remove-a-tool)). |
