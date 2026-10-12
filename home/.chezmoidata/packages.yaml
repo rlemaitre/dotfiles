@@ -27,7 +27,6 @@ packages:
       - "go:golang.org/x/tools/gopls@0.20.0"
       - "gum@2.0.2"
       - "hexyl@0.17.0"
-      - "java@oracle-graalvm-21.0.12"
       - "jq@1.8.2"
       - "just@1.58.0"
       - "lazydocker@0.25.2"
@@ -59,9 +58,11 @@ packages:
       - "yarn@4.18.1"
       - "yq@4.54.1"
       - "zoxide@0.10.0"
-    athena: []
+    athena:
+      - "java@oracle-graalvm-21.0.12"
     nabla-mac-raphael:
       - "cargo:just-lsp@0.10.0"
+      - "java@openjdk-25.0.2"
       - "cargo:linear-cli@0.3.28"
       - "npm:@zed-industries/claude-code-acp@0.16.2"
       - "npm:defuddle@0.19.5"
@@ -100,7 +101,6 @@ packages:
         - "libfido2"
         - "mint"
         - "openconnect"
-        - "openjdk@25"
         - "redis"
         - "unbound"
         - "watchman"

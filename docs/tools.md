@@ -8,9 +8,9 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 
 | Section | Entries |
 |---|---|
-| [mise tools](#mise-tools) | 61 |
+| [mise tools](#mise-tools) | 62 |
 | [Homebrew taps](#homebrew-taps) | 1 |
-| [Homebrew formulae](#homebrew-formulae) | 25 |
+| [Homebrew formulae](#homebrew-formulae) | 24 |
 | [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 55 |
 | [App Store apps (mas)](#app-store-apps-mas) | 22 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
@@ -48,7 +48,8 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `go@1.27.2` | Go toolchain | both Macs |
 | `gum@2.0.2` | Building blocks for pretty shell scripts | both Macs |
 | `hexyl@0.17.0` | Hex viewer | both Macs |
-| `java@oracle-graalvm-21.0.12` | JDK, Oracle GraalVM 21 | both Macs |
+| `java@openjdk-25.0.2` | JDK, Oracle GraalVM 21 on athena, OpenJDK 25 on nabla-mac-raphael | nabla-mac-raphael |
+| `java@oracle-graalvm-21.0.12` | JDK, Oracle GraalVM 21 on athena, OpenJDK 25 on nabla-mac-raphael | athena |
 | `jq@1.8.2` | JSON processor | both Macs |
 | `just@1.58.0` | Command runner for justfiles | both Macs |
 | `lazydocker@0.25.2` | Terminal UI for Docker (alias lzd) | both Macs |
@@ -111,7 +112,6 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `mise` | Tool manager; installed by brew because mise cannot install itself | both Macs |
 | `nnn` | Terminal file manager; no use seen, kept for review | athena |
 | `openconnect` | VPN client for Cisco AnyConnect and compatible servers | nabla-mac-raphael |
-| `openjdk@25` | JDK 25, the JAVA_HOME of the work shell | nabla-mac-raphael |
 | `pinentry-mac` | macOS passphrase prompt for GPG | both Macs |
 | `pkgconf` | Build helper for C libraries; no use seen, kept for review | athena |
 | `postgresql@18` | PostgreSQL 18 server and psql | both Macs |
