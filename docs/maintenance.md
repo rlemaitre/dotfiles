@@ -154,7 +154,8 @@ chezmoi: ... could not open a new TTY
 
 That is not an error in your setup; it protects your edit. Look first: `chezmoi diff <file>`.
 
-- Keep the live version: `chezmoi re-add <file>`, then commit.
+- Keep the live version: `chezmoi re-add <file>`, then commit. For a template (`chezmoi source-path <file>` ends in
+  `.tmpl`, like Zed's `settings.json`), `re-add` does nothing: `chezmoi merge <file>` and copy the change into the source.
 - Take the repo version: `chezmoi apply --force <file>`.
 
 Without a terminal (scripts, an agent) the question cannot be asked and the apply stops. `chezmoi status` lists the files

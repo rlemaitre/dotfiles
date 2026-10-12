@@ -1434,7 +1434,7 @@
                         "enable": false
                     }
                 },
-                "javaHome": "~/.local/share/mise/installs/java/oracle-graalvm-21.0.7",
+                "javaHome": "~/.local/share/mise/installs/java/{{ range concat .packages.mise.common (index .packages.mise .machine) }}{{ if hasPrefix "java@" . }}{{ trimPrefix "java@" . }}{{ end }}{{ end }}",
                 "sbtScript": "~/.local/share/mise/shims/sbt",
                 "enableIndentOnPaste": true,
                 "autoImportBuild": "all"

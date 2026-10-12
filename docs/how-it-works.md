@@ -68,8 +68,10 @@ Some apps rewrite their own config. If such a file were a normal managed file, t
 "has changed since chezmoi last wrote it". Two treatments:
 
 - a **`create_` seed** for a file the app owns: `~/.claude/settings.json` (Claude Code edits it when plugins change);
-- a normal managed file, with `chezmoi re-add <file>` after each in-app change: Zed's `settings.json`, `gh` and glow
-  configs, Neovim's `lazyvim.json` and `lazy-lock.json`.
+- a normal managed file, with `chezmoi re-add <file>` after each in-app change: `gh` and glow configs, Neovim's
+  `lazyvim.json` and `lazy-lock.json`;
+- a template, for Zed's `settings.json`: its `javaHome` comes from the java pin of each Mac. `re-add` skips templates,
+  so after an in-app change run `chezmoi merge ~/.config/zed/settings.json` and keep the change in the `.tmpl`.
 
 ## Per-machine data
 
