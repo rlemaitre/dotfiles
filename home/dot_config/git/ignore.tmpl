@@ -77,3 +77,9 @@ tags
 .ionide
 **/.claude/settings.local.json
 
+{{ if eq .machine "nabla-mac-raphael" -}}
+**/*.local.*
+kls_database.db
+.gitnexus/
+**/.claude/.cc-writes/
+{{ end -}}
