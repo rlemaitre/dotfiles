@@ -60,7 +60,15 @@ packages:
       - "yq@4.54.1"
       - "zoxide@0.10.0"
     athena: []
-    nabla-mac-raphael: []
+    nabla-mac-raphael:
+      - "cargo:just-lsp@0.10.0"
+      - "cargo:linear-cli@0.3.28"
+      - "npm:@zed-industries/claude-code-acp@0.16.2"
+      - "npm:defuddle@0.19.5"
+      - "npm:gitnexus@1.6.12"
+      - "pre-commit@4.6.2"
+      - "prek@0.5.5"
+      - "terraform@1.16.5"
   brew:
     taps:
       common: [theboredteam/boring-notch]
@@ -85,7 +93,17 @@ packages:
         - "nnn"
         - "pkgconf"
         - "texinfo"
-      nabla-mac-raphael: []
+      nabla-mac-raphael:
+        - "cocoapods"
+        - "dvc"
+        - "ffmpeg"
+        - "libfido2"
+        - "mint"
+        - "openconnect"
+        - "openjdk@25"
+        - "redis"
+        - "unbound"
+        - "watchman"
     casks:
       common:
         - "1password"
@@ -140,7 +158,12 @@ packages:
         - "steam"
         - "vivaldi"
         - "vocaster-hub"
-      nabla-mac-raphael: []
+      nabla-mac-raphael:
+        - "intellij-idea"
+        - "notion"
+        - "orbstack"
+        - "postico"
+        - "zoom"
   mas:
     # App Store id: name
     common:
