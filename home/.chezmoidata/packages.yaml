@@ -161,7 +161,6 @@ packages:
       nabla-mac-raphael:
         - "intellij-idea"
         - "notion"
-        - "orbstack"
         - "postico"
         - "zoom"
   mas:

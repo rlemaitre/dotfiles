@@ -11,7 +11,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 | [mise tools](#mise-tools) | 61 |
 | [Homebrew taps](#homebrew-taps) | 1 |
 | [Homebrew formulae](#homebrew-formulae) | 25 |
-| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 56 |
+| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 55 |
 | [App Store apps (mas)](#app-store-apps-mas) | 22 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
 | [Agent skills for Claude Code](#agent-skills-for-claude-code) | 1 |
@@ -165,7 +165,6 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `notion` | Notes and docs workspace | nabla-mac-raphael |
 | `obsidian` | Markdown knowledge base | both Macs |
 | `openscad@snapshot` | Script-based 3D CAD | athena |
-| `orbstack` | Docker and Linux VMs for macOS | nabla-mac-raphael |
 | `orion` | WebKit browser from Kagi | athena |
 | `postico` | PostgreSQL client | nabla-mac-raphael |
 | `pronotes` | Apple Notes extension | athena |
