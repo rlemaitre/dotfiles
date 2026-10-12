@@ -103,7 +103,7 @@ Templates also see `.machine`. In the data files each section has three keys: `c
 
 | Key | Meaning |
 |---|---|
-| `macos_defaults` | `defaults write` entries (`domain`, `key`, `type`, `value`; `host: true` for `-currentHost`; `type: dict` for bool dicts) |
+| `macos_defaults` | `defaults write` entries (`domain`, `key`, `type`, `value`; `host: true` for `-currentHost`; `type: dict` for bool dicts; `protected: true` for privacy-protected domains, which only warn when the write fails) |
 | `macos_defaults_absent` | keys to delete (undoes older overrides) |
 | `macos_power` | `pmset` values (athena only today) |
 
