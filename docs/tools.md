@@ -8,10 +8,10 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 
 | Section | Entries |
 |---|---|
-| [mise tools](#mise-tools) | 53 |
+| [mise tools](#mise-tools) | 61 |
 | [Homebrew taps](#homebrew-taps) | 1 |
-| [Homebrew formulae](#homebrew-formulae) | 15 |
-| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 51 |
+| [Homebrew formulae](#homebrew-formulae) | 25 |
+| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 56 |
 | [App Store apps (mas)](#app-store-apps-mas) | 22 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
 | [Agent skills for Claude Code](#agent-skills-for-claude-code) | 1 |
@@ -28,6 +28,8 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `atuin@18.23.0` | Searchable shell history (Ctrl-R), Catppuccin themed | both Macs |
 | `bat@0.26.1` | cat with syntax highlighting and Git markers; also the man pager | both Macs |
 | `bun@1.4.3` | JavaScript runtime and package manager | both Macs |
+| `cargo:just-lsp@0.10.0` | Language server for justfiles | nabla-mac-raphael |
+| `cargo:linear-cli@0.3.28` | Linear issue tracker command line | nabla-mac-raphael |
 | `chezmoi@2.73.0` | The dotfiles manager this repo is built for | both Macs |
 | `cmake@4.4.4` | Build system generator for C and C++ | both Macs |
 | `colima@0.10.3` | Docker container runtime in a lightweight VM, started at login | both Macs |
@@ -56,8 +58,11 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `maven@3.10.0` | Java build tool | both Macs |
 | `neovim@0.12.6` | Editor, configured with LazyVim | both Macs |
 | `node@24.21.0` | Node.js runtime | both Macs |
+| `npm:@zed-industries/claude-code-acp@0.16.2` | Agent Client Protocol adapter that runs Claude Code inside Zed | nabla-mac-raphael |
 | `npm:better-commits@1.26.1` | Interactive conventional commits and branch names (git aliases bc and bb) | both Macs |
+| `npm:defuddle@0.19.5` | Extracts the main content of a web page as Markdown (the obsidian:defuddle skill) | nabla-mac-raphael |
 | `npm:eslint@9.39.1` | JavaScript and TypeScript linter | both Macs |
+| `npm:gitnexus@1.6.12` | Code knowledge graph of a repository, served to agents over MCP | nabla-mac-raphael |
 | `npm:prettier@3.9.10` | Code formatter | both Macs |
 | `npm:pyright@1.1.414` | Python type checker and language server (Neovim, Claude Code) | both Macs |
 | `npm:tombi@0.7.33` | TOML formatter, linter and language server | both Macs |
@@ -65,12 +70,15 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `npm:typescript@5.9.3` | TypeScript compiler | both Macs |
 | `oh-my-posh@31.7.0` | Prompt renderer; the Catppuccin prompt lives in the repo | both Macs |
 | `pnpm@10.34.6` | Node package manager | both Macs |
+| `pre-commit@4.6.2` | Git hook manager | nabla-mac-raphael |
+| `prek@0.5.5` | Faster drop-in replacement for pre-commit | nabla-mac-raphael |
 | `python@3.12.15` | Python 3.12 | both Macs |
 | `ripgrep@15.2.0` | Fast grep alternative (aliased to grep) | both Macs |
 | `rust@1.99.0` | Rust toolchain through rustup | both Macs |
 | `sbt@1.13.0` | Scala build tool | both Macs |
 | `shellcheck@0.11.0` | Shell script linter | both Macs |
 | `shfmt@3.14.1` | Shell script formatter | both Macs |
+| `terraform@1.16.5` | Infrastructure as code (work infrastructure) | nabla-mac-raphael |
 | `tree-sitter@0.27.1` | Parser generator CLI that nvim-treesitter needs | both Macs |
 | `uv@0.6.17` | Fast Python package and project manager | both Macs |
 | `vivid@0.11.1` | Generates LS_COLORS from the Catppuccin theme | both Macs |
@@ -91,17 +99,27 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 |---|---|---|
 | `bash` | Current bash (macOS ships 3.2) | both Macs |
 | `buku` | Command-line bookmark manager (used by the bookmark shell functions) | both Macs |
+| `cocoapods` | Dependency manager for iOS and macOS projects | nabla-mac-raphael |
 | `coreutils` | GNU core utilities with a g prefix; its only known use, gdircolors, was replaced by vivid, so a candidate to drop | both Macs |
+| `dvc` | Data version control for datasets and models | nabla-mac-raphael |
+| `ffmpeg` | Audio and video converter and player (ffplay, used by rawplay) | nabla-mac-raphael |
 | `gnupg` | GPG; the agent also serves SSH keys | both Macs |
 | `jdtls` | Eclipse Java language server (Claude Code) | both Macs |
+| `libfido2` | FIDO2 library and tools for security keys | nabla-mac-raphael |
 | `mas` | Mac App Store command line, installs the App Store apps | both Macs |
+| `mint` | Swift command-line tool package manager | nabla-mac-raphael |
 | `mise` | Tool manager; installed by brew because mise cannot install itself | both Macs |
 | `nnn` | Terminal file manager; no use seen, kept for review | athena |
+| `openconnect` | VPN client for Cisco AnyConnect and compatible servers | nabla-mac-raphael |
+| `openjdk@25` | JDK 25, the JAVA_HOME of the work shell | nabla-mac-raphael |
 | `pinentry-mac` | macOS passphrase prompt for GPG | both Macs |
 | `pkgconf` | Build helper for C libraries; no use seen, kept for review | athena |
 | `postgresql@18` | PostgreSQL 18 server and psql | both Macs |
+| `redis` | Redis server and redis-cli | nabla-mac-raphael |
 | `texinfo` | GNU info documentation tools; no use seen, kept for review | athena |
+| `unbound` | Validating DNS resolver | nabla-mac-raphael |
 | `usage` | Spec tool that mise uses for task arguments and completions | both Macs |
+| `watchman` | File watching service used by JavaScript tooling | nabla-mac-raphael |
 | `ykman` | YubiKey Manager command line | both Macs |
 | `ykpers` | YubiKey personalization library and tool | both Macs |
 
@@ -136,6 +154,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `google-chrome` | Web browser | both Macs |
 | `gpg-suite-no-mail` | GPG Keychain and tools, without the mail plugin | both Macs |
 | `inkscape` | Vector graphics editor | athena |
+| `intellij-idea` | JetBrains Java and Kotlin IDE | nabla-mac-raphael |
 | `jetbrains-toolbox` | Manager for JetBrains IDEs | both Macs |
 | `logi-options+` | Logitech device software (needs a reboot) | athena |
 | `loopback` | Virtual audio devices | athena |
@@ -143,9 +162,12 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `mos` | Smooth scrolling and per-device scroll direction for mice | both Macs |
 | `mutedeck` | Mute, video and leave controls for meetings | athena |
 | `native-access` | Native Instruments product manager | athena |
+| `notion` | Notes and docs workspace | nabla-mac-raphael |
 | `obsidian` | Markdown knowledge base | both Macs |
 | `openscad@snapshot` | Script-based 3D CAD | athena |
+| `orbstack` | Docker and Linux VMs for macOS | nabla-mac-raphael |
 | `orion` | WebKit browser from Kagi | athena |
+| `postico` | PostgreSQL client | nabla-mac-raphael |
 | `pronotes` | Apple Notes extension | athena |
 | `qlmarkdown` | Quick Look previews of rendered Markdown | both Macs |
 | `raycast` | Launcher | both Macs |
@@ -159,6 +181,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `vocaster-hub` | Focusrite Vocaster interface control | athena |
 | `yubico-authenticator` | YubiKey authenticator | both Macs |
 | `zed` | Code editor | both Macs |
+| `zoom` | Video meetings | nabla-mac-raphael |
 | `zotero` | Reference manager | both Macs |
 
 ## App Store apps (mas)
