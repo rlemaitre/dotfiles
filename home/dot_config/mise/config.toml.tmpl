@@ -6,6 +6,14 @@
 [settings]
 experimental = true
 idiomatic_version_file_enable_tools = ["node"]
+{{- if eq $m "nabla-mac-raphael" }}
+
+[settings.status]
+missing_tools = "if_other_versions_installed"
+show_env = false
+show_tools = false
+truncate = false
+{{- end }}
 
 [tools]
 {{ range $tools | sortAlpha -}}

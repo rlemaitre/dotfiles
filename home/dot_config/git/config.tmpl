@@ -1,6 +1,13 @@
 [alias]
 	bb = "!better-branch"
 	bc = "!better-commits"
+{{- if eq .machine "nabla-mac-raphael" }}
+	ds = diff --staged
+	lg = log --graph --decorate --oneline --all
+	st = status
+	ignorechanges = update-index --skip-worktree --
+	unignorechanges = update-index --no-skip-worktree --
+{{- end }}
 
 [branch]
 	sort = "-committerdate"
@@ -18,6 +25,9 @@
 	untrackedCache = true
 {{- if .ssh_key }}
 	sshCommand = "ssh -i ~/.ssh/{{ .ssh_key }}"
+{{- end }}
+{{- if eq .machine "nabla-mac-raphael" }}
+	autocrlf = input
 {{- end }}
 
 [github]
@@ -48,18 +58,33 @@
 	side-by-side = true
 
 [diff]
+{{- if eq .machine "nabla-mac-raphael" }}
+	algorithm = "patience"
+	colorMoved = "zebra"
+	compactionHeuristic = true
+{{- else }}
 	algorithm = "histogram"
 	colorMoved = "plain"
+{{- end }}
 	mnemonicPrefix = true
 	renames = true
 
 [fetch]
 	all = true
 	prune = true
-	pruneTags = true
+	pruneTags = {{ if eq .machine "nabla-mac-raphael" }}false{{ else }}true{{ end }}
 
 [format]
 	pretty = "oneline"
+{{- if eq .machine "nabla-mac-raphael" }}
+
+[log]
+	date = "short"
+
+[status]
+	short = true
+	branch = true
+{{- end }}
 
 [gpg]
 	format = "openpgp"
@@ -77,6 +102,15 @@
 	diffFilter = "delta --color-only"
 
 [maintenance]
+{{- if eq .machine "nabla-mac-raphael" }}
+	repo = {{ joinPath .chezmoi.homeDir "Developer/projects/nabla/health" | quote }}
+
+[maintenance "prefetch"]
+	schedule = "hourly"
+
+[maintenance "gc"]
+	schedule = "daily"
+{{- end }}
 
 [merge]
 	conflictstyle = "zdiff3"
@@ -86,7 +120,7 @@
 
 [push]
 	autoSetupRemote = true
-	default = "upstream"
+	default = {{ if eq .machine "nabla-mac-raphael" }}"simple"{{ else }}"upstream"{{ end }}
 	followTags = true
 
 [rebase]
@@ -101,3 +135,8 @@
 [tag]
 	gpgSign = {{ if .gpg_key }}true{{ else }}false{{ end }}
 	sort = "version:refname"
+{{- if eq .machine "nabla-mac-raphael" }}
+
+[clean]
+	requireForce = true
+{{- end }}
