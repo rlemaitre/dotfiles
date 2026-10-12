@@ -1,12 +1,10 @@
 {{ if eq .machine "nabla-mac-raphael" -}}
 SecurityKeyProvider {{ .chezmoi.homeDir }}/.ssh/libsk-libfido2.dylib
 
+{{ end -}}
+# 'colima' SSH host, written by Colima. Must stay above every Host block.
 Include {{ .chezmoi.homeDir }}/.config/colima/ssh_config
 
-# OrbStack 'orb' SSH host for Linux machines. Must stay above every Host block.
-Include ~/.orbstack/ssh/config
-
-{{ end -}}
 Host github.com
   AddKeysToAgent yes
   UseKeychain yes
