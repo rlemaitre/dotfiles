@@ -1,3 +1,9 @@
 # >>> coursier install directory >>>
 export PATH="$PATH:{{ .chezmoi.homeDir }}/Library/Application Support/Coursier/bin:/Applications/Obsidian.app/Contents/MacOS"
 # <<< coursier install directory <<<
+
+# Machine-local settings that must stay out of this public repo (work aliases, cloud SDKs).
+# The file is not managed by chezmoi.
+if [[ -r "${ZDOTDIR:-$HOME/.config/zsh}/local.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME/.config/zsh}/local.zsh"
+fi
