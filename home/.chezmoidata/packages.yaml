@@ -18,7 +18,7 @@ packages:
       - "docker-cli@29.9.0"
       - "eza@0.23.5"
       - "fd@10.5.0"
-      - "fzf@0.74.4"
+      - "fzf@0.74.5"
       - "gh@2.102.0"
       - "github:docker/buildx@0.38.0"
       - "github:docker/compose@5.6.0"

@@ -39,7 +39,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `docker-cli@29.9.0` | Docker client; the engine runs in Colima | both Macs |
 | `eza@0.23.5` | ls replacement with icons and Git status (aliased to ls) | both Macs |
 | `fd@10.5.0` | Fast, friendly alternative to find | both Macs |
-| `fzf@0.74.4` | Fuzzy finder used by fzf-tab, zoxide and the shell | both Macs |
+| `fzf@0.74.5` | Fuzzy finder used by fzf-tab, zoxide and the shell | both Macs |
 | `gh@2.102.0` | GitHub command-line client | both Macs |
 | `github:docker/buildx@0.38.0` | Docker buildx plugin, linked into ~/.docker/cli-plugins | both Macs |
 | `github:docker/compose@5.6.0` | Docker Compose plugin, linked into ~/.docker/cli-plugins | both Macs |
