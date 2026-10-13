@@ -1,2 +1,4 @@
 pinentry-program /opt/homebrew/bin/pinentry-mac
+{{- if ne .machine "nabla-mac-raphael" }}
 enable-ssh-support
+{{- end }}
