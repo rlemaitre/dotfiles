@@ -52,3 +52,13 @@ This Mac's configuration is managed by chezmoi. Find the repo with `chezmoi sour
 - Run `mise run check` in the repo before every commit. Never push without asking.
 - Machine differences go in the `athena` / `nabla-mac-raphael` data sections or in templates, never in copied files.
 - The repo is public: no secrets, tokens or private data in it.
+
+## Productivity plugin
+
+The productivity plugin keeps its data in `~/Developer/workspace/02_context/productivity/`. The workspace git-ignores that
+folder, so each Mac has its own copy and nothing is synced.
+
+- From any working directory, read and write `TASKS.md`, the hot cache `CLAUDE.md`, `memory/` and `dashboard.html` in that
+  folder. Never create them in the current project or at the workspace root.
+- Read the hot cache there when a request mentions tasks, people, projects or internal terms you do not know.
+- If the folder is missing, create it, then run `/productivity:start` and place its files there.
