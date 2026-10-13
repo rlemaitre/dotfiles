@@ -24,6 +24,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
   the PR (don't squash everything into one commit)
 - PR descriptions must cover the entire branch diff, not just the latest commit
 - Never force-push; let the user push manually when force-push is needed
+- Assign PRs to me (`gh pr create --assignee @me`) in my personal repositories (owner `rlemaitre`) and in `nabla/health`
 
 ## Code Review Scope
 
