@@ -205,10 +205,13 @@ Claude to this page. `home/dot_claude/agents/` and `commands/` hold the sub-agen
 `build-error-resolver`...) and slash commands that the rules in `home/dot_claude/rules/` refer to (planning, TDD and code review come from the
 superpowers plugin, so those agents and commands are gone); the status line is
 `statusline-command.sh`, wired by the `statusLine` key of the settings seed. A command or agent that needs a tool this
-setup lacks is deleted from the repo and listed in `.chezmoiremove`, so chezmoi removes it from every Mac. Plugins (LSP servers, worktrunk, i-have-adhd, superpowers, productivity, security-guidance) are listed in `enabledPlugins` of the same seed; the seed is
+setup lacks is deleted from the repo and listed in `.chezmoiremove`, so chezmoi removes it from every Mac. Plugins (LSP servers, worktrunk, i-have-adhd, superpowers, productivity, security-guidance, obsidian) are listed in `enabledPlugins` of the same seed; the seed is
 only created on a new Mac, so add a plugin there and run `claude plugin install <name>@<marketplace>` on the others (`claude plugin marketplace add <owner/repo>` first
 for a marketplace that is not built in).
 `security-guidance` reviews the diff with the newest Opus when a turn ends and builds a Python venv in
 `~/.claude/security/` (not managed by chezmoi); the settings `env` pins both reviews (`SECURITY_REVIEW_MODEL`, `SG_AGENTIC_MODEL`) to `claude-sonnet-5-5` to save
 tokens; change the id there when a newer Sonnet should take over.
 Other skills in `~/.claude/skills` (from `gh_skills`) are not touched by chezmoi.
+caveman is installed by hand, not from the seed; `~/.config/caveman/config.json` sets its default level to `lite`, which keeps
+full sentences and so reads well with `/i-have-adhd` (wording from caveman, structure from i-have-adhd). Both stop on
+"normal mode"; say "stop caveman" or "stop adhd mode" to turn off only one.
