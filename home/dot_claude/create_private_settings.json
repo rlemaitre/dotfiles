@@ -25,7 +25,8 @@
     "jdtls-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
     "productivity@knowledge-work-plugins": true,
-    "security-guidance@claude-plugins-official": true
+    "security-guidance@claude-plugins-official": true,
+    "obsidian@obsidian-skills": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -50,6 +51,12 @@
       "source": {
         "source": "github",
         "repo": "anthropics/knowledge-work-plugins"
+      }
+    },
+    "obsidian-skills": {
+      "source": {
+        "source": "github",
+        "repo": "kepano/obsidian-skills"
       }
     }
   },
