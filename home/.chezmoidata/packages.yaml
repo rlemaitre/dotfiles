@@ -62,8 +62,8 @@ packages:
       - "java@oracle-graalvm-21.0.12"
     nabla-mac-raphael:
       - "cargo:just-lsp@0.10.0"
-      - "java@openjdk-25.0.2"
       - "cargo:linear-cli@0.3.28"
+      - "java@openjdk-25.0.2"
       - "npm:@zed-industries/claude-code-acp@0.16.2"
       - "npm:defuddle@0.19.5"
       - "npm:gitnexus@1.6.12"
