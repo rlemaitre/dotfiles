@@ -215,3 +215,6 @@ Other skills in `~/.claude/skills` (from `gh_skills`) are not touched by chezmoi
 caveman is installed by hand, not from the seed; `~/.config/caveman/config.json` sets its default level to `lite`, which keeps
 full sentences and so reads well with `/i-have-adhd` (wording from caveman, structure from i-have-adhd). Both stop on
 "normal mode"; say "stop caveman" or "stop adhd mode" to turn off only one.
+i-have-adhd is always on: the SessionStart hook `~/.claude/hooks/i-have-adhd.sh` prints the newest installed `SKILL.md` into
+every session. The hook is in the settings seed, and script 90 adds it to a `settings.json` that already exists. To turn it
+off for one session, say "stop adhd mode"; to remove it, delete the hook from both and from the live settings.

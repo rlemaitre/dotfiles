@@ -12,7 +12,19 @@
     "defaultMode": "auto"
   },
   "model": "sonnet",
-  "hooks": {},
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/i-have-adhd.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
   "enabledPlugins": {
     "kotlin-lsp@claude-plugins-official": true,
     "worktrunk@worktrunk": true,
