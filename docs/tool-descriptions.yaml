@@ -74,7 +74,7 @@ formulae:
   bash: Current bash (macOS ships 3.2)
   buku: Command-line bookmark manager (used by the bookmark shell functions)
   cocoapods: Dependency manager for iOS and macOS projects
-  coreutils: GNU core utilities with a g prefix; its only known use, gdircolors, was replaced by vivid, so a candidate to drop
+  coreutils: GNU core utilities; `timeout` is used by the standup brief LaunchAgent (work Mac), so keep it
   dvc: Data version control for datasets and models
   ffmpeg: Audio and video converter and player (ffplay, used by rawplay)
   gnupg: GPG; the agent also serves SSH keys
