@@ -10,6 +10,7 @@ uid="$(id -u)"
 
 [[ -f "${PLIST}" ]] || { echo "${PLIST} missing, skipping" >&2; exit 0; }
 
+mkdir -p "${HOME}/Library/Logs"
 launchctl bootout "gui/${uid}/${LABEL}" 2>/dev/null || true
 # bootout returns before the job is fully unloaded; bootstrap fails with I/O error 5 until it is
 for _ in $(seq 1 20); do
