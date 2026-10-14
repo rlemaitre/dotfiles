@@ -1,2 +1,5 @@
 {{- /* One pattern per line. Use {{ if eq .machine "athena" }} blocks for host-only files. */ -}}
 .DS_Store
+{{ if ne .machine "nabla-mac-raphael" }}
+Library/LaunchAgents/com.rlemaitre.standup-brief.plist
+{{ end }}
