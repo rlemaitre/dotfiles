@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# LaunchAgent hash: {{ include "private_Library/LaunchAgents/com.rlemaitre.standup-brief.plist.tmpl" | sha256sum }}
+# Loads the standup brief LaunchAgent (work Mac only): Mon–Fri 09:30, or at wake-up when the Mac was asleep.
+# The runner lives in the private repo rlemaitre/standup-brief, cloned in the workspace.
+set -euo pipefail
+
+readonly LABEL="com.rlemaitre.standup-brief"
+readonly PLIST="${HOME}/Library/LaunchAgents/${LABEL}.plist"
+uid="$(id -u)"
+
+[[ -f "${PLIST}" ]] || { echo "${PLIST} missing, skipping" >&2; exit 0; }
+
+launchctl bootout "gui/${uid}/${LABEL}" 2>/dev/null || true
+# bootout returns before the job is fully unloaded; bootstrap fails with I/O error 5 until it is
+for _ in $(seq 1 20); do
+  launchctl print "gui/${uid}/${LABEL}" >/dev/null 2>&1 || break
+  sleep 0.5
+done
+launchctl bootstrap "gui/${uid}" "${PLIST}"

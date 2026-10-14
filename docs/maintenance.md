@@ -143,6 +143,17 @@ By hand: `scripts/maintain.sh --report-only` prints the report and changes nothi
 `launchctl kickstart gui/$(id -u)/com.rlemaitre.maintain` runs the agent now. To stop it: `launchctl bootout
 gui/$(id -u)/com.rlemaitre.maintain`, and remove the script and plist from the repo.
 
+## Standup brief (work Mac)
+
+The LaunchAgent `com.rlemaitre.standup-brief` runs `bin/standup-brief` from the private repo `rlemaitre/standup-brief`
+(cloned in `~/Developer/workspace/03_projects/standup-brief/repo`) Monday to Friday at 09:30, or when the Mac wakes up
+if it slept then (installed by script 86, only on `nabla-mac-raphael`). It fills the Notion journal and, on standup
+days, sends a Slack DM; a cloud routine does it at 09:40 when the Mac was asleep. Logs:
+`~/Library/Logs/standup-brief.log` and `~/Library/Logs/standup-brief.launchd.log`.
+
+`launchctl kickstart gui/$(id -u)/com.rlemaitre.standup-brief` runs it now. To stop it: `launchctl bootout
+gui/$(id -u)/com.rlemaitre.standup-brief`, and remove the script and plist from the repo.
+
 ## Drift and conflicts
 
 chezmoi refuses to overwrite a managed file that changed since it last wrote it:
