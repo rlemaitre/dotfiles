@@ -101,7 +101,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `bash` | Current bash (macOS ships 3.2) | both Macs |
 | `buku` | Command-line bookmark manager (used by the bookmark shell functions) | both Macs |
 | `cocoapods` | Dependency manager for iOS and macOS projects | nabla-mac-raphael |
-| `coreutils` | GNU core utilities with a g prefix; its only known use, gdircolors, was replaced by vivid, so a candidate to drop | both Macs |
+| `coreutils` | GNU core utilities; `timeout` is used by the standup brief LaunchAgent (work Mac), so keep it | both Macs |
 | `dvc` | Data version control for datasets and models | nabla-mac-raphael |
 | `ffmpeg` | Audio and video converter and player (ffplay, used by rawplay) | nabla-mac-raphael |
 | `gnupg` | GPG; the agent also serves SSH keys | both Macs |
