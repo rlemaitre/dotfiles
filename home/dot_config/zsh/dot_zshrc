@@ -23,6 +23,10 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-completions
+# Claude Code ships no zsh completion (anthropics/claude-code#7738). Pinned to a reviewed commit, because upstream
+# merges bot-generated updates daily: to update, read the _claude diff, then change the sha.
+zinit ice ver"d7db2af913d7e82c8708b11fd739f9da6c5de8ec"
+zinit light wbingli/zsh-claudecode-completion
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
