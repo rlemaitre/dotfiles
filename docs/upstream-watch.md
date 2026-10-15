@@ -27,3 +27,21 @@ It also prints the state of the upstream issue, for information only.
 3. On each Mac: `rm -rf ~/.local/share/kotlin-lsp ~/.local/bin/kotlin-lsp`, then `chezmoi apply` (brew bundle installs
    the formula).
 4. Run `kotlin-lsp --version`, then delete this section and the check (script, workflow job, mise task).
+
+## Claude Code zsh completion
+
+**Problem.** Claude Code ships no shell completion: no `completion` subcommand and no `_claude` file. Upstream:
+[anthropics/claude-code#7738](https://github.com/anthropics/claude-code/issues/7738).
+
+**Workaround in place.** `home/dot_config/zsh/dot_zshrc` loads the community completion
+[wbingli/zsh-claudecode-completion](https://github.com/wbingli/zsh-claudecode-completion) with zinit, pinned with
+`zinit ice ver"<sha>"`. Upstream merges bot-generated updates every day, so the pin only moves after reading the
+`_claude` diff (it should stay read-only: no network, no `eval`, no writes).
+
+**How to check.** By hand, no automated check: `claude --help` lists a completion command, or #7738 is closed as fixed.
+
+**When it is fixed, switch back:**
+1. In `dot_zshrc`: delete the two `zinit` lines for `wbingli/zsh-claudecode-completion` and their comment.
+2. Generate the official completion in `run_onchange_after_47_zsh-completions.sh.tmpl` (`gen claude claude <command>`).
+3. On each Mac: `zinit delete wbingli/zsh-claudecode-completion`, `rm ~/.cache/zsh/completions/_claude`, then `chezmoi apply`.
+4. Delete this section.
