@@ -16,6 +16,7 @@ CONFLICT_FIELD = "different values in a custom field"
 SEVERAL_SHARED_VAULTS = "copies in several shared vaults"
 ATTACHMENT_OR_PASSKEY = "attachment or passkey on a copy to archive"
 PASSKEY_ON_KEEPER = "passkey on the kept copy, which needs a merge"
+SIGN_IN_LINK = "sign-in link (\"sign in with\") that cannot be merged"
 FETCH_FAILED = "an item could not be fetched"
 
 
@@ -131,6 +132,8 @@ def plan_group(items: tuple[Item, ...], personal_vault: str = "Private") -> Plan
     others = tuple(i for i in items if i is not keeper)
     if any(i.has_files or i.has_passkey for i in others):
         return Flag(ATTACHMENT_OR_PASSKEY, items)
+    if any(i.has_sign_in_link for i in others):
+        return Flag(SIGN_IN_LINK, items)
     notes = _notes(keeper, items)
     if isinstance(notes, Flag):
         return notes
@@ -149,4 +152,6 @@ def plan_group(items: tuple[Item, ...], personal_vault: str = "Private") -> Plan
     )
     if keeper.has_passkey and not additions.is_empty():
         return Flag(PASSKEY_ON_KEEPER, items)
+    if keeper.has_sign_in_link and not additions.is_empty():
+        return Flag(SIGN_IN_LINK, items)
     return Plan(keeper=keeper, additions=additions, archive=others)

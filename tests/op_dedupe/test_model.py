@@ -34,6 +34,11 @@ class ParseItemTest(unittest.TestCase):
         item = parse_item(login(custom=(("", "empty", ""),)))
         self.assertEqual(item.custom, ())
 
+    def test_has_sign_in_link(self):
+        sso = {"id": "sso", "type": "UNKNOWN", "label": "sign in with"}
+        self.assertTrue(parse_item(login(extra_fields=(sso,))).has_sign_in_link)
+        self.assertFalse(parse_item(login()).has_sign_in_link)
+
     def test_has_files(self):
         self.assertTrue(parse_item(login(files=("scan.pdf",))).has_files)
 

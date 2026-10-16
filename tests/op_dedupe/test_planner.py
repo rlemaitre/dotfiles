@@ -10,6 +10,7 @@ from op_dedupe.planner import (
     DIFFERENT_PASSWORDS,
     PASSKEY_ON_KEEPER,
     SEVERAL_SHARED_VAULTS,
+    SIGN_IN_LINK,
     Flag,
     Plan,
     plan_group,
@@ -22,6 +23,10 @@ NEW = "2024-01-01T00:00:00Z"
 
 def item(**overrides):
     return parse_item(login(**overrides))
+
+
+SIGN_IN = {"id": "sso", "section": {"id": "s", "label": "Saved on example.com"}, "type": "UNKNOWN",
+           "label": "sign in with"}
 
 
 def shared(**overrides):
@@ -72,6 +77,17 @@ class PlannerTest(unittest.TestCase):
     def test_passkey_on_archived_copy_flagged(self):
         b = replace(item(id="b", updated_at=OLD), has_passkey=True)
         self.assertEqual(self.flag(item(id="a", updated_at=NEW), b).reason, ATTACHMENT_OR_PASSKEY)
+
+    def test_sign_in_link_on_archived_copy_flagged(self):
+        flag = self.flag(item(id="a", updated_at=NEW), item(id="b", updated_at=OLD, extra_fields=(SIGN_IN,)))
+        self.assertEqual(flag.reason, SIGN_IN_LINK)
+
+    def test_sign_in_link_on_keeper_with_additions_flagged(self):
+        flag = self.flag(item(id="a", updated_at=NEW, extra_fields=(SIGN_IN,)), item(id="b", updated_at=OLD, notes="hint"))
+        self.assertEqual(flag.reason, SIGN_IN_LINK)
+
+    def test_sign_in_link_on_keeper_without_additions_is_fine(self):
+        self.plan(item(id="a", updated_at=NEW, extra_fields=(SIGN_IN,)), item(id="b", updated_at=OLD))
 
     def test_notes_copied_when_keeper_empty(self):
         p = self.plan(item(id="a", updated_at=NEW), item(id="b", updated_at=OLD, notes="  hint  "))

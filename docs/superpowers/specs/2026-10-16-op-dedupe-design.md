@@ -112,3 +112,14 @@ item that contains a passkey, the passkey will be overwritten." So:
   data), run by `mise run check`.
 - How errors from `op` are reported, as long as no value leaks.
 - A short entry for the command in the repo docs.
+
+## Findings (Task 1, `op` 2.41.0)
+
+A read-only scan of every login's JSON shape (keys, field types, section labels; no values) found:
+
+- **Attachments:** a top-level `files` array (keys `id`, `name`, `size`, `section`, `content_path`). `has_files` reads it.
+- **Sign-in links** ("sign in with", "single sign-on", localized labels): fields of type `UNKNOWN` with no `value`.
+  They cannot be merged and a JSON edit may drop them, so a group is flagged when a copy to archive has one, or when
+  the kept copy has one and needs a merge.
+- **Passkeys:** no field type, section or key marks a passkey. Either the account holds none, or `op` does not expose
+  them. The apply step must not be written until the user settles this (see the known risk above).

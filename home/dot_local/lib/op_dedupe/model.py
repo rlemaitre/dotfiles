@@ -34,6 +34,7 @@ class Item:
     custom: tuple[Field, ...] = field(repr=False)
     has_files: bool
     has_passkey: bool
+    has_sign_in_link: bool  # "sign in with" fields: type UNKNOWN, no value, so they cannot be merged
     raw: dict = field(repr=False, compare=False)
 
 
@@ -80,5 +81,6 @@ def parse_item(raw: dict) -> Item:
         ),
         has_files=bool(raw.get("files")),
         has_passkey=is_passkey(raw),
+        has_sign_in_link=any(f.get("type") == "UNKNOWN" for f in fields),
         raw=raw,
     )
