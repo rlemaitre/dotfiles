@@ -127,3 +127,6 @@ A read-only scan of every login's JSON shape (keys, field types, section labels;
 the 1Password app (they have about 32). `op` shows tags, so a tagged item counts as having a passkey: a group is
 flagged when a tagged copy would be archived, or when the tagged kept copy needs a merge. The dry run prints how many
 logins carry the tag, so the user can check the count before `--apply`.
+- **First real `--apply` (`--only`, one group of three copies):** `op item edit` accepted the JSON on stdin with the
+  generated field ids, added two fields outside any section, kept the password, and the two other copies went to the
+  Archive. The user checked the result in the 1Password app.
