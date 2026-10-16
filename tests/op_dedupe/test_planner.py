@@ -109,6 +109,13 @@ class PlannerTest(unittest.TestCase):
         self.assertEqual(p.additions.urls, ("https://login.example.com",))
         self.assertEqual(p.additions.tags, ("y",))
 
+    def test_url_differing_only_by_slash_or_case_is_not_added(self):
+        p = self.plan(
+            item(id="a", updated_at=NEW, urls=(("https://example.com/Login", True),)),
+            item(id="b", updated_at=OLD, urls=(("HTTPS://Example.com/Login/", True),)),
+        )
+        self.assertEqual(p.additions.urls, ())
+
     def test_same_label_different_sections_are_different_fields(self):
         p = self.plan(
             item(id="a", updated_at=NEW, custom=(("Bank", "pin", "1111"),)),

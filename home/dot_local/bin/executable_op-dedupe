@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+"""Find and clean up duplicate 1Password logins. The code lives in ~/.local/lib/op_dedupe."""
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "lib"))
+
+from op_dedupe import cli  # noqa: E402
+
+sys.exit(cli.main(sys.argv[1:]))

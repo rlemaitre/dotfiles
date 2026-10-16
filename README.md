@@ -48,6 +48,7 @@ Then open a new terminal.
 | Validate everything before committing | `mise run check` |
 | Print the scripts rendered for one machine | `mise run render athena` |
 | Regenerate the tools list | `mise run docs` |
+| Find duplicate 1Password logins (dry run) | `op-dedupe` |
 | Check whether a workaround can go | `mise run upstream-check` |
 | Bump pinned versions | `mise run bump-pins` (a weekly pull request does it too) |
 | List what is installed on a Mac | `scripts/inventory.sh` |

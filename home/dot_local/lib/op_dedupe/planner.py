@@ -4,7 +4,7 @@ Anything that cannot be decided safely becomes a Flag and the group is left unto
 """
 
 from dataclasses import dataclass, field
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, urlparse, urlsplit, urlunsplit
 
 from op_dedupe.model import Field, Item
 
@@ -69,6 +69,14 @@ def otp_key(value: str) -> str:
     return value.replace(" ", "").upper()
 
 
+def url_key(href: str) -> str:
+    """A URL for comparison: scheme and host lowercased, no trailing slash."""
+    parts = urlsplit(norm_value(href))
+    return urlunsplit(
+        (parts.scheme.lower(), parts.netloc.lower(), parts.path.rstrip("/"), parts.query, parts.fragment)
+    )
+
+
 def _choose_keeper(items: tuple[Item, ...], personal_vault: str) -> Item:
     candidates = [i for i in items if i.vault != personal_vault] or list(items)
     return min(candidates, key=lambda i: (-i.updated_at.timestamp(), i.id))
@@ -104,9 +112,14 @@ def _custom(keeper: Item, others: tuple[Item, ...], items: tuple[Item, ...]) -> 
     return tuple(added.values())
 
 
-def _missing(keeper_values: tuple[str, ...], other_values) -> tuple[str, ...]:
-    present = {norm_value(v) for v in keeper_values}
-    return tuple(dict.fromkeys(norm_value(v) for v in other_values if norm_value(v) not in present))
+def _missing(keeper_values: tuple[str, ...], other_values, key=norm_value) -> tuple[str, ...]:
+    """Values the other copies have and the keeper lacks, compared by key; the first spelling seen is kept."""
+    seen = {key(v) for v in keeper_values}
+    added: dict[str, str] = {}
+    for v in other_values:
+        if key(v) not in seen:
+            added.setdefault(key(v), norm_value(v))
+    return tuple(added.values())
 
 
 def plan_group(items: tuple[Item, ...], personal_vault: str = "Private") -> Plan | Flag:
@@ -130,7 +143,7 @@ def plan_group(items: tuple[Item, ...], personal_vault: str = "Private") -> Plan
     additions = Additions(
         notes=notes,
         otps=otps,
-        urls=_missing(keeper.urls, (u for i in others for u in i.urls)),
+        urls=_missing(keeper.urls, (u for i in others for u in i.urls), key=url_key),
         tags=_missing(keeper.tags, (t for i in others for t in i.tags)),
         custom=custom,
     )
