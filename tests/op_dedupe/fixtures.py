@@ -9,9 +9,10 @@ def summary(
     username="me@example.com",
     urls=(("https://example.com", True),),
     updated_at="2024-01-01T00:00:00Z",
+    tags=(),
 ):
     """One entry of `op item list --format json`. urls: (href, primary) pairs."""
-    return {
+    entry = {
         "id": id,
         "title": title,
         "vault": {"id": vault_id, "name": vault},
@@ -20,6 +21,9 @@ def summary(
         "urls": [{"label": "website", "primary": p, "href": h} for h, p in urls],
         "updated_at": updated_at,
     }
+    if tags:
+        entry["tags"] = list(tags)
+    return entry
 
 
 def login(

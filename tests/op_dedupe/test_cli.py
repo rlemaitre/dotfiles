@@ -64,6 +64,14 @@ class CliTest(unittest.TestCase):
         self.assertIn("To merge and archive: 1 (2 items)", out.getvalue())
         self.assertNotIn("pw-1", out.getvalue())
 
+    def test_main_counts_passkey_tags(self):
+        raws, summaries = copies()
+        summaries.append(summary(id="solo", urls=(("https://solo.example", True),), tags=("passkey",)))
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
+            main([], vaults=VAULTS, summaries=summaries, get=fake_get(raws))
+        self.assertIn("Logins tagged passkey: 1", out.getvalue())
+
 
 if __name__ == "__main__":
     unittest.main()

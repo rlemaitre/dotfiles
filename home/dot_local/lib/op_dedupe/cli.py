@@ -6,7 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from op_dedupe import opcli
 from op_dedupe.grouping import Key, find_groups, group_key
-from op_dedupe.model import Item, parse_item
+from op_dedupe.model import PASSKEY_TAG, Item, is_passkey, parse_item
 from op_dedupe.opcli import OpError
 from op_dedupe.planner import FETCH_FAILED, Flag, Plan, plan_group
 from op_dedupe.report import render
@@ -84,5 +84,7 @@ def main(argv: list[str], *, vaults=None, summaries=None, get=None) -> int:
     if args.apply:
         print("op-dedupe: --apply is not available yet", file=sys.stderr)
         return 2
+    tagged = sum(1 for s in summaries if is_passkey(s))
+    print(f"Logins tagged {PASSKEY_TAG}: {tagged} (op cannot see passkeys: tag every login that has one)")
     print(render(plans, flags, keys))
     return 0

@@ -52,9 +52,12 @@ def _field(raw_field: dict) -> Field:
     )
 
 
+PASSKEY_TAG = "passkey"
+
+
 def is_passkey(raw: dict) -> bool:
-    """Whether the item holds a passkey. Marker settled by Task 1 of the plan."""
-    return False
+    """Whether the item holds a passkey. `op` does not expose passkeys, so the user tags those items `passkey`."""
+    return any(t.strip().lower() == PASSKEY_TAG for t in raw.get("tags") or ())
 
 
 def parse_item(raw: dict) -> Item:

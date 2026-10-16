@@ -121,5 +121,9 @@ A read-only scan of every login's JSON shape (keys, field types, section labels;
 - **Sign-in links** ("sign in with", "single sign-on", localized labels): fields of type `UNKNOWN` with no `value`.
   They cannot be merged and a JSON edit may drop them, so a group is flagged when a copy to archive has one, or when
   the kept copy has one and needs a merge.
-- **Passkeys:** no field type, section or key marks a passkey. Either the account holds none, or `op` does not expose
-  them. The apply step must not be written until the user settles this (see the known risk above).
+- **Passkeys:** `op` does not expose them at all: a login known to hold one shows no field, section or key for it.
+
+**Decided by the user after the findings:** the user tags every login that holds a passkey with the tag `passkey` in
+the 1Password app (they have about 32). `op` shows tags, so a tagged item counts as having a passkey: a group is
+flagged when a tagged copy would be archived, or when the tagged kept copy needs a merge. The dry run prints how many
+logins carry the tag, so the user can check the count before `--apply`.

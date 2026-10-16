@@ -39,6 +39,12 @@ class ParseItemTest(unittest.TestCase):
         self.assertTrue(parse_item(login(extra_fields=(sso,))).has_sign_in_link)
         self.assertFalse(parse_item(login()).has_sign_in_link)
 
+    def test_passkey_tag_marks_a_passkey(self):
+        self.assertTrue(parse_item(login(tags=("Passkey",))).has_passkey)
+        self.assertTrue(parse_item(login(tags=("imported", "passkey"))).has_passkey)
+        self.assertFalse(parse_item(login(tags=("imported",))).has_passkey)
+        self.assertFalse(parse_item(login()).has_passkey)
+
     def test_has_files(self):
         self.assertTrue(parse_item(login(files=("scan.pdf",))).has_files)
 
