@@ -44,6 +44,7 @@ packages:
       - "npm:typescript@6.0.3"
       - "npm:typescript-language-server@6.0.2"
       - "oh-my-posh@31.8.0"
+      - "op@2.41.0"
       - "pnpm@10.34.7"
       - "python@3.12.15"
       - "ripgrep@15.2.0"

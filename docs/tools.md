@@ -8,7 +8,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 
 | Section | Entries |
 |---|---|
-| [mise tools](#mise-tools) | 62 |
+| [mise tools](#mise-tools) | 63 |
 | [Homebrew taps](#homebrew-taps) | 1 |
 | [Homebrew formulae](#homebrew-formulae) | 22 |
 | [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 54 |
@@ -70,6 +70,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `npm:typescript-language-server@6.0.2` | TypeScript language server (Claude Code) | both Macs |
 | `npm:typescript@6.0.3` | TypeScript compiler | both Macs |
 | `oh-my-posh@31.8.0` | Prompt renderer; the Catppuccin prompt lives in the repo | both Macs |
+| `op@2.41.0` | 1Password CLI, unlocked by the desktop app | both Macs |
 | `pnpm@10.34.7` | Node package manager | both Macs |
 | `pre-commit@4.7.0` | Git hook manager | nabla-mac-raphael |
 | `prek@0.5.5` | Faster drop-in replacement for pre-commit | nabla-mac-raphael |

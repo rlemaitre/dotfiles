@@ -49,6 +49,7 @@ gen uv uv generate-shell-completion zsh
 gen lazygit lazygit completion zsh
 gen deno deno completions zsh
 gen pnpm pnpm completion zsh
+gen op op completion zsh
 
 if command -v atuin >/dev/null 2>&1 && atuin gen-completions --shell zsh --out-dir "${tmp}" >/dev/null 2>&1; then
   mv "${tmp}/_atuin" "${dest}/_atuin"

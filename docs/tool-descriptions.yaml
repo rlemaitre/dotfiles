@@ -49,6 +49,7 @@ mise:
   npm:typescript: TypeScript compiler
   npm:typescript-language-server: TypeScript language server (Claude Code)
   oh-my-posh: Prompt renderer; the Catppuccin prompt lives in the repo
+  op: 1Password CLI, unlocked by the desktop app
   pnpm: Node package manager
   pre-commit: Git hook manager
   prek: Faster drop-in replacement for pre-commit
