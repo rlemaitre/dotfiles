@@ -32,7 +32,9 @@ def _field_json(f: Field, sections: list[dict], prefix: str) -> dict:
 
 def apply_additions(raw: dict, additions: Additions) -> dict:
     item = copy.deepcopy(raw)
-    fields = item.setdefault("fields", [])
+    # op refuses a field with neither id nor label; an empty one holds nothing, so it is dropped.
+    item["fields"] = [f for f in item.get("fields") or [] if f.get("id") or f.get("label") or f.get("value")]
+    fields = item["fields"]
     sections = item.setdefault("sections", [])
     if additions.notes:
         notes = next((f for f in fields if f.get("purpose") == "NOTES"), None)

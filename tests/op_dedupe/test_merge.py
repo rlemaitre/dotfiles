@@ -33,6 +33,12 @@ class MergeTest(unittest.TestCase):
         ids = [f["id"] for f in merged["fields"]]
         self.assertEqual(len(ids), len(set(ids)))
 
+    def test_empty_unnamed_fields_are_dropped(self):
+        # op rejects a field with neither an id nor a label ("a field to edit must have either an ID or a Label").
+        empty = {"id": "", "type": "STRING", "reference": ""}
+        merged = apply_additions(login(extra_fields=(empty,)), ADDITIONS)
+        self.assertTrue(all(f.get("id") or f.get("label") for f in merged["fields"]))
+
     def test_existing_section_is_reused(self):
         merged = apply_additions(login(custom=(("Bank", "account", "x"),)), ADDITIONS)
         self.assertEqual([s.get("label") for s in merged["sections"]].count("Bank"), 1)

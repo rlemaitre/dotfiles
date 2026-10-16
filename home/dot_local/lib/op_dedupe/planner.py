@@ -18,6 +18,7 @@ ATTACHMENT_OR_PASSKEY = "attachment or passkey on a copy to archive"
 ATTACHMENT_ON_KEEPER = "attachment on the kept copy, which needs a merge"
 PASSKEY_ON_KEEPER = "passkey on the kept copy, which needs a merge"
 SIGN_IN_LINK = "sign-in link (\"sign in with\") that cannot be merged"
+UNNAMED_FIELD = "field with no name on the kept copy, which needs a merge"
 FETCH_FAILED = "an item could not be fetched"
 
 
@@ -156,6 +157,8 @@ def plan_group(items: tuple[Item, ...], personal_vault_id: str) -> Plan | Flag:
         return Flag(PASSKEY_ON_KEEPER, items)
     if keeper.has_files and not additions.is_empty():
         return Flag(ATTACHMENT_ON_KEEPER, items)
+    if keeper.has_unnamed_value and not additions.is_empty():
+        return Flag(UNNAMED_FIELD, items)
     if keeper.has_sign_in_link and not additions.is_empty():
         return Flag(SIGN_IN_LINK, items)
     return Plan(keeper=keeper, additions=additions, archive=others)

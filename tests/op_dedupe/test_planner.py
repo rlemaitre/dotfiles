@@ -12,6 +12,7 @@ from op_dedupe.planner import (
     PASSKEY_ON_KEEPER,
     SEVERAL_SHARED_VAULTS,
     SIGN_IN_LINK,
+    UNNAMED_FIELD,
     Flag,
     Plan,
     plan_group,
@@ -99,6 +100,15 @@ class PlannerTest(unittest.TestCase):
     def test_sign_in_link_on_keeper_with_additions_flagged(self):
         flag = self.flag(item(id="a", updated_at=NEW, extra_fields=(SIGN_IN,)), item(id="b", updated_at=OLD, notes="hint"))
         self.assertEqual(flag.reason, SIGN_IN_LINK)
+
+    def test_unnamed_field_with_a_value_on_keeper_needing_a_merge_flagged(self):
+        unnamed = {"id": "", "type": "STRING", "value": "kept"}
+        flag = self.flag(item(id="a", updated_at=NEW, extra_fields=(unnamed,)), item(id="b", updated_at=OLD, notes="hint"))
+        self.assertEqual(flag.reason, UNNAMED_FIELD)
+
+    def test_empty_unnamed_field_on_keeper_is_fine(self):
+        empty = {"id": "", "type": "STRING"}
+        self.plan(item(id="a", updated_at=NEW, extra_fields=(empty,)), item(id="b", updated_at=OLD, notes="hint"))
 
     def test_sign_in_link_on_keeper_without_additions_is_fine(self):
         self.plan(item(id="a", updated_at=NEW, extra_fields=(SIGN_IN,)), item(id="b", updated_at=OLD))

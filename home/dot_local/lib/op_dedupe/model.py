@@ -35,6 +35,7 @@ class Item:
     has_files: bool
     has_passkey: bool
     has_sign_in_link: bool  # "sign in with" fields: type UNKNOWN, no value, so they cannot be merged
+    has_unnamed_value: bool  # a field with neither id nor label but a value: op refuses to edit such an item
     raw: dict = field(repr=False, compare=False)
 
 
@@ -85,5 +86,6 @@ def parse_item(raw: dict) -> Item:
         has_files=bool(raw.get("files")),
         has_passkey=is_passkey(raw),
         has_sign_in_link=any(f.get("type") == "UNKNOWN" for f in fields),
+        has_unnamed_value=any(not f.get("id") and not f.get("label") and f.get("value") for f in fields),
         raw=raw,
     )
