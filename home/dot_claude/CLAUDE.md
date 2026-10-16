@@ -63,3 +63,11 @@ folder, so each Mac has its own copy and nothing is synced.
   folder. Never create them in the current project or at the workspace root.
 - Read the hot cache there when a request mentions tasks, people, projects or internal terms you do not know.
 - If the folder is missing, create it, then run `/productivity:start` and place its files there.
+
+## Showing Markdown files
+
+When asking me to read a Markdown file (a plan, a spec, a report), open it for me with
+`~/.claude/glow-split.sh <file.md>`: it shows the file with `glow --pager` in a Ghostty split next to this pane, and
+reuses the split it opened before when that one is still open. Then give the path in the reply as usual.
+Only in Ghostty: the script checks that Claude Code runs inside Ghostty and exits with code 3 otherwise (another
+terminal, an IDE). On exit code 3, just give the path.
