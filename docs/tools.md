@@ -12,7 +12,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 | [Homebrew taps](#homebrew-taps) | 1 |
 | [Homebrew formulae](#homebrew-formulae) | 24 |
 | [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 55 |
-| [App Store apps (mas)](#app-store-apps-mas) | 22 |
+| [App Store apps (mas)](#app-store-apps-mas) | 23 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
 | [Agent skills for Claude Code](#agent-skills-for-claude-code) | 1 |
 | [rustup components](#rustup-components) | 1 |
@@ -200,6 +200,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `Kagi for Safari` | Kagi search extension for Safari | both Macs |
 | `Keynote` | Presentations | both Macs |
 | `Kindle` | E-book reader | athena |
+| `MuteDeck for Safari` | Safari extension that lets MuteDeck control meetings in Safari | athena |
 | `My Desires` | Wishlist app (Mes Envies in French) with a Safari extension | athena |
 | `NEEWER Control Center` | Controls NEEWER lights | both Macs |
 | `Numbers` | Spreadsheets | both Macs |
