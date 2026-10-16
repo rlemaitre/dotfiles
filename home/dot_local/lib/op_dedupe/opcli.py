@@ -35,3 +35,12 @@ def list_logins() -> list[dict]:
 
 def get_item(item_id: str, vault_id: str) -> dict:
     return _json(["item", "get", item_id, "--vault", vault_id, "--reveal"])
+
+
+def edit_item(item_id: str, vault_id: str, item: dict) -> None:
+    """Replace the item with this JSON. It goes on stdin, so values never appear in process arguments."""
+    _run(["item", "edit", item_id, "--vault", vault_id], stdin=json.dumps(item))
+
+
+def archive_item(item_id: str, vault_id: str) -> None:
+    _run(["item", "delete", item_id, "--vault", vault_id, "--archive"])

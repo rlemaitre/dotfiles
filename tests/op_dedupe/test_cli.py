@@ -1,8 +1,10 @@
 import contextlib
 import io
+import json
 import unittest
 
 from op_dedupe.cli import build_plan, main
+from op_dedupe.model import parse_item
 from op_dedupe.opcli import OpError
 from op_dedupe.planner import FETCH_FAILED
 from tests.op_dedupe.fixtures import login, summary
@@ -75,3 +77,91 @@ class CliTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class ApplyTest(unittest.TestCase):
+    """--apply with fake op calls. Two groups: one needs a merge (notes), one does not."""
+
+    def setUp(self):
+        self.raws = {
+            r["id"]: r
+            for r in (
+                login(id="a1", updated_at="2024-02-01T00:00:00Z"),
+                login(id="a2", notes="hint", updated_at="2024-01-01T00:00:00Z"),
+                login(id="b1", urls=(("https://b.example", True),), updated_at="2024-02-01T00:00:00Z"),
+                login(id="b2", urls=(("https://b.example", True),), updated_at="2024-01-01T00:00:00Z"),
+            )
+        }
+        self.summaries = [
+            summary(id=i, urls=((r["urls"][0]["href"], True),)) for i, r in self.raws.items()
+        ] + [summary(id="pk", urls=(("https://pk.example", True),), tags=("passkey",))]
+        self.archived = []
+        self.edited = []
+
+    def get(self, item_id, _vault_id):
+        return copy_json(self.raws[item_id])
+
+    def edit(self, item_id, _vault_id, item):
+        self.edited.append(item_id)
+        self.raws[item_id] = {**item, "version": item.get("version", 1) + 1}
+
+    def archive(self, item_id, _vault_id):
+        self.archived.append(item_id)
+
+    def run_main(self, argv, answer="yes", edit=None, summaries=None):
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+            code = main(
+                ["--apply", *argv], vaults=VAULTS, summaries=summaries or self.summaries, get=self.get,
+                edit=edit or self.edit, archive=self.archive, read_line=lambda _prompt="": answer,
+            )
+        return code, out.getvalue()
+
+    def test_apply_merges_then_archives(self):
+        code, _ = self.run_main([])
+        self.assertEqual(code, 0)
+        self.assertEqual(self.edited, ["a1"])
+        self.assertEqual(parse_item(self.raws["a1"]).notes, "hint")
+        self.assertEqual(sorted(self.archived), ["a2", "b2"])
+
+    def test_apply_needs_yes(self):
+        code, out = self.run_main([], answer="y")
+        self.assertEqual((self.edited, self.archived), ([], []))
+        self.assertIn("Nothing changed", out)
+
+    def test_apply_stops_when_merge_missing(self):
+        code, out = self.run_main([], edit=lambda *_args: None)
+        self.assertEqual(code, 1)
+        self.assertNotIn("a2", self.archived)
+        self.assertIn("notes", out)
+
+    def test_limit(self):
+        self.run_main(["--limit", "1"])
+        self.assertEqual(len(self.archived), 1)
+
+    def test_apply_refuses_without_passkey_tags(self):
+        untagged = [s for s in self.summaries if s["id"] != "pk"]
+        code, out = self.run_main([], summaries=untagged)
+        self.assertEqual(code, 2)
+        self.assertEqual((self.edited, self.archived), ([], []))
+        self.assertIn("passkey", out)
+
+    def test_keeper_changed_since_the_plan_is_skipped(self):
+        def get(item_id, vault_id):
+            raw = copy_json(self.raws[item_id])
+            if item_id == "a1" and self.fetches.setdefault(item_id, 0) > 0:
+                raw["version"] = 99
+            self.fetches[item_id] = self.fetches.get(item_id, 0) + 1
+            return raw
+
+        self.fetches = {}
+        self.get = get
+        code, out = self.run_main([])
+        self.assertEqual(code, 0)
+        self.assertEqual(self.edited, [])
+        self.assertNotIn("a2", self.archived)
+        self.assertIn("changed since", out)
+
+
+def copy_json(raw):
+    return json.loads(json.dumps(raw))

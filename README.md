@@ -49,6 +49,7 @@ Then open a new terminal.
 | Print the scripts rendered for one machine | `mise run render athena` |
 | Regenerate the tools list | `mise run docs` |
 | Find duplicate 1Password logins (dry run) | `op-dedupe` |
+| Merge and archive duplicate 1Password logins (tag logins holding a passkey `passkey` first) | `op-dedupe --apply` |
 | Check whether a workaround can go | `mise run upstream-check` |
 | Bump pinned versions | `mise run bump-pins` (a weekly pull request does it too) |
 | List what is installed on a Mac | `scripts/inventory.sh` |
