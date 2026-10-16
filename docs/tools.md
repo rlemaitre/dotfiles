@@ -30,13 +30,13 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `bun@1.4.3` | JavaScript runtime and package manager | both Macs |
 | `cargo:just-lsp@0.10.0` | Language server for justfiles | nabla-mac-raphael |
 | `cargo:linear-cli@0.3.28` | Linear issue tracker command line | nabla-mac-raphael |
-| `chezmoi@2.73.0` | The dotfiles manager this repo is built for | both Macs |
+| `chezmoi@2.73.1` | The dotfiles manager this repo is built for | both Macs |
 | `cmake@4.4.4` | Build system generator for C and C++ | both Macs |
 | `colima@0.10.3` | Docker container runtime in a lightweight VM, started at login | both Macs |
 | `coursier@2.1.26` | Scala and JVM artifact fetcher and launcher | both Macs |
 | `delta@0.18.2` | Syntax-highlighting pager for git diffs | both Macs |
 | `deno@2.9.7` | JavaScript and TypeScript runtime | both Macs |
-| `docker-cli@29.9.0` | Docker client; the engine runs in Colima | both Macs |
+| `docker-cli@29.9.1` | Docker client; the engine runs in Colima | both Macs |
 | `eza@0.23.5` | ls replacement with icons and Git status (aliased to ls) | both Macs |
 | `fd@10.5.0` | Fast, friendly alternative to find | both Macs |
 | `fzf@0.74.5` | Fuzzy finder used by fzf-tab, zoxide and the shell | both Macs |
@@ -51,14 +51,14 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `java@openjdk-25.0.2` | JDK, Oracle GraalVM 21 on athena, OpenJDK 25 on nabla-mac-raphael | nabla-mac-raphael |
 | `java@oracle-graalvm-21.0.12` | JDK, Oracle GraalVM 21 on athena, OpenJDK 25 on nabla-mac-raphael | athena |
 | `jq@1.8.2` | JSON processor | both Macs |
-| `just@1.58.0` | Command runner for justfiles | both Macs |
+| `just@1.59.0` | Command runner for justfiles | both Macs |
 | `lazydocker@0.25.2` | Terminal UI for Docker (alias lzd) | both Macs |
-| `lazygit@0.66.0` | Terminal UI for git | both Macs |
+| `lazygit@0.66.1` | Terminal UI for git | both Macs |
 | `lima@2.2.1` | Linux VM engine that Colima runs on | both Macs |
-| `lua-language-server@3.19.1` | Lua language server (Neovim, Claude Code) | both Macs |
+| `lua-language-server@3.19.2` | Lua language server (Neovim, Claude Code) | both Macs |
 | `maven@3.10.0` | Java build tool | both Macs |
 | `neovim@0.12.6` | Editor, configured with LazyVim | both Macs |
-| `node@24.21.0` | Node.js runtime | both Macs |
+| `node@24.22.0` | Node.js runtime | both Macs |
 | `npm:@zed-industries/claude-code-acp@0.16.2` | Agent Client Protocol adapter that runs Claude Code inside Zed | nabla-mac-raphael |
 | `npm:better-commits@1.26.1` | Interactive conventional commits and branch names (git aliases bc and bb) | both Macs |
 | `npm:defuddle@0.19.5` | Extracts the main content of a web page as Markdown (the obsidian:defuddle skill) | nabla-mac-raphael |
@@ -69,9 +69,9 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `npm:tombi@0.7.33` | TOML formatter, linter and language server | both Macs |
 | `npm:typescript-language-server@5.3.0` | TypeScript language server (Claude Code) | both Macs |
 | `npm:typescript@5.9.3` | TypeScript compiler | both Macs |
-| `oh-my-posh@31.7.0` | Prompt renderer; the Catppuccin prompt lives in the repo | both Macs |
-| `pnpm@10.34.6` | Node package manager | both Macs |
-| `pre-commit@4.6.2` | Git hook manager | nabla-mac-raphael |
+| `oh-my-posh@31.8.0` | Prompt renderer; the Catppuccin prompt lives in the repo | both Macs |
+| `pnpm@10.34.7` | Node package manager | both Macs |
+| `pre-commit@4.7.0` | Git hook manager | nabla-mac-raphael |
 | `prek@0.5.5` | Faster drop-in replacement for pre-commit | nabla-mac-raphael |
 | `python@3.12.15` | Python 3.12 | both Macs |
 | `ripgrep@15.2.0` | Fast grep alternative (aliased to grep) | both Macs |
@@ -79,7 +79,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `sbt@1.13.0` | Scala build tool | both Macs |
 | `shellcheck@0.11.0` | Shell script linter | both Macs |
 | `shfmt@3.14.1` | Shell script formatter | both Macs |
-| `terraform@1.16.5` | Infrastructure as code (work infrastructure) | nabla-mac-raphael |
+| `terraform@1.16.6` | Infrastructure as code (work infrastructure) | nabla-mac-raphael |
 | `tree-sitter@0.27.1` | Parser generator CLI that nvim-treesitter needs | both Macs |
 | `uv@0.6.17` | Fast Python package and project manager | both Macs |
 | `vivid@0.11.1` | Generates LS_COLORS from the Catppuccin theme | both Macs |
