@@ -39,7 +39,8 @@
     "productivity@knowledge-work-plugins": true,
     "security-guidance@claude-plugins-official": true,
     "obsidian@obsidian-skills": true,
-    "frontend-design@claude-plugins-official": true
+    "frontend-design@claude-plugins-official": true,
+    "taste-skill@taste-skill": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -70,6 +71,12 @@
       "source": {
         "source": "github",
         "repo": "kepano/obsidian-skills"
+      }
+    },
+    "taste-skill": {
+      "source": {
+        "source": "github",
+        "repo": "Leonxlnx/taste-skill"
       }
     }
   },
