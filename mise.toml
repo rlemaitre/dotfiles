@@ -28,6 +28,7 @@ for cfg in tests/*.toml; do
     esac
   done
 done
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=home/dot_local/lib python3 -m unittest discover -s tests/op_dedupe -t . -q
 echo "check ok"
 '''
 
