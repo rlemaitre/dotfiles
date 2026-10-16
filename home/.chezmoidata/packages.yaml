@@ -87,8 +87,6 @@ packages:
         - "pinentry-mac"
         - "postgresql@18"
         - "usage"
-        - "ykman"
-        - "ykpers"
       # athena: unused or undecided, review
       athena:
         - "nnn"
@@ -131,7 +129,6 @@ packages:
         - "signal"
         - "syntax-highlight"
         - "the-unarchiver"
-        - "yubico-authenticator"
         - "zed"
         - "zotero"
       athena:

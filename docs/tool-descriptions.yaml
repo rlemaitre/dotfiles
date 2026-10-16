@@ -93,8 +93,6 @@ formulae:
   unbound: Validating DNS resolver
   usage: Spec tool that mise uses for task arguments and completions
   watchman: File watching service used by JavaScript tooling
-  ykman: YubiKey Manager command line
-  ykpers: YubiKey personalization library and tool
 
 casks:
   1password: Password manager
@@ -148,7 +146,6 @@ casks:
   the-unarchiver: Archive extractor
   vivaldi: Web browser
   vocaster-hub: Focusrite Vocaster interface control
-  yubico-authenticator: YubiKey authenticator
   zed: Code editor
   zoom: Video meetings
   zotero: Reference manager

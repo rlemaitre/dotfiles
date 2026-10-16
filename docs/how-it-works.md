@@ -27,7 +27,7 @@ A tool has **one channel**, chosen in this order:
 
 `scripts/check-packages.sh` (part of `mise run check`) fails when a name appears in two of mise, formulae and
 casks on the same machine. Tools that stay on brew on purpose: `mise` itself (it cannot install itself), `usage`, `bash`,
-`coreutils`, `gnupg`, `pinentry-mac`, `ykman`, `ykpers`, `postgresql@18`, `mas`, `buku`, `jdtls`.
+`coreutils`, `gnupg`, `pinentry-mac`, `postgresql@18`, `mas`, `buku`, `jdtls`.
 
 Exceptions, each documented where it lives:
 

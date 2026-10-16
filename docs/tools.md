@@ -10,8 +10,8 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 |---|---|
 | [mise tools](#mise-tools) | 62 |
 | [Homebrew taps](#homebrew-taps) | 1 |
-| [Homebrew formulae](#homebrew-formulae) | 24 |
-| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 55 |
+| [Homebrew formulae](#homebrew-formulae) | 22 |
+| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 54 |
 | [App Store apps (mas)](#app-store-apps-mas) | 23 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
 | [Agent skills for Claude Code](#agent-skills-for-claude-code) | 1 |
@@ -120,8 +120,6 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `unbound` | Validating DNS resolver | nabla-mac-raphael |
 | `usage` | Spec tool that mise uses for task arguments and completions | both Macs |
 | `watchman` | File watching service used by JavaScript tooling | nabla-mac-raphael |
-| `ykman` | YubiKey Manager command line | both Macs |
-| `ykpers` | YubiKey personalization library and tool | both Macs |
 
 ## Homebrew casks (apps and fonts)
 
@@ -178,7 +176,6 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `the-unarchiver` | Archive extractor | both Macs |
 | `vivaldi` | Web browser | athena |
 | `vocaster-hub` | Focusrite Vocaster interface control | athena |
-| `yubico-authenticator` | YubiKey authenticator | both Macs |
 | `zed` | Code editor | both Macs |
 | `zoom` | Video meetings | nabla-mac-raphael |
 | `zotero` | Reference manager | both Macs |
