@@ -29,7 +29,7 @@ After changing the macOS appearance, open a new shell for the second group. Forc
 
 | `atuin/themes/catppuccin-{latte,mocha}-mauve.toml` | catppuccin/atuin @ 68aa64b 2026-03-02 |
 | `glamour/catppuccin-{latte,mocha}.json` | catppuccin/glamour @ 00c97fa 2025-05-02 |
-| `ripgrep/{latte,mocha}.rc`, `JQ_COLORS` in `theme.zsh` | written from the Catppuccin palette (no upstream port) |
+| `ripgrep/{latte,mocha}.rc`, `JQ_COLORS` in `theme.zsh` | written from the Catppuccin palette (no upstream port); `JQ_COLORS` uses the nearest 256-colour codes, because macOS `/usr/bin/jq` (called by `mas`) rejects 24-bit ones |
 
 oh-my-posh: `catppuccin.omp.json` keeps the previous prompt layout (from `nord.json`); only the colours moved into a Latte/Mocha palette.
 
