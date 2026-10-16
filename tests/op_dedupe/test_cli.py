@@ -135,6 +135,18 @@ class ApplyTest(unittest.TestCase):
         self.assertEqual((self.edited, self.archived), ([], []))
         self.assertIn("Nothing changed", out)
 
+    def test_apply_without_input_changes_nothing(self):
+        def no_input(_prompt=""):
+            raise EOFError
+
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(out):
+            code = main(["--apply"], vaults=VAULTS, summaries=self.summaries, get=self.get, edit=self.edit,
+                        archive=self.archive, read_line=no_input)
+        self.assertEqual(code, 1)
+        self.assertEqual((self.edited, self.archived), ([], []))
+        self.assertIn("Nothing changed", out.getvalue())
+
     def test_apply_stops_when_merge_missing(self):
         code, out = self.run_main([], edit=lambda *_args: None)
         self.assertEqual(code, 1)

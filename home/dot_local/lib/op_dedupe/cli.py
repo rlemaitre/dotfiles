@@ -121,7 +121,12 @@ def run_apply(plans: list[Plan], flags: list[Flag], keys, limit, get, edit, arch
         f"{len(chosen)} groups to merge, {sum(len(p.archive) for p in chosen)} copies to archive; "
         f"{len(flags)} flagged groups are left untouched."
     )
-    if read_line("Type yes to apply: ").strip() != "yes":
+    try:
+        answer = read_line("Type yes to apply: ")
+    except EOFError:
+        print("\nNothing changed: no input to read the answer from (run it in a terminal).")
+        return 1
+    if answer.strip() != "yes":
         print("Nothing changed.")
         return 0
     archived = 0
