@@ -34,7 +34,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `cmake@4.4.4` | Build system generator for C and C++ | both Macs |
 | `colima@0.10.3` | Docker container runtime in a lightweight VM, started at login | both Macs |
 | `coursier@2.1.26` | Scala and JVM artifact fetcher and launcher | both Macs |
-| `delta@0.18.2` | Syntax-highlighting pager for git diffs | both Macs |
+| `delta@0.20.1` | Syntax-highlighting pager for git diffs | both Macs |
 | `deno@2.9.7` | JavaScript and TypeScript runtime | both Macs |
 | `docker-cli@29.9.1` | Docker client; the engine runs in Colima | both Macs |
 | `eza@0.23.5` | ls replacement with icons and Git status (aliased to ls) | both Macs |
@@ -44,7 +44,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `github:docker/buildx@0.38.0` | Docker buildx plugin, linked into ~/.docker/cli-plugins | both Macs |
 | `github:docker/compose@5.6.0` | Docker Compose plugin, linked into ~/.docker/cli-plugins | both Macs |
 | `glow@3.0.0` | Markdown renderer for the terminal | both Macs |
-| `go:golang.org/x/tools/gopls@0.20.0` | Go language server (Neovim, Claude Code) | both Macs |
+| `go:golang.org/x/tools/gopls@0.24.0` | Go language server (Neovim, Claude Code) | both Macs |
 | `go@1.27.2` | Go toolchain | both Macs |
 | `gum@2.0.2` | Building blocks for pretty shell scripts | both Macs |
 | `hexyl@0.17.0` | Hex viewer | both Macs |
@@ -62,13 +62,13 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `npm:@zed-industries/claude-code-acp@0.16.2` | Agent Client Protocol adapter that runs Claude Code inside Zed | nabla-mac-raphael |
 | `npm:better-commits@1.26.1` | Interactive conventional commits and branch names (git aliases bc and bb) | both Macs |
 | `npm:defuddle@0.19.5` | Extracts the main content of a web page as Markdown (the obsidian:defuddle skill) | nabla-mac-raphael |
-| `npm:eslint@9.39.1` | JavaScript and TypeScript linter | both Macs |
+| `npm:eslint@10.12.0` | JavaScript and TypeScript linter | both Macs |
 | `npm:gitnexus@1.6.12` | Code knowledge graph of a repository, served to agents over MCP | nabla-mac-raphael |
 | `npm:prettier@3.9.10` | Code formatter | both Macs |
 | `npm:pyright@1.1.414` | Python type checker and language server (Neovim, Claude Code) | both Macs |
-| `npm:tombi@0.7.33` | TOML formatter, linter and language server | both Macs |
-| `npm:typescript-language-server@5.3.0` | TypeScript language server (Claude Code) | both Macs |
-| `npm:typescript@5.9.3` | TypeScript compiler | both Macs |
+| `npm:tombi@1.8.4` | TOML formatter, linter and language server | both Macs |
+| `npm:typescript-language-server@6.0.2` | TypeScript language server (Claude Code) | both Macs |
+| `npm:typescript@6.0.3` | TypeScript compiler | both Macs |
 | `oh-my-posh@31.8.0` | Prompt renderer; the Catppuccin prompt lives in the repo | both Macs |
 | `pnpm@10.34.7` | Node package manager | both Macs |
 | `pre-commit@4.7.0` | Git hook manager | nabla-mac-raphael |
@@ -81,7 +81,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `shfmt@3.14.1` | Shell script formatter | both Macs |
 | `terraform@1.16.6` | Infrastructure as code (work infrastructure) | nabla-mac-raphael |
 | `tree-sitter@0.27.1` | Parser generator CLI that nvim-treesitter needs | both Macs |
-| `uv@0.6.17` | Fast Python package and project manager | both Macs |
+| `uv@0.13.1` | Fast Python package and project manager | both Macs |
 | `vivid@0.11.1` | Generates LS_COLORS from the Catppuccin theme | both Macs |
 | `worktrunk@0.80.0` | Git worktree manager (wt) | both Macs |
 | `yarn@4.18.1` | Node package manager | both Macs |
