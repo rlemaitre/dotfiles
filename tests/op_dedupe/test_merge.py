@@ -1,7 +1,7 @@
 import copy
 import unittest
 
-from op_dedupe.merge import apply_additions, missing_after_merge
+from op_dedupe.merge import apply_additions, lost_after_merge, missing_after_merge
 from op_dedupe.model import Field, parse_item
 from op_dedupe.planner import Additions
 from tests.op_dedupe.fixtures import login
@@ -36,6 +36,20 @@ class MergeTest(unittest.TestCase):
     def test_existing_section_is_reused(self):
         merged = apply_additions(login(custom=(("Bank", "account", "x"),)), ADDITIONS)
         self.assertEqual([s.get("label") for s in merged["sections"]].count("Bank"), 1)
+
+    def test_lost_after_merge_is_empty_when_everything_survives(self):
+        before = parse_item(login(custom=(("", "k", "v"),), otps=("BBBB",), tags=("t",)))
+        after = parse_item(apply_additions(before.raw, ADDITIONS))
+        self.assertEqual(lost_after_merge(before, after), ())
+
+    def test_lost_after_merge_names_dropped_data(self):
+        sso = {"id": "sso", "type": "UNKNOWN", "label": "sign in with"}
+        before = parse_item(login(custom=(("", "k", "v"),), otps=("BBBB",), files=("a.pdf",), extra_fields=(sso,)))
+        after = parse_item(login(password="other"))
+        self.assertEqual(
+            set(lost_after_merge(before, after)),
+            {"password", "2FA code", "field k", "attachments", "sign-in links"},
+        )
 
     def test_missing_after_merge_names_what_is_missing(self):
         unchanged = parse_item(login())

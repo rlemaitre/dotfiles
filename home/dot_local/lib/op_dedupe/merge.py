@@ -48,6 +48,34 @@ def apply_additions(raw: dict, additions: Additions) -> dict:
     return item
 
 
+def _sign_in_links(item: Item) -> int:
+    return sum(1 for f in item.raw.get("fields") or [] if f.get("type") == "UNKNOWN")
+
+
+def lost_after_merge(before: Item, after: Item) -> tuple[str, ...]:
+    """What the kept copy held before the edit and no longer holds: the edit replaces the whole item."""
+    lost: list[str] = []
+    if before.password != after.password:
+        lost.append("password")
+    if before.username != after.username:
+        lost.append("username")
+    if norm_value(before.notes) and norm_value(before.notes) != norm_value(after.notes):
+        lost.append("notes")
+    if {otp_key(f.value) for f in before.otps} - {otp_key(f.value) for f in after.otps}:
+        lost.append("2FA code")
+    urls = {url_key(u) for u in after.urls}
+    lost += [f"URL {u}" for u in before.urls if url_key(u) not in urls]
+    tags = {norm_value(t) for t in after.tags}
+    lost += [f"tag {t}" for t in before.tags if norm_value(t) not in tags]
+    custom = {(f.section, f.label, norm_value(f.value)) for f in after.custom}
+    lost += [field_name(f) for f in before.custom if (f.section, f.label, norm_value(f.value)) not in custom]
+    if len(before.raw.get("files") or []) > len(after.raw.get("files") or []):
+        lost.append("attachments")
+    if _sign_in_links(before) > _sign_in_links(after):
+        lost.append("sign-in links")
+    return tuple(dict.fromkeys(lost))
+
+
 def missing_after_merge(fresh: Item, additions: Additions) -> tuple[str, ...]:
     missing: list[str] = []
     if additions.notes and norm_value(fresh.notes) != norm_value(additions.notes):

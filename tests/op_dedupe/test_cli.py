@@ -43,6 +43,12 @@ class CliTest(unittest.TestCase):
         with self.assertRaises(SystemExit):
             build_plan([{"id": "v-shared", "name": "Shared"}], summaries, get=fake_get([]))
 
+    def test_two_private_vaults_stop(self):
+        _, summaries = copies()
+        vaults = VAULTS + [{"id": "v-private-2", "name": "Private"}]
+        with self.assertRaises(SystemExit):
+            build_plan(vaults, summaries, get=fake_get([]))
+
     def test_fetch_failure_flags_group(self):
         raws, summaries = copies()
         plans, flags, _ = build_plan(VAULTS, summaries, get=fake_get(raws, failing=("p2",)))
@@ -145,6 +151,37 @@ class ApplyTest(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertEqual((self.edited, self.archived), ([], []))
         self.assertIn("passkey", out)
+
+    def test_limit_must_be_positive(self):
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            self.run_main(["--limit", "0"])
+        self.assertEqual(self.archived, [])
+
+    def test_copy_changed_since_the_plan_is_not_archived(self):
+        def get(item_id, _vault_id):
+            raw = copy_json(self.raws[item_id])
+            if item_id == "b2" and self.fetches.get(item_id, 0) > 0:
+                raw["version"] = 99
+            self.fetches[item_id] = self.fetches.get(item_id, 0) + 1
+            return raw
+
+        self.fetches = {}
+        self.get = get
+        code, out = self.run_main([])
+        self.assertEqual(code, 0)
+        self.assertNotIn("b2", self.archived)
+        self.assertIn("a2", self.archived)
+        self.assertIn("changed since", out)
+
+    def test_apply_stops_when_merge_drops_existing_data(self):
+        def dropping_edit(item_id, vault_id, item):
+            fields = [f for f in item["fields"] if f.get("purpose") != "PASSWORD"]
+            self.edit(item_id, vault_id, {**item, "fields": fields})
+
+        code, out = self.run_main([], edit=dropping_edit)
+        self.assertEqual(code, 1)
+        self.assertNotIn("a2", self.archived)
+        self.assertIn("lost password", out)
 
     def test_keeper_changed_since_the_plan_is_skipped(self):
         def get(item_id, vault_id):

@@ -15,6 +15,7 @@ CONFLICT_OTP = "different 2FA codes"
 CONFLICT_FIELD = "different values in a custom field"
 SEVERAL_SHARED_VAULTS = "copies in several shared vaults"
 ATTACHMENT_OR_PASSKEY = "attachment or passkey on a copy to archive"
+ATTACHMENT_ON_KEEPER = "attachment on the kept copy, which needs a merge"
 PASSKEY_ON_KEEPER = "passkey on the kept copy, which needs a merge"
 SIGN_IN_LINK = "sign-in link (\"sign in with\") that cannot be merged"
 FETCH_FAILED = "an item could not be fetched"
@@ -78,8 +79,8 @@ def url_key(href: str) -> str:
     )
 
 
-def _choose_keeper(items: tuple[Item, ...], personal_vault: str) -> Item:
-    candidates = [i for i in items if i.vault != personal_vault] or list(items)
+def _choose_keeper(items: tuple[Item, ...], personal_vault_id: str) -> Item:
+    candidates = [i for i in items if i.vault_id != personal_vault_id] or list(items)
     return min(candidates, key=lambda i: (-i.updated_at.timestamp(), i.id))
 
 
@@ -94,7 +95,7 @@ def _otps(keeper: Item, others: tuple[Item, ...], items: tuple[Item, ...]) -> tu
     keys = {otp_key(f.value) for i in items for f in i.otps} - {""}
     if len(keys) > 1:
         return Flag(CONFLICT_OTP, items)
-    if keeper.otps or not keys:
+    if any(otp_key(f.value) for f in keeper.otps) or not keys:
         return ()
     return (next(f for i in others for f in i.otps if otp_key(f.value)),)
 
@@ -123,12 +124,13 @@ def _missing(keeper_values: tuple[str, ...], other_values, key=norm_value) -> tu
     return tuple(added.values())
 
 
-def plan_group(items: tuple[Item, ...], personal_vault: str = "Private") -> Plan | Flag:
-    if len({i.vault for i in items if i.vault != personal_vault}) > 1:
+def plan_group(items: tuple[Item, ...], personal_vault_id: str) -> Plan | Flag:
+    """personal_vault_id: the id of the user's own vault; every other vault is shared."""
+    if len({i.vault_id for i in items if i.vault_id != personal_vault_id}) > 1:
         return Flag(SEVERAL_SHARED_VAULTS, items)
     if len({i.password for i in items}) > 1:
         return Flag(DIFFERENT_PASSWORDS, items)
-    keeper = _choose_keeper(items, personal_vault)
+    keeper = _choose_keeper(items, personal_vault_id)
     others = tuple(i for i in items if i is not keeper)
     if any(i.has_files or i.has_passkey for i in others):
         return Flag(ATTACHMENT_OR_PASSKEY, items)
@@ -152,6 +154,8 @@ def plan_group(items: tuple[Item, ...], personal_vault: str = "Private") -> Plan
     )
     if keeper.has_passkey and not additions.is_empty():
         return Flag(PASSKEY_ON_KEEPER, items)
+    if keeper.has_files and not additions.is_empty():
+        return Flag(ATTACHMENT_ON_KEEPER, items)
     if keeper.has_sign_in_link and not additions.is_empty():
         return Flag(SIGN_IN_LINK, items)
     return Plan(keeper=keeper, additions=additions, archive=others)

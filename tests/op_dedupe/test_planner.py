@@ -3,6 +3,7 @@ from dataclasses import replace
 
 from op_dedupe.model import parse_item
 from op_dedupe.planner import (
+    ATTACHMENT_ON_KEEPER,
     ATTACHMENT_OR_PASSKEY,
     CONFLICT_FIELD,
     CONFLICT_NOTES,
@@ -35,12 +36,12 @@ def shared(**overrides):
 
 class PlannerTest(unittest.TestCase):
     def plan(self, *items):
-        result = plan_group(tuple(items))
+        result = plan_group(tuple(items), "v-private")
         self.assertIsInstance(result, Plan, getattr(result, "reason", None))
         return result
 
     def flag(self, *items):
-        result = plan_group(tuple(items))
+        result = plan_group(tuple(items), "v-private")
         self.assertIsInstance(result, Flag)
         return result
 
@@ -48,6 +49,15 @@ class PlannerTest(unittest.TestCase):
         a = shared(id="a")
         b = item(id="b", vault="Family", vault_id="v-family")
         self.assertEqual(self.flag(a, b, item(id="c")).reason, SEVERAL_SHARED_VAULTS)
+
+    def test_shared_vaults_with_the_same_name_are_different_vaults(self):
+        a = item(id="a", vault="Shared", vault_id="v-shared-1")
+        b = item(id="b", vault="Shared", vault_id="v-shared-2")
+        self.assertEqual(self.flag(a, b).reason, SEVERAL_SHARED_VAULTS)
+
+    def test_shared_vault_named_private_is_still_shared(self):
+        p = self.plan(item(id="a", updated_at=NEW), item(id="b", vault="Private", vault_id="v-other", updated_at=OLD))
+        self.assertEqual(p.keeper.id, "b")
 
     def test_different_passwords_flagged(self):
         self.assertEqual(self.flag(item(id="a", password="x"), item(id="b", password="y")).reason, DIFFERENT_PASSWORDS)
@@ -70,6 +80,10 @@ class PlannerTest(unittest.TestCase):
     def test_attachment_on_archived_copy_flagged(self):
         flag = self.flag(item(id="a", updated_at=NEW), item(id="b", updated_at=OLD, files=("scan.pdf",)))
         self.assertEqual(flag.reason, ATTACHMENT_OR_PASSKEY)
+
+    def test_attachment_on_keeper_with_additions_flagged(self):
+        flag = self.flag(item(id="a", updated_at=NEW, files=("scan.pdf",)), item(id="b", updated_at=OLD, notes="hint"))
+        self.assertEqual(flag.reason, ATTACHMENT_ON_KEEPER)
 
     def test_attachment_on_keeper_is_fine(self):
         self.plan(item(id="a", updated_at=NEW, files=("scan.pdf",)), item(id="b", updated_at=OLD))
@@ -115,6 +129,10 @@ class PlannerTest(unittest.TestCase):
         p = self.plan(item(id="a", updated_at=NEW), item(id="b", updated_at=OLD, otps=("AAAA",)))
         self.assertEqual([f.value for f in p.additions.otps], ["AAAA"])
         self.assertIn("2FA code", p.additions.names())
+
+    def test_empty_otp_on_keeper_does_not_hide_a_secret(self):
+        p = self.plan(item(id="a", updated_at=NEW, otps=("",)), item(id="b", updated_at=OLD, otps=("AAAA",)))
+        self.assertEqual([f.value for f in p.additions.otps], ["AAAA"])
 
     def test_urls_and_tags_merged(self):
         p = self.plan(
