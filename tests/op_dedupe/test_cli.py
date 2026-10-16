@@ -152,6 +152,36 @@ class ApplyTest(unittest.TestCase):
         self.assertEqual((self.edited, self.archived), ([], []))
         self.assertIn("passkey", out)
 
+    def test_only_handles_the_named_site(self):
+        self.fetched = []
+        get = self.get
+
+        def counting_get(item_id, vault_id):
+            self.fetched.append(item_id)
+            return get(item_id, vault_id)
+
+        self.get = counting_get
+        code, _ = self.run_main(["--only", "https://www.B.example/login"])
+        self.assertEqual(code, 0)
+        self.assertEqual(self.archived, ["b2"])
+        self.assertEqual(set(self.fetched), {"b1", "b2"})
+
+    def test_only_matches_a_title_for_logins_without_url(self):
+        raws = {
+            "t1": login(id="t1", title="My  Bank", urls=(), updated_at="2024-02-01T00:00:00Z"),
+            "t2": login(id="t2", title="my bank", urls=(), updated_at="2024-01-01T00:00:00Z"),
+        }
+        self.raws.update(raws)
+        summaries = self.summaries + [summary(id=i, title=r["title"], urls=()) for i, r in raws.items()]
+        code, _ = self.run_main(["--only", "My Bank"], summaries=summaries)
+        self.assertEqual(code, 0)
+        self.assertEqual(self.archived, ["t2"])
+
+    def test_only_without_a_match_changes_nothing(self):
+        code, out = self.run_main(["--only", "nothing.example"])
+        self.assertEqual((self.edited, self.archived), ([], []))
+        self.assertIn("0 groups to merge", out)
+
     def test_limit_must_be_positive(self):
         with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
             self.run_main(["--limit", "0"])

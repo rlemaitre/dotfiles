@@ -5,7 +5,7 @@ import sys
 from concurrent.futures import ThreadPoolExecutor
 
 from op_dedupe import opcli
-from op_dedupe.grouping import Key, find_groups, group_key
+from op_dedupe.grouping import Key, find_groups, group_key, matches
 from op_dedupe.merge import apply_additions, lost_after_merge, missing_after_merge
 from op_dedupe.model import PASSKEY_TAG, Item, is_passkey, parse_item
 from op_dedupe.opcli import OpError
@@ -38,15 +38,20 @@ def fetch_items(summaries: list[dict], get=opcli.get_item, workers: int = WORKER
 
 
 def build_plan(
-    vaults: list[dict], summaries: list[dict], get=opcli.get_item, personal_vault: str = PERSONAL_VAULT
+    vaults: list[dict],
+    summaries: list[dict],
+    get=opcli.get_item,
+    personal_vault: str = PERSONAL_VAULT,
+    only: str | None = None,
 ) -> tuple[list[Plan], list[Flag], dict[str, Key | None]]:
+    """only: keep just the groups for this site or title (filtered before any item is fetched)."""
     personal = [v for v in vaults if v.get("name") == personal_vault]
     if len(personal) != 1:
         raise SystemExit(
             f"Expected exactly one vault named {personal_vault}, found {len(personal)}: op-dedupe needs it to tell "
             "personal copies from shared ones."
         )
-    groups = find_groups(summaries)
+    groups = [g for g in find_groups(summaries) if only is None or matches(group_key(g[0]) or ("", "", ""), only)]
     fetched = fetch_items([s for g in groups for s in g], get)
     plans: list[Plan] = []
     flags: list[Flag] = []
@@ -78,6 +83,8 @@ def _parser() -> argparse.ArgumentParser:
         description="Find duplicate 1Password logins. Without --apply, only prints the plan.",
     )
     p.add_argument("--apply", action="store_true", help="merge each group into one copy and archive the others")
+    p.add_argument("--only", metavar="SITE", help="handle only the groups for this site, or this title for logins "
+                   "without a URL")
     p.add_argument("--limit", type=_positive_int, metavar="N", help="with --apply, handle only the first N groups")
     return p
 
@@ -138,7 +145,7 @@ def main(argv: list[str], *, vaults=None, summaries=None, get=None, edit=None, a
     try:
         vaults = opcli.list_vaults() if vaults is None else vaults
         summaries = opcli.list_logins() if summaries is None else summaries
-        plans, flags, keys = build_plan(vaults, summaries, get=get)
+        plans, flags, keys = build_plan(vaults, summaries, get=get, only=args.only)
     except OpError as e:
         print(f"op-dedupe: {e}", file=sys.stderr)
         return 1

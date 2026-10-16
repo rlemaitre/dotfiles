@@ -50,6 +50,7 @@ Then open a new terminal.
 | Regenerate the tools list | `mise run docs` |
 | Find duplicate 1Password logins (dry run) | `op-dedupe` |
 | Merge and archive duplicate 1Password logins (tag logins holding a passkey `passkey` first) | `op-dedupe --apply` |
+| Same, for one site only (or one title, for logins without a URL) | `op-dedupe --apply --only <site>` |
 | Check whether a workaround can go | `mise run upstream-check` |
 | Bump pinned versions | `mise run bump-pins` (a weekly pull request does it too) |
 | List what is installed on a Mac | `scripts/inventory.sh` |

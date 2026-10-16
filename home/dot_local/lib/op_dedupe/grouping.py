@@ -32,6 +32,12 @@ def group_key(summary: dict) -> Key | None:
     return None
 
 
+def matches(key: Key, text: str) -> bool:
+    """Whether a group key names this site (for logins with a URL) or this title (for logins without one)."""
+    kind, name, _user = key
+    return name == (normalize_host(text) if kind == "url" else normalize_text(text))
+
+
 def find_groups(summaries: list[dict]) -> list[list[dict]]:
     keyed = sorted(
         ((key, s) for s in summaries if (key := group_key(s)) is not None and key[1]),
