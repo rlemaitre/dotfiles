@@ -45,3 +45,20 @@ It also prints the state of the upstream issue, for information only.
 2. Generate the official completion in `run_onchange_after_47_zsh-completions.sh.tmpl` (`gen claude claude <command>`).
 3. On each Mac: `zinit delete wbingli/zsh-claudecode-completion`, `rm ~/.cache/zsh/completions/_claude`, then `chezmoi apply`.
 4. Delete this section.
+
+## mermaid-cli: chromium-bidi trust exemption
+
+**Problem.** `mise install npm:@mermaid-js/mermaid-cli@12.0.0` stops with "trust downgrade for
+chromium-bidi@157.0.8090-0": releases up to 10.4.0 were published through npm trusted publishing, this one has no
+provenance. Reviewed 2026-10-17: the chromium-bidi source moved into the Chromium repository
+(`third_party/chromium-bidi`, see its README), releases now follow Chrome versions and are published by the Google
+account `chrome-devtools-npm` (a listed maintainer) from Chromium's infrastructure, and Google's `puppeteer-core`
+25.14.0 pins exactly this version. Not verified: the tarball against source (npm records no `gitHead`).
+
+**Workaround in place.** `home/.chezmoidata/packages.yaml`, key `mise_trust_policy_excludes`, exempts only
+`chromium-bidi@157.0.8090-0` for mermaid-cli; the mise config template renders it as `trust_policy_excludes`.
+`PUPPETEER_EXECUTABLE_PATH` in `home/dot_config/zsh/env.zsh.tmpl` points Puppeteer at the Chrome cask, because mise
+skips the postinstall that downloads chrome-headless-shell.
+
+**When mermaid-cli is bumped:** a new puppeteer pulls a new chromium-bidi, which is checked again. If mise refuses it,
+review that version the same way and replace the entry; if it installs, delete the entry and this section.

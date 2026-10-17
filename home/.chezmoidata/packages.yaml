@@ -36,6 +36,7 @@ packages:
       - "maven@3.10.0"
       - "neovim@0.12.6"
       - "node@24.22.0"
+      - "npm:@mermaid-js/mermaid-cli@12.0.0"
       - "npm:@slidev/cli@53.0.0"
       - "npm:better-commits@1.26.1"
       - "npm:eslint@10.12.0"
@@ -227,3 +228,10 @@ packages:
       - {id: "md.obsidian.quicklook", appex: "/Applications/Obsidian.app/Contents/PlugIns/ObsidianQuickLook.appex", state: ignore}
     athena: []
     nabla-mac-raphael: []
+
+# mise refuses an npm dependency whose release has weaker trust evidence than an earlier one (aube trust policy).
+# Each entry exempts one reviewed package@version for one tool; a newer release is checked again.
+# Reviews are in docs/upstream-watch.md.
+mise_trust_policy_excludes:
+  "npm:@mermaid-js/mermaid-cli":
+    - "chromium-bidi@157.0.8090-0"

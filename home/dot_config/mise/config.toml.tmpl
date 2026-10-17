@@ -3,6 +3,7 @@
        it replaces the live ~/.config/mise/config.toml. */ -}}
 {{- $m := .machine -}}
 {{- $tools := concat .packages.mise.common (index .packages.mise $m | default (list)) -}}
+{{- $excludes := .mise_trust_policy_excludes | default dict -}}
 [settings]
 experimental = true
 idiomatic_version_file_enable_tools = ["node"]
@@ -19,5 +20,11 @@ truncate = false
 {{ range $tools | sortAlpha -}}
 {{- /* a trailing @version has no "/" or ":" after the "@" (scoped npm names do) */ -}}
 {{- $version := regexFind "@[^@/:]+$" . -}}
-{{ trimSuffix $version . | quote }} = {{ if $version }}{{ trimPrefix "@" $version | quote }}{{ else }}"latest"{{ end }}
+{{- $name := trimSuffix $version . -}}
+{{- $pin := ternary (trimPrefix "@" $version) "latest" (ne $version "") -}}
+{{- $value := $pin | quote -}}
+{{- if hasKey $excludes $name -}}
+{{- $value = printf "{ version = %s, trust_policy_excludes = %s }" ($pin | quote) (index $excludes $name | toJson) -}}
+{{- end }}
+{{ $name | quote }} = {{ $value }}
 {{ end -}}
