@@ -8,7 +8,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 
 | Section | Entries |
 |---|---|
-| [mise tools](#mise-tools) | 63 |
+| [mise tools](#mise-tools) | 64 |
 | [Homebrew taps](#homebrew-taps) | 1 |
 | [Homebrew formulae](#homebrew-formulae) | 22 |
 | [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 54 |
@@ -59,6 +59,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `maven@3.10.0` | Java build tool | both Macs |
 | `neovim@0.12.6` | Editor, configured with LazyVim | both Macs |
 | `node@24.22.0` | Node.js runtime | both Macs |
+| `npm:@slidev/cli@53.0.0` | Slidev, Markdown slide decks served and exported with the slidev command | both Macs |
 | `npm:@zed-industries/claude-code-acp@0.16.2` | Agent Client Protocol adapter that runs Claude Code inside Zed | nabla-mac-raphael |
 | `npm:better-commits@1.26.1` | Interactive conventional commits and branch names (git aliases bc and bb) | both Macs |
 | `npm:defuddle@0.19.5` | Extracts the main content of a web page as Markdown (the obsidian:defuddle skill) | nabla-mac-raphael |

@@ -39,6 +39,7 @@ mise:
   neovim: Editor, configured with LazyVim
   node: Node.js runtime
   npm:@zed-industries/claude-code-acp: Agent Client Protocol adapter that runs Claude Code inside Zed
+  npm:@slidev/cli: Slidev, Markdown slide decks served and exported with the slidev command
   npm:better-commits: Interactive conventional commits and branch names (git aliases bc and bb)
   npm:defuddle: Extracts the main content of a web page as Markdown (the obsidian:defuddle skill)
   npm:eslint: JavaScript and TypeScript linter
