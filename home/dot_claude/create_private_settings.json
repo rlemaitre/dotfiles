@@ -41,7 +41,8 @@
     "obsidian@obsidian-skills": true,
     "frontend-design@claude-plugins-official": true,
     "taste-skill@taste-skill": true,
-    "playwright@claude-plugins-official": true
+    "playwright@claude-plugins-official": true,
+    "slidev@slidev-dev-marketplace": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -78,6 +79,12 @@
       "source": {
         "source": "github",
         "repo": "Leonxlnx/taste-skill"
+      }
+    },
+    "slidev-dev-marketplace": {
+      "source": {
+        "source": "github",
+        "repo": "rhuss/cc-slidev"
       }
     }
   },

@@ -50,6 +50,8 @@ This Mac's configuration is managed by chezmoi. Find the repo with `chezmoi sour
 - Do not edit managed files in `~` and leave them: edit the repo, or edit the live file and run `chezmoi re-add <file>`.
 - Before adding or removing a tool, changing a config or a macOS setting, or adding a machine, use the `dotfiles` skill. It points to `docs/maintenance.md` in the repo.
 - Install channel order: mise, Homebrew formula, cask, `mas`. A tool lives in one channel only.
+- Slidev comes from mise (`npm:@slidev/cli` in the package data). Never install or update it globally with npm, pnpm or yarn,
+  including through the slidev plugin's `install-slidev.sh`: bump the pin in the repo instead.
 - Run `mise run check` in the repo before every commit. Never push without asking.
 - Machine differences go in the `athena` / `nabla-mac-raphael` data sections or in templates, never in copied files.
 - The repo is public: no secrets, tokens or private data in it.
