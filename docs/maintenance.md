@@ -219,6 +219,9 @@ superpowers plugin, so those agents and commands are gone); the status line is
 setup lacks is deleted from the repo and listed in `.chezmoiremove`, so chezmoi removes it from every Mac. Plugins (LSP servers, worktrunk, i-have-adhd, superpowers, productivity, security-guidance, obsidian, frontend-design, taste-skill, playwright, slidev) are listed in `enabledPlugins` of the same seed; the seed is
 only created on a new Mac, so add a plugin there and run `claude plugin install <name>@<marketplace>` on the others (`claude plugin marketplace add <owner/repo>` first
 for a marketplace that is not built in).
+`productivity` comes from Raph's own marketplace [rlemaitre/claude-plugins](https://github.com/rlemaitre/claude-plugins):
+a copy of Anthropic's plugin without its bundled MCP servers, which duplicated the claude.ai connectors; that repo
+watches upstream and documents how to sync.
 `security-guidance` reviews the diff with the newest Opus when a turn ends and builds a Python venv in
 `~/.claude/security/` (not managed by chezmoi); the settings `env` pins both reviews (`SECURITY_REVIEW_MODEL`, `SG_AGENTIC_MODEL`) to `claude-sonnet-5-5` to save
 tokens; change the id there when a newer Sonnet should take over.
