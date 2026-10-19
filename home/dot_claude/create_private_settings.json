@@ -36,7 +36,7 @@
     "rust-analyzer-lsp@claude-plugins-official": true,
     "jdtls-lsp@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
-    "productivity@knowledge-work-plugins": true,
+    "productivity@rlemaitre": true,
     "security-guidance@claude-plugins-official": true,
     "obsidian@obsidian-skills": true,
     "frontend-design@claude-plugins-official": true,
@@ -63,10 +63,10 @@
         "repo": "ayghri/i-have-adhd"
       }
     },
-    "knowledge-work-plugins": {
+    "rlemaitre": {
       "source": {
         "source": "github",
-        "repo": "anthropics/knowledge-work-plugins"
+        "repo": "rlemaitre/claude-plugins"
       }
     },
     "obsidian-skills": {
