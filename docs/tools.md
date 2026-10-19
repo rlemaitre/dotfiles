@@ -25,12 +25,12 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 
 | Tool | What it is | Where |
 |---|---|---|
-| `atuin@18.23.0` | Searchable shell history (Ctrl-R), Catppuccin themed | both Macs |
+| `atuin@18.24.1` | Searchable shell history (Ctrl-R), Catppuccin themed | both Macs |
 | `bat@0.26.1` | cat with syntax highlighting and Git markers; also the man pager | both Macs |
 | `bun@1.4.3` | JavaScript runtime and package manager | both Macs |
 | `cargo:just-lsp@0.10.0` | Language server for justfiles | nabla-mac-raphael |
 | `cargo:linear-cli@0.3.28` | Linear issue tracker command line | nabla-mac-raphael |
-| `chezmoi@2.73.1` | The dotfiles manager this repo is built for | both Macs |
+| `chezmoi@2.73.2` | The dotfiles manager this repo is built for | both Macs |
 | `cmake@4.4.4` | Build system generator for C and C++ | both Macs |
 | `colima@0.10.3` | Docker container runtime in a lightweight VM, started at login | both Macs |
 | `coursier@2.1.26` | Scala and JVM artifact fetcher and launcher | both Macs |
@@ -53,7 +53,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `jq@1.8.2` | JSON processor | both Macs |
 | `just@1.59.0` | Command runner for justfiles | both Macs |
 | `lazydocker@0.25.2` | Terminal UI for Docker (alias lzd) | both Macs |
-| `lazygit@0.66.1` | Terminal UI for git | both Macs |
+| `lazygit@0.66.2` | Terminal UI for git | both Macs |
 | `lima@2.2.1` | Linux VM engine that Colima runs on | both Macs |
 | `lua-language-server@3.19.2` | Lua language server (Neovim, Claude Code) | both Macs |
 | `maven@3.10.0` | Java build tool | both Macs |
@@ -64,11 +64,11 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `npm:@zed-industries/claude-code-acp@0.16.2` | Agent Client Protocol adapter that runs Claude Code inside Zed | nabla-mac-raphael |
 | `npm:better-commits@1.26.1` | Interactive conventional commits and branch names (git aliases bc and bb) | both Macs |
 | `npm:defuddle@0.19.5` | Extracts the main content of a web page as Markdown (the obsidian:defuddle skill) | nabla-mac-raphael |
-| `npm:eslint@10.12.0` | JavaScript and TypeScript linter | both Macs |
+| `npm:eslint@10.13.0` | JavaScript and TypeScript linter | both Macs |
 | `npm:gitnexus@1.6.12` | Code knowledge graph of a repository, served to agents over MCP | nabla-mac-raphael |
 | `npm:prettier@3.9.10` | Code formatter | both Macs |
 | `npm:pyright@1.1.414` | Python type checker and language server (Neovim, Claude Code) | both Macs |
-| `npm:tombi@1.8.4` | TOML formatter, linter and language server | both Macs |
+| `npm:tombi@1.8.7` | TOML formatter, linter and language server | both Macs |
 | `npm:typescript-language-server@6.0.2` | TypeScript language server (Claude Code) | both Macs |
 | `npm:typescript@6.0.3` | TypeScript compiler | both Macs |
 | `oh-my-posh@31.8.0` | Prompt renderer; the Catppuccin prompt lives in the repo | both Macs |
@@ -78,7 +78,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `prek@0.5.5` | Faster drop-in replacement for pre-commit | nabla-mac-raphael |
 | `python@3.12.15` | Python 3.12 | both Macs |
 | `ripgrep@15.2.0` | Fast grep alternative (aliased to grep) | both Macs |
-| `rust@1.99.0` | Rust toolchain through rustup | both Macs |
+| `rust@1.99.1` | Rust toolchain through rustup | both Macs |
 | `sbt@1.13.0` | Scala build tool | both Macs |
 | `shellcheck@0.11.0` | Shell script linter | both Macs |
 | `shfmt@3.14.1` | Shell script formatter | both Macs |
