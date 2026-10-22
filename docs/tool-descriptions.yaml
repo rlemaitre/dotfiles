@@ -79,7 +79,7 @@ formulae:
   cocoapods: Dependency manager for iOS and macOS projects
   coreutils: GNU core utilities; `timeout` is used by the standup brief LaunchAgent (work Mac), so keep it
   dvc: Data version control for datasets and models
-  ffmpeg: Audio and video converter and player (ffplay, used by rawplay)
+  ffmpeg: Audio and video converter and player (ffplay, used by rawplay; VHS needs it for terminal recordings)
   gnupg: GPG; the agent also serves SSH keys
   jdtls: Eclipse Java language server (Claude Code)
   libfido2: FIDO2 library and tools for security keys
@@ -93,6 +93,7 @@ formulae:
   postgresql@18: PostgreSQL 18 server and psql
   redis: Redis server and redis-cli
   texinfo: GNU info documentation tools; no use seen, kept for review
+  ttyd: Shares a terminal over the web; VHS needs it to record terminal demos (mise has no macOS build)
   unbound: Validating DNS resolver
   usage: Spec tool that mise uses for task arguments and completions
   watchman: File watching service used by JavaScript tooling
