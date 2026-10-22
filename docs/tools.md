@@ -10,7 +10,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 |---|---|
 | [mise tools](#mise-tools) | 65 |
 | [Homebrew taps](#homebrew-taps) | 1 |
-| [Homebrew formulae](#homebrew-formulae) | 22 |
+| [Homebrew formulae](#homebrew-formulae) | 23 |
 | [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 54 |
 | [App Store apps (mas)](#app-store-apps-mas) | 23 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
@@ -106,7 +106,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `cocoapods` | Dependency manager for iOS and macOS projects | nabla-mac-raphael |
 | `coreutils` | GNU core utilities; `timeout` is used by the standup brief LaunchAgent (work Mac), so keep it | both Macs |
 | `dvc` | Data version control for datasets and models | nabla-mac-raphael |
-| `ffmpeg` | Audio and video converter and player (ffplay, used by rawplay) | nabla-mac-raphael |
+| `ffmpeg` | Audio and video converter and player (ffplay, used by rawplay; VHS needs it for terminal recordings) | nabla-mac-raphael |
 | `gnupg` | GPG; the agent also serves SSH keys | both Macs |
 | `jdtls` | Eclipse Java language server (Claude Code) | both Macs |
 | `libfido2` | FIDO2 library and tools for security keys | nabla-mac-raphael |
@@ -120,6 +120,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `postgresql@18` | PostgreSQL 18 server and psql | both Macs |
 | `redis` | Redis server and redis-cli | nabla-mac-raphael |
 | `texinfo` | GNU info documentation tools; no use seen, kept for review | athena |
+| `ttyd` | Shares a terminal over the web; VHS needs it to record terminal demos (mise has no macOS build) | nabla-mac-raphael |
 | `unbound` | Validating DNS resolver | nabla-mac-raphael |
 | `usage` | Spec tool that mise uses for task arguments and completions | both Macs |
 | `watchman` | File watching service used by JavaScript tooling | nabla-mac-raphael |
