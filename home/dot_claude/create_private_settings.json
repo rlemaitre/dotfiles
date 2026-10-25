@@ -23,6 +23,18 @@
           }
         ]
       }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "mcp__jetbrains__execute_run_configuration",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/intellij-run-reminder.sh",
+            "timeout": 5
+          }
+        ]
+      }
     ]
   },
   "enabledPlugins": {

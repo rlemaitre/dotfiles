@@ -232,3 +232,9 @@ full sentences and so reads well with `/i-have-adhd` (wording from caveman, stru
 i-have-adhd is always on: the SessionStart hook `~/.claude/hooks/i-have-adhd.sh` prints the newest installed `SKILL.md` into
 every session. The hook is in the settings seed, and script 90 adds it to a `settings.json` that already exists. To turn it
 off for one session, say "stop adhd mode"; to remove it, delete the hook from both and from the live settings.
+The IntelliJ MCP server is added by hand on each Mac, because `~/.claude.json` is not managed:
+`claude mcp add --scope user --transport http jetbrains http://127.0.0.1:64342/stream`, with `execute_terminal_command`
+turned off in IntelliJ (Settings | Tools | MCP Server | Exposed Tools). It runs a configuration only after you approve it in
+IntelliJ (brave mode stays off). The PreToolUse hook `~/.claude/hooks/intellij-run-reminder.sh`, on
+`mcp__jetbrains__execute_run_configuration`, shows a macOS notification with a sound so the dialog is not missed. It is in
+the settings seed too, and script 90 adds it to an existing `settings.json`.
