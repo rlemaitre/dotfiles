@@ -1,0 +1,8 @@
+// Base markdownlint config for Neovim (passed with --config by lua/plugins/markdown-lint.lua): markdownlint-cli2
+// has no user-global config and only reads config files from the working directory down.
+// The line length matches ~/.editorconfig ([*.md] max_line_length).
+{
+  "config": {
+    "MD013": { "line_length": 120, "code_blocks": false, "tables": false }
+  }
+}

@@ -4,7 +4,8 @@ style: "auto"
 mouse: false
 # use pager to display markdown
 pager: false
-# word-wrap at width
-width: 80
+# word-wrap at width; 0 = the terminal width, capped at 120 by glow (80 when stdout is not a terminal).
+# Not the same as `-w 0` on the command line, which turns wrapping off.
+width: 0
 # show all files, including hidden and ignored.
 all: false

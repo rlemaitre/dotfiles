@@ -66,6 +66,12 @@ folder, so each Mac has its own copy and nothing is synced.
 - Read the hot cache there when a request mentions tasks, people, projects or internal terms you do not know.
 - If the folder is missing, create it, then run `/productivity:start` and place its files there.
 
+## Markdown line length
+
+Wrap Markdown prose at 120 columns (`[*.md] max_line_length` in `~/.editorconfig`).
+A closer `.editorconfig` or the repo's own lint config wins. Code blocks and tables may be longer. When editing an
+existing file, keep its line breaks: only wrap the lines you write or change, never rewrap a whole file.
+
 ## Showing Markdown files
 
 When asking me to read a Markdown file (a plan, a spec, a report), open it for me with

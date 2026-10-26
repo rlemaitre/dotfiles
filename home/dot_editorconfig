@@ -1,0 +1,7 @@
+# Global defaults for files under ~ that have no closer .editorconfig with `root = true`.
+# Markdown lines wrap at 120.
+# Read by Neovim (sets textwidth) and IntelliJ. Prettier stops at the git root, and keeps Markdown line breaks
+# anyway (proseWrap "preserve"). The same limit is in ~/.markdownlint-cli2.jsonc and ~/.claude/CLAUDE.md.
+
+[*.md]
+max_line_length = 120

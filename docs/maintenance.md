@@ -198,6 +198,11 @@ that differ (`M` modified, `A` would be added, `D` would be deleted, `R` a scrip
 - Secrets never enter a commit. Before committing a new file, read it.
 - `docs/tools.md` is generated: edit `docs/tool-descriptions.yaml`, not the table.
 - Keep a workaround's removal steps in [upstream watch](upstream-watch.md) and a manual install in [manual installs](manual-installs.md).
+- Markdown wraps at 120 columns, set in four places that must stay equal: `[*.md] max_line_length` in `~/.editorconfig`
+  (Neovim, IntelliJ), MD013 `line_length` in `~/.markdownlint-cli2.jsonc` (passed to the Neovim linter by
+  `lua/plugins/markdown-lint.lua`, since markdownlint-cli2 has no global config), and the "Markdown line length" rule in
+  `~/.claude/CLAUDE.md`. Prettier keeps line breaks (`proseWrap` "preserve"), so it needs no config. glow's `width: 0` is
+  its render width, not a source limit: it follows the terminal, capped at 120 by glow.
 
 ## Publishing and rollback
 
