@@ -31,3 +31,5 @@
 .claude/agents/planner.md
 .claude/agents/tdd-guide.md
 .claude/agents/code-reviewer.md
+# Replaced by md-show.sh (the Markdown Preview app instead of glow in a Ghostty split).
+.claude/glow-split.sh
