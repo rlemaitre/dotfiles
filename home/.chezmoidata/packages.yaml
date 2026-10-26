@@ -125,6 +125,7 @@ packages:
         - "google-chrome"
         - "gpg-suite-no-mail"
         - "jetbrains-toolbox"
+        - "markdown-preview"
         - "mos"
         - "obsidian"
         - "qlmarkdown"

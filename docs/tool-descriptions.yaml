@@ -131,6 +131,7 @@ casks:
   logi-options+: Logitech device software (needs a reboot)
   loopback: Virtual audio devices
   macwhisper: Speech to text
+  markdown-preview: Markdown viewer app; command line mdp opens a file in it
   mos: Smooth scrolling and per-device scroll direction for mice
   mutedeck: Mute, video and leave controls for meetings
   native-access: Native Instruments product manager

@@ -11,7 +11,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 | [mise tools](#mise-tools) | 65 |
 | [Homebrew taps](#homebrew-taps) | 1 |
 | [Homebrew formulae](#homebrew-formulae) | 23 |
-| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 54 |
+| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 55 |
 | [App Store apps (mas)](#app-store-apps-mas) | 23 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
 | [Agent skills for Claude Code](#agent-skills-for-claude-code) | 1 |
@@ -161,6 +161,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `logi-options+` | Logitech device software (needs a reboot) | athena |
 | `loopback` | Virtual audio devices | athena |
 | `macwhisper` | Speech to text | athena |
+| `markdown-preview` | Markdown viewer app; command line mdp opens a file in it | both Macs |
 | `mos` | Smooth scrolling and per-device scroll direction for mice | both Macs |
 | `mutedeck` | Mute, video and leave controls for meetings | athena |
 | `native-access` | Native Instruments product manager | athena |
