@@ -86,7 +86,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `tree-sitter@0.27.1` | Parser generator CLI that nvim-treesitter needs | both Macs |
 | `uv@0.13.5` | Fast Python package and project manager | both Macs |
 | `vivid@0.11.1` | Generates LS_COLORS from the Catppuccin theme | both Macs |
-| `worktrunk@0.80.0` | Git worktree manager (wt) | both Macs |
+| `worktrunk@0.81.0` | Git worktree manager (wt) | both Macs |
 | `yarn@4.18.1` | Node package manager | both Macs |
 | `yq@4.54.1` | YAML, JSON and TOML processor | both Macs |
 | `zoxide@0.10.0` | Smarter cd that jumps to frequently used directories | both Macs |

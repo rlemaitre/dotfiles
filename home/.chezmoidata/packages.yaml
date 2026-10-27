@@ -57,7 +57,7 @@ packages:
       - "tree-sitter@0.27.1"
       - "uv@0.13.5"
       - "vivid@0.11.1"
-      - "worktrunk@0.80.0"
+      - "worktrunk@0.81.0"
       - "yarn@4.18.1"
       - "yq@4.54.1"
       - "zoxide@0.10.0"
