@@ -23,6 +23,7 @@ mise:
   gh: GitHub command-line client
   github:docker/buildx: Docker buildx plugin, linked into ~/.docker/cli-plugins
   github:docker/compose: Docker Compose plugin, linked into ~/.docker/cli-plugins
+  github:ivankovic/omnidiff: Content-aware diff viewer (code, pictures, fonts, archives, PDFs)
   glow: Markdown renderer for the terminal
   go: Go toolchain
   go:golang.org/x/tools/gopls: Go language server (Neovim, Claude Code)

@@ -22,6 +22,7 @@ packages:
       - "gh@2.103.2"
       - "github:docker/buildx@0.38.1"
       - "github:docker/compose@5.6.1"
+      - "github:ivankovic/omnidiff@0.3.0"
       - "glow@3.0.0"
       - "go@1.27.3"
       - "go:golang.org/x/tools/gopls@0.24.0"
