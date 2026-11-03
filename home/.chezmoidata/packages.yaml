@@ -198,14 +198,14 @@ packages:
     # `gh extension install <repo> --pin <tag>`, once `gh auth login` has been done
     common:
       - {repo: dlvhdr/gh-dash, pin: v4.26.2}
-      - {repo: github/gh-stack, pin: v0.2.1}
+      - {repo: github/gh-stack, pin: v0.3.0}
     athena: []
     nabla-mac-raphael: []
   gh_skills:
     # Agent skills for Claude Code, user scope: `gh skill install <repo> <skill> --agent claude-code --scope user --pin <tag>`.
     # Installed to ~/.claude/skills/<skill> after `gh auth login`. Read a skill before adding it: it is instructions an agent follows.
     common:
-      - {repo: github/gh-stack, skill: gh-stack, pin: v0.2.1}
+      - {repo: github/gh-stack, skill: gh-stack, pin: v0.3.0}
     athena: []
     nabla-mac-raphael: []
   # TODO remove when `brew install jetbrains/utils/kotlin-lsp` works again: `mise run upstream-check` and docs/upstream-watch.md.
