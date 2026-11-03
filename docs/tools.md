@@ -8,7 +8,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 
 | Section | Entries |
 |---|---|
-| [mise tools](#mise-tools) | 65 |
+| [mise tools](#mise-tools) | 66 |
 | [Homebrew taps](#homebrew-taps) | 1 |
 | [Homebrew formulae](#homebrew-formulae) | 23 |
 | [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 55 |
@@ -43,6 +43,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `gh@2.103.2` | GitHub command-line client | both Macs |
 | `github:docker/buildx@0.38.1` | Docker buildx plugin, linked into ~/.docker/cli-plugins | both Macs |
 | `github:docker/compose@5.6.1` | Docker Compose plugin, linked into ~/.docker/cli-plugins | both Macs |
+| `github:ivankovic/omnidiff@0.3.0` | Content-aware diff viewer (code, pictures, fonts, archives, PDFs) | both Macs |
 | `glow@3.0.0` | Markdown renderer for the terminal | both Macs |
 | `go:golang.org/x/tools/gopls@0.24.0` | Go language server (Neovim, Claude Code) | both Macs |
 | `go@1.27.3` | Go toolchain | both Macs |
