@@ -34,6 +34,12 @@ eval "$(/opt/homebrew/bin/mise activate zsh)"
 # Light/dark theme variables (Catppuccin); must come before the plugins and the prompt
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/theme.zsh"
 
+# smartcache caches the output of `eval "$(tool init zsh)"` lines and refreshes it in the background. Only for
+# stable output: not mise (it embeds a PATH snapshot) nor oh-my-posh (new session id each call).
+# Pinned to a reviewed commit: to update, read the diff, then change the sha.
+zinit ice ver"54aba13a6824e212992fd754c598c9e9acd259a3"
+zinit light QuarticCat/zsh-smartcache
+
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
@@ -48,7 +54,9 @@ zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
-zinit load atuinsh/atuin
+smartcache eval atuin init zsh
+# smartcache sources under `emulate -LR`, which reverts the setopt atuin's init makes
+setopt interactive_comments
 
 zinit cdreplay -q
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
@@ -82,14 +90,14 @@ zstyle ':fzf-tab:complete:*:*' fzf-preview 'bat --color=always --style=numbers -
 #zstyle ':fzf-tab:complete:eza:*' fzf-preview 'pistol $realpath'
 # Shell integrations
 # eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+smartcache eval zoxide init --cmd cd zsh
 
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/aliases.zsh"
 source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/env.zsh"
 
 export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
 
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+if command -v wt >/dev/null 2>&1; then smartcache eval wt config shell init zsh; fi
 
 # zsh-syntax-highlighting wraps ZLE widgets, so it must load last: after compinit and after every
 # plugin that defines widgets (autosuggestions, fzf-tab, atuin). Its Catppuccin styles are set
