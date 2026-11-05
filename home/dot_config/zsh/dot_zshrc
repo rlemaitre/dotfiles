@@ -3,12 +3,6 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-# Activate mise early: later lines (oh-my-posh, zoxide, atuin) need its tools on PATH
-eval "$(/opt/homebrew/bin/mise activate zsh)"
-
-# Light/dark theme variables (Catppuccin); must come before the plugins and the prompt
-source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/theme.zsh"
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local}/share/zinit/zinit.git"
 
@@ -27,6 +21,19 @@ zinit light zsh-users/zsh-completions
 # merges bot-generated updates daily: to update, read the _claude diff, then change the sha.
 zinit ice ver"d7db2af913d7e82c8708b11fd739f9da6c5de8ec"
 zinit light wbingli/zsh-claudecode-completion
+
+# Load completions (generated for the mise tools by chezmoi, see the completions script).
+# compinit runs before mise activate: mise's first hook-env runs its own compinit when compdef is undefined,
+# which made startup run compinit twice.
+fpath=("${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions" $fpath)
+autoload -Uz compinit && compinit
+
+# Activate mise before anything that calls its tools (theme.zsh runs vivid; oh-my-posh, zoxide, atuin follow)
+eval "$(/opt/homebrew/bin/mise activate zsh)"
+
+# Light/dark theme variables (Catppuccin); must come before the plugins and the prompt
+source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/theme.zsh"
+
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
@@ -42,9 +49,6 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 zinit load atuinsh/atuin
-# Load completions (generated for the mise tools by chezmoi, see the completions script)
-fpath=("${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions" $fpath)
-autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
