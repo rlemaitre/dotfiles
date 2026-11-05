@@ -30,6 +30,8 @@ alias ls="eza --git --git-repos --color=always --color-scale=all --color-scale-m
 alias ll="ls --long"
 alias l="ll --no-user --no-permissions --octal-permissions --time-style=relative"
 alias cat="bat"
+# Move to the macOS Trash (recoverable) instead of deleting; rm stays the real rm
+alias del="trash"
 alias grep="rg"
 alias diff="delta"
 alias top="gotop"
