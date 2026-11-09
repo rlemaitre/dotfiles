@@ -84,6 +84,7 @@ formulae:
   gnupg: GPG; the agent also serves SSH keys
   jdtls: Eclipse Java language server (Claude Code)
   libfido2: FIDO2 library and tools for security keys
+  librsvg: SVG renderer, provides rsvg-convert (used by the kitty-image Claude Code mod)
   mas: Mac App Store command line, installs the App Store apps
   mint: Swift command-line tool package manager
   mise: Tool manager; installed by brew because mise cannot install itself

@@ -86,6 +86,7 @@ packages:
         - "coreutils"
         - "gnupg"
         - "jdtls"
+        - "librsvg"
         - "mas"
         - "mise"
         - "pinentry-mac"

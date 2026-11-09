@@ -10,7 +10,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 |---|---|
 | [mise tools](#mise-tools) | 66 |
 | [Homebrew taps](#homebrew-taps) | 1 |
-| [Homebrew formulae](#homebrew-formulae) | 23 |
+| [Homebrew formulae](#homebrew-formulae) | 24 |
 | [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 55 |
 | [App Store apps (mas)](#app-store-apps-mas) | 23 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
@@ -111,6 +111,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `gnupg` | GPG; the agent also serves SSH keys | both Macs |
 | `jdtls` | Eclipse Java language server (Claude Code) | both Macs |
 | `libfido2` | FIDO2 library and tools for security keys | nabla-mac-raphael |
+| `librsvg` | SVG renderer, provides rsvg-convert (used by the kitty-image Claude Code mod) | both Macs |
 | `mas` | Mac App Store command line, installs the App Store apps | both Macs |
 | `mint` | Swift command-line tool package manager | nabla-mac-raphael |
 | `mise` | Tool manager; installed by brew because mise cannot install itself | both Macs |
