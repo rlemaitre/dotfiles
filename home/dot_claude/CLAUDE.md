@@ -66,6 +66,16 @@ folder, so each Mac has its own copy and nothing is synced.
 - Read the hot cache there when a request mentions tasks, people, projects or internal terms you do not know.
 - If the folder is missing, create it, then run `/productivity:start` and place its files there.
 
+## Inline images
+
+In a kitty-graphics terminal, the kitty-image plugin's `show_image` tool draws images inline.
+
+- When a chart, diagram, flow, layout or sketch explains better than text, draw it with `show_image`, not ASCII art.
+- Hand-written `svg` for sketches and diagrams: explicit viewBox, a background color, readable font sizes. Render
+  graphs and plots to a file (graphviz `dot -Tpng`, gnuplot) and pass its `path`.
+- Keep the key facts in the text: the image supports the answer, it does not replace it.
+- If `show_image` says the terminal cannot draw images, stop using it for the rest of the session.
+
 ## Markdown line length
 
 Wrap Markdown prose at 120 columns (`[*.md] max_line_length` in `~/.editorconfig`).
