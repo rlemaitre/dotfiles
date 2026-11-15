@@ -5,7 +5,6 @@ Covers every mise entry (`name@version`), the pinned gh extensions and the pinne
 A line is the major version (`pnpm@10.8.1` follows 10.x.y), or major.minor for 0.x versions (semver allows a
 breaking change in any 0.x minor) and for the tools in TWO_PART_LINES (`python@3.12.12` follows 3.12.x).
 A newer release in the same line is applied; a newer line is only listed.
-The kotlin_lsp block is not touched: it is a stopgap with its own checksum (docs/upstream-watch.md).
 
   scripts/bump-pins.py                 edit the file, regenerate docs/tools.md, print one line per change
   scripts/bump-pins.py --dry-run       only print

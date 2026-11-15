@@ -73,7 +73,6 @@ def main():
             collect(pk["quicklook_extensions"], key=lambda x: x["id"]),
             lambda x: x,
         ),
-        ("Installed by a script", "scripts", {"kotlin-lsp": ["common"]}, lambda x: x),
     ]
 
     problems = []

@@ -84,9 +84,6 @@ if gh auth status >/dev/null 2>&1; then
   open_prs="$(gh pr list --repo "${GITHUB_REPO}" --state open --json number,title --jq '.[] | "#\(.number) \(.title)"' 2>/dev/null)"
 fi
 
-"${REPO}/scripts/check-upstream.sh" >/dev/null 2>&1
-[[ $? -eq 10 ]] && note "kotlin-lsp: the Homebrew formula works again, see docs/upstream-watch.md"
-
 fence='```'
 body=""
 section() { # section <title> <hint> <body>: counted and added to the report only when the body is not empty
