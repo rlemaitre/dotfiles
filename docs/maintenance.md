@@ -104,8 +104,7 @@ Add the entry to `quicklook_extensions`, `gh_extensions` or `gh_skills` in `pack
 | Neovim tools | `:Mason`, then `U` (updates the language servers and formatters Mason installed) |
 | Colima | edits to the template apply to new instances only: `colima delete` then `colima start` |
 | Catppuccin theme files | see [themes](themes.md#changing-things) |
-| kotlin-lsp | bump `kotlin_lsp` in `packages.yaml` (version, URL, sha256) while the stopgap exists |
-| Upstream workarounds | `mise run upstream-check`; a weekly GitHub Actions job opens an issue when one is fixed |
+| Upstream workarounds | see [upstream watch](upstream-watch.md) for what each one waits on |
 
 ### Automatic pin bumps
 
@@ -117,7 +116,7 @@ bump-pins, Run workflow) and runs `scripts/bump-pins.py`:
   `python` and for 0.x versions, because a 0.x minor may break;
 - a newer line is **only listed** in the pull request ("not applied"): read the changelog, then change the pin by hand;
 - it regenerates `docs/tools.md` and keeps one pull request, `chore/bump-pins`, up to date. No pull request when
-  nothing can be applied. `kotlin_lsp` is not touched, and Homebrew formulae and casks cannot be pinned (`brew upgrade`).
+  nothing can be applied. Homebrew formulae and casks cannot be pinned (`brew upgrade`).
 
 To merge: `gh pr checkout <number> && mise run check`, merge, then `chezmoi update` on each Mac (`chezmoi apply` alone
 does not pull); the mise install script re-runs because the tool list changed. Pull requests opened by Actions do not
@@ -136,8 +135,8 @@ slept then (installed by script 85; the log is `~/Library/Logs/dotfiles/maintain
    that was deleted): list a tool in `packages.yaml` or in the project's `mise.toml` to keep it.
 2. **Report**: `~/Library/Logs/dotfiles/report.md`, with a macOS notification when something needs attention:
    the repo is behind GitHub or has unpushed or uncommitted changes, a bump pull request is open, managed files differ
-   from the repo, packages installed but not in `packages.yaml` (and the reverse), outdated casks, and the kotlin-lsp
-   check from [upstream watch](upstream-watch.md). Each section says what to run.
+   from the repo, packages installed but not in `packages.yaml` (and the reverse), and outdated casks. Each section says
+   what to run.
 
 By hand: `scripts/maintain.sh --report-only` prints the report and changes nothing; `scripts/maintain.sh` also upgrades.
 `launchctl kickstart gui/$(id -u)/com.rlemaitre.maintain` runs the agent now. To stop it: `launchctl bootout
@@ -211,7 +210,7 @@ that differ (`M` modified, `A` would be added, `D` would be deleted, `R` a scrip
 - The history before the rewrite is the branch `backup/pre-rewrite-2026-10-11`.
 - To undo a change: `git revert <commit>` and `chezmoi apply`. A file removed through `.chezmoiremove` is not restored by
   that; take it from git history or a backup.
-- The weekly jobs `upstream-watch.yml` (issues) and `bump-pins.yml` (a pull request) never push to `main`; nothing deploys from CI.
+- The weekly job `bump-pins.yml` (a pull request) never pushes to `main`; nothing deploys from CI.
 
 ## Claude on each Mac
 

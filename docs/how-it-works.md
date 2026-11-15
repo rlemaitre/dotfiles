@@ -34,7 +34,8 @@ Exceptions, each documented where it lives:
 - **Mason** installs Neovim's language servers (the LazyVim default). The servers Claude Code also needs
   (pyright, gopls, lua-language-server) come from mise and Neovim is told to use them.
 - **rust-analyzer** is a rustup component, because the rustup shim in `~/.cargo/bin` shadows a mise copy.
-- **kotlin-lsp** is installed by a script while the Homebrew formula is broken ([upstream watch](upstream-watch.md)).
+- **kotlin-lsp** is a Homebrew formula from the `jetbrains/utils` tap. Its EAP builds expire, so `brew upgrade` keeps it
+  working.
 - Apps no channel can install: [manual installs](manual-installs.md).
 
 ## The chezmoi source
@@ -97,7 +98,6 @@ Templates also see `.machine`. In the data files each section has three keys: `c
 | `brew.taps`, `brew.formulae`, `brew.casks` | Homebrew; listed taps are tapped and trusted before the bundle |
 | `mas` | App Store apps as `id: name` |
 | `gh_extensions`, `gh_skills` | GitHub CLI extensions (`repo`, `pin`); Claude Code skills (`repo`, `skill`, `pin`) |
-| `kotlin_lsp` | version, URL and checksum of the stopgap install |
 | `rustup_components` | rustup components |
 | `quicklook_extensions` | extension id, bundle path, `use` or `ignore` |
 
@@ -122,7 +122,6 @@ numeric order. `onchange` scripts run only when their rendered text changed, so 
 | `25_gpg-reload` | on change | restarts gpg-agent after its config changes |
 | `30_mas` | on change | installs the missing App Store apps |
 | `35_docker-plugins` | always | links the compose and buildx binaries into `~/.docker/cli-plugins` |
-| `45_kotlin-lsp` | on change | downloads and checks JetBrains' server archive (stopgap) |
 | `46_bat-cache` | on change | `bat cache --build` for the Catppuccin themes |
 | `47_zsh-completions` | on change | generates completion files for mise tools |
 | `50_gh-extensions` | always | installs the `gh` extensions at their pinned tag (reinstalls when it changes) and the skills, once `gh` is logged in |

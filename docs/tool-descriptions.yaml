@@ -73,6 +73,7 @@ mise:
   zoxide: Smarter cd that jumps to frequently used directories
 
 taps:
+  jetbrains/utils: JetBrains tap that provides the kotlin-lsp formula
   theboredteam/boring-notch: Tap that provides the boring-notch cask
 
 formulae:
@@ -84,6 +85,7 @@ formulae:
   ffmpeg: Audio and video converter and player (ffplay, used by rawplay; VHS needs it for terminal recordings)
   gnupg: GPG; the agent also serves SSH keys
   jdtls: Eclipse Java language server (Claude Code)
+  jetbrains/utils/kotlin-lsp: Kotlin language server (Claude Code); EAP builds expire, so keep it upgraded
   libfido2: FIDO2 library and tools for security keys
   librsvg: SVG renderer, provides rsvg-convert (used by the kitty-image Claude Code mod)
   mas: Mac App Store command line, installs the App Store apps
@@ -197,6 +199,3 @@ quicklook:
   org.sbarex.QLMarkdown.QLExtension: Rendered Markdown in Quick Look (QLMarkdown)
   org.sbarex.SourceCodeSyntaxHighlight.QuickLookExtension: Source and config files in Quick Look (Syntax Highlight)
   md.obsidian.quicklook: Obsidian's Markdown preview, ignored so QLMarkdown wins
-
-scripts:
-  kotlin-lsp: Kotlin language server (Claude Code), installed from JetBrains' VS Code extension archive while the Homebrew formula is broken (see upstream-watch.md)

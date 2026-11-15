@@ -9,15 +9,14 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 | Section | Entries |
 |---|---|
 | [mise tools](#mise-tools) | 67 |
-| [Homebrew taps](#homebrew-taps) | 1 |
-| [Homebrew formulae](#homebrew-formulae) | 24 |
+| [Homebrew taps](#homebrew-taps) | 2 |
+| [Homebrew formulae](#homebrew-formulae) | 25 |
 | [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 55 |
 | [App Store apps (mas)](#app-store-apps-mas) | 23 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
 | [Agent skills for Claude Code](#agent-skills-for-claude-code) | 1 |
 | [rustup components](#rustup-components) | 1 |
 | [Quick Look extensions](#quick-look-extensions) | 3 |
-| [Installed by a script](#installed-by-a-script) | 1 |
 
 Apps and tools installed by hand are in [manual installs](manual-installs.md).
 
@@ -97,6 +96,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 
 | Tool | What it is | Where |
 |---|---|---|
+| `jetbrains/utils` | JetBrains tap that provides the kotlin-lsp formula | both Macs |
 | `theboredteam/boring-notch` | Tap that provides the boring-notch cask | both Macs |
 
 ## Homebrew formulae
@@ -111,6 +111,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `ffmpeg` | Audio and video converter and player (ffplay, used by rawplay; VHS needs it for terminal recordings) | nabla-mac-raphael |
 | `gnupg` | GPG; the agent also serves SSH keys | both Macs |
 | `jdtls` | Eclipse Java language server (Claude Code) | both Macs |
+| `jetbrains/utils/kotlin-lsp` | Kotlin language server (Claude Code); EAP builds expire, so keep it upgraded | both Macs |
 | `libfido2` | FIDO2 library and tools for security keys | nabla-mac-raphael |
 | `librsvg` | SVG renderer, provides rsvg-convert (used by the kitty-image Claude Code mod) | both Macs |
 | `mas` | Mac App Store command line, installs the App Store apps | both Macs |
@@ -242,9 +243,3 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `md.obsidian.quicklook` | Obsidian's Markdown preview, ignored so QLMarkdown wins | both Macs |
 | `org.sbarex.QLMarkdown.QLExtension` | Rendered Markdown in Quick Look (QLMarkdown) | both Macs |
 | `org.sbarex.SourceCodeSyntaxHighlight.QuickLookExtension` | Source and config files in Quick Look (Syntax Highlight) | both Macs |
-
-## Installed by a script
-
-| Tool | What it is | Where |
-|---|---|---|
-| `kotlin-lsp` | Kotlin language server (Claude Code), installed from JetBrains' VS Code extension archive while the Homebrew formula is broken (see upstream-watch.md) | both Macs |
