@@ -160,7 +160,6 @@ numeric order. `onchange` scripts run only when their rendered text changed, so 
 
 ## Safety nets
 
-- The pre-rewrite content of this repo is on the branch `backup/pre-rewrite-2026-10-11`.
 - Before the cutover on athena, a tarball of the old config was written to `~/Backups/dotfiles-cutover-2026-10-11.tar.gz`
   (restore with `tar -xzf <file> -C ~`; it overwrites real files).
 - `chezmoi diff` shows every change before `chezmoi apply` makes it.
