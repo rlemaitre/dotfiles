@@ -207,7 +207,6 @@ that differ (`M` modified, `A` would be added, `D` would be deleted, `R` a scrip
 
 - `main` is the branch machines install from (`install.sh` clones it over HTTPS; the repo is public, so
   everything in it, including the package lists, is public).
-- The history before the rewrite is the branch `backup/pre-rewrite-2026-10-11`.
 - To undo a change: `git revert <commit>` and `chezmoi apply`. A file removed through `.chezmoiremove` is not restored by
   that; take it from git history or a backup.
 - The weekly job `bump-pins.yml` (a pull request) never pushes to `main`; nothing deploys from CI.
