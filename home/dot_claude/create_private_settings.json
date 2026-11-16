@@ -34,6 +34,16 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ~/.claude/hooks/protect-tasks-md.sh",
+            "timeout": 5
+          }
+        ]
       }
     ]
   },

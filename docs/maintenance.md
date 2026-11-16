@@ -153,6 +153,20 @@ days, sends a Slack DM; a cloud routine does it at 09:40 when the Mac was asleep
 `launchctl kickstart gui/$(id -u)/com.rlemaitre.standup-brief` runs it now. To stop it: `launchctl bootout
 gui/$(id -u)/com.rlemaitre.standup-brief`, and remove the script and plist from the repo.
 
+## Productivity data snapshots
+
+The LaunchAgent `com.rlemaitre.productivity-snapshot` runs `~/.local/bin/productivity-snapshot` when `TASKS.md` or the
+hot cache `CLAUDE.md` changes in `~/Developer/workspace/02_context/productivity`, at load, and every hour (installed by
+script 87). The script commits the folder to a local git repo there (created on the first run), so an overwrite is
+undone with `git log -p TASKS.md` and `git checkout <commit> -- TASKS.md`. The history stays on the Mac. Log:
+`~/Library/Logs/productivity-snapshot.log`.
+
+The Claude hook `protect-tasks-md.sh` (PreToolUse on `Write`) blocks a whole-file `Write` over that `TASKS.md`: a session
+holding an old copy once wrote it back. Edits through `Edit` or Bash still work.
+
+`launchctl kickstart gui/$(id -u)/com.rlemaitre.productivity-snapshot` snapshots now. To stop it: `launchctl bootout
+gui/$(id -u)/com.rlemaitre.productivity-snapshot`, and remove the script, plist and hook from the repo.
+
 ## Drift and conflicts
 
 chezmoi refuses to overwrite a managed file that changed since it last wrote it:
