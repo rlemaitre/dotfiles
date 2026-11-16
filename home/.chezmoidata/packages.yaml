@@ -124,6 +124,8 @@ packages:
         - "elgato-stream-deck"
         - "font-fira-code"
         - "font-fira-code-nerd-font"
+        - "font-geist-mono"
+        - "font-geist-mono-nerd-font"
         - "font-hack-nerd-font"
         - "ghostty"
         - "google-chrome"

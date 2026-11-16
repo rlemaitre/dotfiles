@@ -125,6 +125,8 @@ casks:
   elgato-stream-deck: Stream Deck software
   font-fira-code: Fira Code font
   font-fira-code-nerd-font: Fira Code with Nerd Font icons
+  font-geist-mono: Geist Mono font (Vercel)
+  font-geist-mono-nerd-font: Geist Mono with Nerd Font icons
   font-hack-nerd-font: Hack with Nerd Font icons
   freedom: App and website blocker
   ghostty: Terminal emulator
