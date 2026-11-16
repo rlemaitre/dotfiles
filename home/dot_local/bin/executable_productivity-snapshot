@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# Commits the productivity plugin data (TASKS.md, the hot cache CLAUDE.md, memory/) to a local git repo, so an
+# overwrite can be undone with git log / git diff / git checkout. Run by the com.rlemaitre.productivity-snapshot
+# LaunchAgent when TASKS.md or CLAUDE.md changes, and every hour. Local only: the history never leaves this Mac.
+set -euo pipefail
+
+readonly DIR="${HOME}/Developer/workspace/02_context/productivity"
+
+[[ -d "${DIR}" ]] || exit 0
+cd "${DIR}"
+
+if [[ ! -d .git ]]; then
+  git init -q
+  printf '.DS_Store\n' >.gitignore
+fi
+
+git add -A
+git diff --cached --quiet && exit 0
+# No signing and no hooks: this runs unattended from launchd
+git -c commit.gpgsign=false commit -q --no-verify -m "snapshot: $(date '+%F %T')"
