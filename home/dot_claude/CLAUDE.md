@@ -9,6 +9,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 3. Touch only what you must. Clean up only your own mess
 4. Define success criteria. Loop until verified
 
+## Simplicity
+
+Simplicity comes first in all the code you write and in every review, whatever the skill or plan you follow.
+
+- Write the simplest code a teammate can read in one sitting: no class, type, parameter, default or abstraction
+  that no caller needs, no generality for later, plain local state over indirection.
+- In a review, unneeded complexity is a real finding, not polish: name the simpler form that does the same job.
+- When you hand code or a review to a subagent, put this rule in its brief.
+
 ## Language Standards
 
 - **All English**: Code, comments, documentation, commits, configs, errors, tests
@@ -25,6 +34,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - PR descriptions must cover the entire branch diff, not just the latest commit
 - Never force-push; let the user push manually when force-push is needed
 - Assign PRs to me (`gh pr create --assignee @me`) in my personal repositories (owner `rlemaitre`), in repositories of my `FunktionalIO` organization and in `nabla/health`
+- After creating a PR, always output its size (files, lines added and deleted, from `git diff --numstat`):
+  - the whole PR against its base: total, then production, tests and documentation
+  - each commit, oldest first: total, production, tests and documentation
+
+  Tests are files under test directories or named as tests (`src/test/`, `*Test.kt`, `*.test.ts`, `test_*.py`).
+  Documentation is `*.md` and `docs/`. Production is everything else.
 
 ## Code Review Scope
 
