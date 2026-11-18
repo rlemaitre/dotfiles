@@ -121,6 +121,7 @@ packages:
         - "claude-code"
         - "elgato-camera-hub"
         - "elgato-stream-deck"
+        - "font-atkinson-hyperlegible-next"
         - "font-fira-code"
         - "font-fira-code-nerd-font"
         - "font-geist-mono"

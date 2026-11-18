@@ -102,3 +102,8 @@ existing file, keep its line breaks: only wrap the lines you write or change, ne
 When asking me to read a Markdown file (a plan, a spec, a report), open it for me with
 `~/.claude/md-show.sh <file.md>`: it opens the file in the Markdown Preview app without taking focus from the terminal.
 Then give the path in the reply as usual.
+
+## HTML pages
+
+In HTML plans and pages written for me, use `"Atkinson Hyperlegible Next"` for text and `"Geist Mono"` for code
+(both installed locally). Show them with `terminal-browser open <file.html> --split right`.
