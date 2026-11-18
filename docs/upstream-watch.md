@@ -37,3 +37,17 @@ skips the postinstall that downloads chrome-headless-shell.
 
 **When mermaid-cli is bumped:** a new puppeteer pulls a new chromium-bidi, which is checked again. If mise refuses it,
 review that version the same way and replace the entry; if it installs, delete the entry and this section.
+
+## terminal-browser: agent-browser socket path too long
+
+**Problem.** `terminal-browser action` puts agent-browser sockets in
+`$XDG_RUNTIME_DIR/terminal-browser-<id>/agent-browser`. With our `XDG_RUNTIME_DIR` (`~/Library/Caches/TemporaryItems`) the socket path is 114 bytes, over the 103-byte macOS
+limit. agent-browser reports it, but terminal-browser only prints "could not connect agent-browser to terminal browser".
+Not reported upstream yet ([zenbu-labs/terminal-browser](https://github.com/zenbu-labs/terminal-browser)).
+
+**Workaround in place.** `home/dot_config/zsh/aliases.zsh` wraps `terminal-browser` with `env -u XDG_RUNTIME_DIR`,
+so it falls back to `~/.local/state`.
+
+**How to check.** `command terminal-browser action -- snapshot` works with a browser open.
+
+**When it is fixed, switch back:** delete the `terminal-browser` function and this section.

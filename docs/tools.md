@@ -146,7 +146,6 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `calibre` | E-book manager | athena |
 | `claude` | Claude desktop app | both Macs |
 | `claude-code` | Claude Code command line | both Macs |
-| `cmux` | Ghostty-based terminal with tabs and notifications for AI agents | both Macs |
 | `discord` | Voice and text chat | athena |
 | `displaylink` | Drivers for DisplayLink docks (needs a reboot) | athena |
 | `elgato-camera-hub` | Elgato camera configuration | both Macs |
@@ -184,6 +183,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `signal` | Messenger | both Macs |
 | `steam` | Game launcher | athena |
 | `syntax-highlight` | Quick Look previews of source and config files | both Macs |
+| `terminal-browser` | Chromium browser inside the terminal (kitty graphics), drivable by agents | both Macs |
 | `the-unarchiver` | Archive extractor | both Macs |
 | `vivaldi` | Web browser | athena |
 | `vocaster-hub` | Focusrite Vocaster interface control | athena |

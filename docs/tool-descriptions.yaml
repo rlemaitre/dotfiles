@@ -117,7 +117,6 @@ casks:
   calibre: E-book manager
   claude: Claude desktop app
   claude-code: Claude Code command line
-  cmux: Ghostty-based terminal with tabs and notifications for AI agents
   discord: Voice and text chat
   displaylink: Drivers for DisplayLink docks (needs a reboot)
   elgato-camera-hub: Elgato camera configuration
@@ -155,6 +154,7 @@ casks:
   signal: Messenger
   steam: Game launcher
   syntax-highlight: Quick Look previews of source and config files
+  terminal-browser: Chromium browser inside the terminal (kitty graphics), drivable by agents
   the-unarchiver: Archive extractor
   vivaldi: Web browser
   vocaster-hub: Focusrite Vocaster interface control

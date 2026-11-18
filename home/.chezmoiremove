@@ -33,3 +33,5 @@
 .claude/agents/code-reviewer.md
 # Replaced by md-show.sh (the Markdown Preview app instead of glow in a Ghostty split).
 .claude/glow-split.sh
+# cmux removed: Ghostty plus terminal-browser replace it.
+.config/cmux

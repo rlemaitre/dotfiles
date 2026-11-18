@@ -3,7 +3,8 @@
   "env": {
     "ENABLE_LSP_TOOL": "1",
     "SECURITY_REVIEW_MODEL": "claude-sonnet-5-5",
-    "SG_AGENTIC_MODEL": "claude-sonnet-5-5"
+    "SG_AGENTIC_MODEL": "claude-sonnet-5-5",
+    "CLAUDE_CODE_ENABLE_FUNCTION_HOOKS": "1"
   },
   "permissions": {
     "deny": [
@@ -65,7 +66,8 @@
     "taste-skill@taste-skill": true,
     "playwright@claude-plugins-official": true,
     "slidev@slidev-dev-marketplace": true,
-    "kitty-image@rlemaitre": true
+    "kitty-image@rlemaitre": true,
+    "terminal-browser@terminal-browser": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -108,6 +110,12 @@
       "source": {
         "source": "github",
         "repo": "rhuss/cc-slidev"
+      }
+    },
+    "terminal-browser": {
+      "source": {
+        "source": "github",
+        "repo": "zenbu-labs/terminal-browser"
       }
     }
   },
