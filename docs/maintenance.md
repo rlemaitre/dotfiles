@@ -257,3 +257,7 @@ turned off in IntelliJ (Settings | Tools | MCP Server | Exposed Tools). It runs 
 IntelliJ (brave mode stays off). The PreToolUse hook `~/.claude/hooks/intellij-run-reminder.sh`, on
 `mcp__jetbrains__execute_run_configuration`, shows a macOS notification with a sound so the dialog is not missed. It is in
 the settings seed too, and script 90 adds it to an existing `settings.json`.
+`~/.claude/hooks/idea-guard.sh` keeps IntelliJ's own `.idea/` changes out of Claude's commits. On UserPromptSubmit,
+PostToolUse (Edit, Write, NotebookEdit) and PreToolUse (Bash), it blocks a `git commit` that would include an `.idea` file
+Claude did not edit in the session. A prompt that mentions `.idea` lifts the block for that session. Session state is
+kept in `~/.cache/claude-idea-guard/`. It is in the seed, and script 90 adds it to an existing `settings.json`.

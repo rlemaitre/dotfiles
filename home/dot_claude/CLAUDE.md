@@ -41,6 +41,12 @@ Simplicity comes first in all the code you write and in every review, whatever t
   Tests are files under test directories or named as tests (`src/test/`, `*Test.kt`, `*.test.ts`, `test_*.py`).
   Documentation is `*.md` and `docs/`. Production is everything else.
 
+## IntelliJ files
+
+IntelliJ rewrites tracked `.idea/` files on its own. Stage files by path, never with `git add -A`, `git add .` or
+`git commit -a`. Never stage, revert or stash `.idea/` changes you did not make in this session, unless I ask for it.
+The `idea-guard.sh` hook blocks such a commit; a prompt of mine that mentions `.idea` lifts the block for the session.
+
 ## Code Review Scope
 
 When reviewing a branch, review the FULL diff against the base branch (not just
