@@ -10,7 +10,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 |---|---|
 | [mise tools](#mise-tools) | 68 |
 | [Homebrew taps](#homebrew-taps) | 2 |
-| [Homebrew formulae](#homebrew-formulae) | 25 |
+| [Homebrew formulae](#homebrew-formulae) | 26 |
 | [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 60 |
 | [App Store apps (mas)](#app-store-apps-mas) | 23 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
@@ -122,7 +122,8 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `openconnect` | VPN client for Cisco AnyConnect and compatible servers | nabla-mac-raphael |
 | `pinentry-mac` | macOS passphrase prompt for GPG | both Macs |
 | `pkgconf` | Build helper for C libraries; no use seen, kept for review | athena |
-| `postgresql@18` | PostgreSQL 18 server and psql | both Macs |
+| `postgresql@15` | PostgreSQL 15 server and psql, the version the nabla/health server and tests use | nabla-mac-raphael |
+| `postgresql@18` | PostgreSQL 18 server and psql | athena |
 | `redis` | Redis server and redis-cli | nabla-mac-raphael |
 | `texinfo` | GNU info documentation tools; no use seen, kept for review | athena |
 | `ttyd` | Shares a terminal over the web; VHS needs it to record terminal demos (mise has no macOS build) | nabla-mac-raphael |

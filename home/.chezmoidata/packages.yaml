@@ -93,12 +93,12 @@ packages:
         - "mas"
         - "mise"
         - "pinentry-mac"
-        - "postgresql@18"
         - "usage"
       # athena: unused or undecided, review
       athena:
         - "nnn"
         - "pkgconf"
+        - "postgresql@18"
         - "texinfo"
       nabla-mac-raphael:
         - "cocoapods"
@@ -107,6 +107,7 @@ packages:
         - "libfido2"
         - "mint"
         - "openconnect"
+        - "postgresql@15"
         - "redis"
         - "ttyd"
         - "unbound"

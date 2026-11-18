@@ -96,6 +96,7 @@ formulae:
   openconnect: VPN client for Cisco AnyConnect and compatible servers
   pinentry-mac: macOS passphrase prompt for GPG
   pkgconf: Build helper for C libraries; no use seen, kept for review
+  postgresql@15: PostgreSQL 15 server and psql, the version the nabla/health server and tests use
   postgresql@18: PostgreSQL 18 server and psql
   redis: Redis server and redis-cli
   texinfo: GNU info documentation tools; no use seen, kept for review
