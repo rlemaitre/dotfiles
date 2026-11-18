@@ -1,4 +1,14 @@
+# ------- Colors -------
 theme = light:Catppuccin Latte,dark:Catppuccin Mocha
+# Safety net: Ghostty adjusts any program output color with contrast below 4.5:1
+minimum-contrast = 4.5
+
+# ---- Font ----
+font-family = GeistMono Nerd Font Mono
+font-size = 14
+# 15% extra line height for easier reading over long sessions
+adjust-cell-height = 15%
+
 copy-on-select = clipboard
 macos-titlebar-style = native
 window-theme = system
