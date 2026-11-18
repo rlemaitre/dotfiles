@@ -97,19 +97,14 @@ Wrap Markdown prose at 120 columns (`[*.md] max_line_length` in `~/.editorconfig
 A closer `.editorconfig` or the repo's own lint config wins. Code blocks and tables may be longer. When editing an
 existing file, keep its line breaks: only wrap the lines you write or change, never rewrap a whole file.
 
-## Showing Markdown files
+## Documents
 
-When asking me to read a Markdown file (a spec, a report), open it for me with
-`~/.claude/md-show.sh <file.md>`: it opens the file in the Markdown Preview app without taking focus from the terminal.
-Then give the path in the reply as usual.
-
-## HTML pages
-
-Write plans as HTML pages and show them with `terminal-browser open <file.html> --split right`.
-
-- Fonts (installed locally): `"Archivo"` 700 for titles, `"Atkinson Hyperlegible Next"` for text, `"Geist Mono"` for
-  code.
-- Design for easy reading: one column of about 66ch, 18px text with 1.7 line height, sentence-case headings, generous
-  spacing, one accent color, light and dark themes from `prefers-color-scheme`.
-- Include diagrams when they explain better than text: hand-written inline SVG (flows, architecture, before and
-  after), with a caption, colors from the page's CSS variables.
+- Write documents in Markdown, or in the format of the tool they live in (PR, Linear, Notion). Markdown is the
+  source of truth: I can edit it, git diffs it, and agents read it cheaply.
+- To show me one (a plan, a spec, a report), run `~/.claude/md-show.sh <file.md>`: it renders the file to a
+  readable HTML page and opens it in a terminal-browser split. Then give the path in the reply as usual.
+- Include diagrams when they explain better than text: Mermaid code blocks (flows, sequences, states) or inline SVG.
+  The page is a 66ch column: prefer top-down flows (`flowchart TD`) or at most 4 nodes per row.
+- Write raw HTML only for a one-off page that needs custom layout or interaction. Then use the same look as
+  `~/.claude/md-show/template.html`: fonts `"Archivo"` for titles, `"Atkinson Hyperlegible Next"` for text,
+  `"Geist Mono"` for code; one column of about 66ch; 18px text; one accent color; light and dark themes.

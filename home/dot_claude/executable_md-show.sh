@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Show a Markdown file in the Markdown Preview app (its `mdp` command), without taking focus from the terminal.
+# Show a Markdown file as a readable HTML page in a terminal-browser split, next to the terminal.
 # Usage: md-show.sh <file.md>
 set -euo pipefail
 
@@ -8,5 +8,25 @@ if [[ $# -ne 1 || ! -f "$1" ]]; then
   exit 2
 fi
 
-# mdp wraps `open -a "Markdown Preview"`: -g opens the file in the background.
-mdp -g "$1"
+src="$(cd "$(dirname "$1")" && pwd)/$(basename "$1")"
+out_dir="${XDG_CACHE_HOME:-$HOME/.cache}/md-show"
+mkdir -p "$out_dir"
+# One page per source path, so showing the same file again overwrites it.
+out="$out_dir/$(basename "${src%.*}")-$(printf '%s' "$src" | shasum | cut -c1-8).html"
+
+# base keeps relative links and images pointing next to the source file.
+pandoc "$src" --from gfm --to html5 --standalone \
+  --template "$HOME/.claude/md-show/template.html" \
+  --lua-filter "$HOME/.claude/md-show/mermaid.lua" \
+  --metadata pagetitle="$(basename "$src")" \
+  --variable base="file://$(dirname "$src" | sed 's/%/%25/g; s/"/%22/g; s/</%3C/g; s/>/%3E/g')/" \
+  --output "$out"
+
+# Without XDG_RUNTIME_DIR: ours makes terminal-browser's agent socket paths too long (docs/upstream-watch.md).
+tb() { env -u XDG_RUNTIME_DIR terminal-browser "$@"; }
+
+if tb ls 2>/dev/null | grep -q '(this tab)'; then
+  tb new-tab "$out"
+else
+  tb open "$out" --split right
+fi
