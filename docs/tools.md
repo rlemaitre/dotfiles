@@ -11,7 +11,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 | [mise tools](#mise-tools) | 67 |
 | [Homebrew taps](#homebrew-taps) | 2 |
 | [Homebrew formulae](#homebrew-formulae) | 25 |
-| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 58 |
+| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 60 |
 | [App Store apps (mas)](#app-store-apps-mas) | 23 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
 | [Agent skills for Claude Code](#agent-skills-for-claude-code) | 1 |
@@ -151,12 +151,14 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `elgato-camera-hub` | Elgato camera configuration | both Macs |
 | `elgato-capture-device-utility` | Elgato capture card configuration | athena |
 | `elgato-stream-deck` | Stream Deck software | both Macs |
+| `font-archivo` | Archivo font, for headings in HTML plans | both Macs |
 | `font-atkinson-hyperlegible-next` | Atkinson Hyperlegible Next font (Braille Institute), for readable text | both Macs |
 | `font-fira-code` | Fira Code font | both Macs |
 | `font-fira-code-nerd-font` | Fira Code with Nerd Font icons | both Macs |
 | `font-geist-mono` | Geist Mono font (Vercel) | both Macs |
 | `font-geist-mono-nerd-font` | Geist Mono with Nerd Font icons | both Macs |
 | `font-hack-nerd-font` | Hack with Nerd Font icons | both Macs |
+| `font-jetbrains-mono` | JetBrains Mono font | both Macs |
 | `freedom` | App and website blocker | athena |
 | `ghostty` | Terminal emulator | both Macs |
 | `google-chrome` | Web browser | both Macs |

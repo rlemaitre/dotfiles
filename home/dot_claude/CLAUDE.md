@@ -99,11 +99,17 @@ existing file, keep its line breaks: only wrap the lines you write or change, ne
 
 ## Showing Markdown files
 
-When asking me to read a Markdown file (a plan, a spec, a report), open it for me with
+When asking me to read a Markdown file (a spec, a report), open it for me with
 `~/.claude/md-show.sh <file.md>`: it opens the file in the Markdown Preview app without taking focus from the terminal.
 Then give the path in the reply as usual.
 
 ## HTML pages
 
-In HTML plans and pages written for me, use `"Atkinson Hyperlegible Next"` for text and `"Geist Mono"` for code
-(both installed locally). Show them with `terminal-browser open <file.html> --split right`.
+Write plans as HTML pages and show them with `terminal-browser open <file.html> --split right`.
+
+- Fonts (installed locally): `"Archivo"` 700 for titles, `"Atkinson Hyperlegible Next"` for text, `"Geist Mono"` for
+  code.
+- Design for easy reading: one column of about 66ch, 18px text with 1.7 line height, sentence-case headings, generous
+  spacing, one accent color, light and dark themes from `prefers-color-scheme`.
+- Include diagrams when they explain better than text: hand-written inline SVG (flows, architecture, before and
+  after), with a caption, colors from the page's CSS variables.

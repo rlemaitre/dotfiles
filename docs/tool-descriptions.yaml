@@ -122,12 +122,14 @@ casks:
   elgato-camera-hub: Elgato camera configuration
   elgato-capture-device-utility: Elgato capture card configuration
   elgato-stream-deck: Stream Deck software
+  font-archivo: Archivo font, for headings in HTML plans
   font-atkinson-hyperlegible-next: Atkinson Hyperlegible Next font (Braille Institute), for readable text
   font-fira-code: Fira Code font
   font-fira-code-nerd-font: Fira Code with Nerd Font icons
   font-geist-mono: Geist Mono font (Vercel)
   font-geist-mono-nerd-font: Geist Mono with Nerd Font icons
   font-hack-nerd-font: Hack with Nerd Font icons
+  font-jetbrains-mono: JetBrains Mono font
   freedom: App and website blocker
   ghostty: Terminal emulator
   google-chrome: Web browser
