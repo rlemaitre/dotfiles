@@ -36,5 +36,7 @@
 # Moved to the md-show plugin (rlemaitre/claude-plugins), which puts md-show on Claude's PATH.
 .claude/md-show.sh
 .claude/md-show
+# Replaced by i-have-adhd's own always-on hook (flag file ~/.claude/.i-have-adhd-always).
+.claude/hooks/i-have-adhd.sh
 # cmux removed: Ghostty plus terminal-browser replace it.
 .config/cmux

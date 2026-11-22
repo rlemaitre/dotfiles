@@ -20,17 +20,6 @@
   },
   "model": "sonnet",
   "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/i-have-adhd.sh",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
       {
         "matcher": "mcp__jetbrains__execute_run_configuration",

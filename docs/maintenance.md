@@ -248,9 +248,10 @@ Other skills in `~/.claude/skills` (from `gh_skills`) are not touched by chezmoi
 caveman is installed by hand, not from the seed; `~/.config/caveman/config.json` sets its default level to `lite`, which keeps
 full sentences and so reads well with `/i-have-adhd` (wording from caveman, structure from i-have-adhd). Both stop on
 "normal mode"; say "stop caveman" or "stop adhd mode" to turn off only one.
-i-have-adhd is always on: the SessionStart hook `~/.claude/hooks/i-have-adhd.sh` prints the newest installed `SKILL.md` into
-every session. The hook is in the settings seed, and script 90 adds it to a `settings.json` that already exists. To turn it
-off for one session, say "stop adhd mode"; to remove it, delete the hook from both and from the live settings.
+i-have-adhd is always on: its own SessionStart hook loads the rules into every session while the empty managed file
+`~/.claude/.i-have-adhd-always` exists (from `home/dot_claude/empty_dot_i-have-adhd-always`). Script 90 removes the old
+`~/.claude/hooks/i-have-adhd.sh` entry from an existing `settings.json`. To turn it off for one session, say "stop adhd
+mode"; to remove it, delete the flag file from the repo and list it in `.chezmoiremove`.
 The IntelliJ MCP server is added by hand on each Mac, because `~/.claude.json` is not managed:
 `claude mcp add --scope user --transport http jetbrains http://127.0.0.1:64342/stream`, with `execute_terminal_command`
 turned off in IntelliJ (Settings | Tools | MCP Server | Exposed Tools). It runs a configuration only after you approve it in
