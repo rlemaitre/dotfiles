@@ -45,7 +45,8 @@ Simplicity comes first in all the code you write and in every review, whatever t
 
 IntelliJ rewrites tracked `.idea/` files on its own. Stage files by path, never with `git add -A`, `git add .` or
 `git commit -a`. Never stage, revert or stash `.idea/` changes you did not make in this session, unless I ask for it.
-The `idea-guard.sh` hook blocks such a commit; a prompt of mine that mentions `.idea` lifts the block for the session.
+The intellij plugin's idea-guard hook blocks such a commit; a prompt of mine that mentions `.idea` lifts the block for
+the session.
 
 ## Code Review Scope
 

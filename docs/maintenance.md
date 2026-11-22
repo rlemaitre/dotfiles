@@ -233,7 +233,7 @@ Claude to this page. `home/dot_claude/agents/` and `commands/` hold the sub-agen
 `build-error-resolver`...) and slash commands that the rules in `home/dot_claude/rules/` refer to (planning, TDD and code review come from the
 superpowers plugin, so those agents and commands are gone); the status line is
 `statusline-command.sh`, wired by the `statusLine` key of the settings seed. A command or agent that needs a tool this
-setup lacks is deleted from the repo and listed in `.chezmoiremove`, so chezmoi removes it from every Mac. Plugins (LSP servers, worktrunk, i-have-adhd, superpowers, productivity, security-guidance, obsidian, frontend-design, taste-skill, playwright, slidev, kitty-image, md-show) are listed in `enabledPlugins` of the same seed; the seed is
+setup lacks is deleted from the repo and listed in `.chezmoiremove`, so chezmoi removes it from every Mac. Plugins (LSP servers, worktrunk, i-have-adhd, superpowers, productivity, security-guidance, obsidian, frontend-design, taste-skill, playwright, slidev, kitty-image, md-show, intellij) are listed in `enabledPlugins` of the same seed; the seed is
 only created on a new Mac, so add a plugin there and run `claude plugin install <name>@<marketplace>` on the others (`claude plugin marketplace add <owner/repo>` first
 for a marketplace that is not built in).
 `productivity` comes from Raph's own marketplace [rlemaitre/claude-plugins](https://github.com/rlemaitre/claude-plugins):
@@ -255,10 +255,9 @@ mode"; to remove it, delete the flag file from the repo and list it in `.chezmoi
 The IntelliJ MCP server is added by hand on each Mac, because `~/.claude.json` is not managed:
 `claude mcp add --scope user --transport http jetbrains http://127.0.0.1:64342/stream`, with `execute_terminal_command`
 turned off in IntelliJ (Settings | Tools | MCP Server | Exposed Tools). It runs a configuration only after you approve it in
-IntelliJ (brave mode stays off). The PreToolUse hook `~/.claude/hooks/intellij-run-reminder.sh`, on
-`mcp__jetbrains__execute_run_configuration`, shows a macOS notification with a sound so the dialog is not missed. It is in
-the settings seed too, and script 90 adds it to an existing `settings.json`.
-`~/.claude/hooks/idea-guard.sh` keeps IntelliJ's own `.idea/` changes out of Claude's commits. On UserPromptSubmit,
-PostToolUse (Edit, Write, NotebookEdit) and PreToolUse (Bash), it blocks a `git commit` that would include an `.idea` file
-Claude did not edit in the session. A prompt that mentions `.idea` lifts the block for that session. Session state is
-kept in `~/.cache/claude-idea-guard/`. It is in the seed, and script 90 adds it to an existing `settings.json`.
+IntelliJ (brave mode stays off). The `intellij` plugin from rlemaitre/claude-plugins ships two hooks. On
+`mcp__jetbrains__execute_run_configuration`, a run reminder shows a macOS notification with a sound so the dialog is not
+missed. idea-guard keeps IntelliJ's own `.idea/` changes out of Claude's commits: on UserPromptSubmit, PostToolUse (Edit,
+Write, NotebookEdit) and PreToolUse (Bash), it blocks a `git commit` that would include an `.idea` file Claude did not edit
+in the session. A prompt that mentions `.idea` lifts the block for that session. Script 90 removes the old
+`~/.claude/hooks/` copies of both hooks from an existing `settings.json`, so they do not run twice.

@@ -38,5 +38,8 @@
 .claude/md-show
 # Replaced by i-have-adhd's own always-on hook (flag file ~/.claude/.i-have-adhd-always).
 .claude/hooks/i-have-adhd.sh
+# Shipped by the intellij plugin (rlemaitre/claude-plugins) with its own hooks.json.
+.claude/hooks/idea-guard.sh
+.claude/hooks/intellij-run-reminder.sh
 # cmux removed: Ghostty plus terminal-browser replace it.
 .config/cmux
