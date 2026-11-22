@@ -32,7 +32,7 @@ account `chrome-devtools-npm` (a listed maintainer) from Chromium's infrastructu
 
 **Workaround in place.** `home/.chezmoidata/packages.yaml`, key `mise_trust_policy_excludes`, exempts only
 `chromium-bidi@157.0.8090-0` for mermaid-cli; the mise config template renders it as `trust_policy_excludes`.
-`PUPPETEER_EXECUTABLE_PATH` in `home/dot_config/zsh/env.zsh.tmpl` points Puppeteer at the Chrome cask, because mise
+`PUPPETEER_EXECUTABLE_PATH` in `home/dot_zshenv` points Puppeteer at the Chrome cask, because mise
 skips the postinstall that downloads chrome-headless-shell.
 
 **When mermaid-cli is bumped:** a new puppeteer pulls a new chromium-bidi, which is checked again. If mise refuses it,

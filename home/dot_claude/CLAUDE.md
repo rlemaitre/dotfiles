@@ -45,7 +45,8 @@ Simplicity comes first in all the code you write and in every review, whatever t
 
 IntelliJ rewrites tracked `.idea/` files on its own. Stage files by path, never with `git add -A`, `git add .` or
 `git commit -a`. Never stage, revert or stash `.idea/` changes you did not make in this session, unless I ask for it.
-The `idea-guard.sh` hook blocks such a commit; a prompt of mine that mentions `.idea` lifts the block for the session.
+The intellij plugin's idea-guard hook blocks such a commit; a prompt of mine that mentions `.idea` lifts the block for
+the session.
 
 ## Code Review Scope
 
@@ -107,12 +108,12 @@ existing file, keep its line breaks: only wrap the lines you write or change, ne
 
 - Write documents in Markdown, or in the format of the tool they live in (PR, Linear, Notion). Markdown is the
   source of truth: I can edit it, git diffs it, and agents read it cheaply.
-- To show me one (a plan, a spec, a report), run `~/.claude/md-show.sh <file.md>`: it renders the file to a
+- To show me one (a plan, a spec, a report), run `md-show <file.md>`: it renders the file to a
   readable HTML page and opens it in a terminal-browser split. Then give the path in the reply as usual.
   Run it as a command on its own, never chained with `;` or `&&`: only then does it match the sandbox exclusion in
   my settings (pandoc, mmdc and terminal-browser cannot run in the sandbox).
 - Include diagrams when they explain better than text: Mermaid code blocks (flows, sequences, states) or inline SVG.
   The page is a 66ch column: prefer top-down flows (`flowchart TD`) or at most 4 nodes per row.
 - Write raw HTML only for a one-off page that needs custom layout or interaction. Then use the same look as
-  `~/.claude/md-show/template.html`: fonts `"Archivo"` for titles, `"Atkinson Hyperlegible Next"` for text,
+  the md-show plugin's `assets/template.html`: fonts `"Archivo"` for titles, `"Atkinson Hyperlegible Next"` for text,
   `"Geist Mono"` for code; one column of about 66ch; 18px text; one accent color; light and dark themes.

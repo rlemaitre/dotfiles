@@ -59,7 +59,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `maven@3.10.0` | Java build tool | both Macs |
 | `neovim@0.12.6` | Editor, configured with LazyVim | both Macs |
 | `node@24.22.2` | Node.js runtime | both Macs |
-| `npm:@mermaid-js/mermaid-cli@12.2.0` | Mermaid CLI (mmdc), renders Mermaid diagrams to SVG, PNG or PDF; md-show.sh inlines its SVG | both Macs |
+| `npm:@mermaid-js/mermaid-cli@12.2.0` | Mermaid CLI (mmdc), renders Mermaid diagrams to SVG, PNG or PDF; the md-show plugin inlines its SVG | both Macs |
 | `npm:@slidev/cli@53.1.0` | Slidev, Markdown slide decks served and exported with the slidev command | both Macs |
 | `npm:@zed-industries/claude-code-acp@0.16.2` | Agent Client Protocol adapter that runs Claude Code inside Zed | nabla-mac-raphael |
 | `npm:better-commits@1.26.1` | Interactive conventional commits and branch names (git aliases bc and bb) | both Macs |
@@ -73,7 +73,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `npm:typescript@6.0.3` | TypeScript compiler | both Macs |
 | `oh-my-posh@31.9.1` | Prompt renderer; the Catppuccin prompt lives in the repo | both Macs |
 | `op@2.42.0` | 1Password CLI, unlocked by the desktop app | both Macs |
-| `pandoc@3.14` | Document converter; md-show.sh renders Markdown to HTML with it | both Macs |
+| `pandoc@3.14` | Document converter; the md-show plugin renders Markdown to HTML with it | both Macs |
 | `pipx:mlx-lm@0.32.2` | Runs and fine-tunes local LLMs on Apple Silicon with MLX (mlx_lm.generate, mlx_lm.server) | athena |
 | `pnpm@10.34.9` | Node package manager | both Macs |
 | `pre-commit@4.7.0` | Git hook manager | nabla-mac-raphael |

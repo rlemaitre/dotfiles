@@ -8,8 +8,11 @@
   },
   "sandbox": {
     "excludedCommands": [
-      "~/.claude/md-show.sh *",
-      "terminal-browser *"
+      "md-show *",
+      "terminal-browser *",
+      "ws-issue *",
+      "ws-pr-review *",
+      "ws-resume *"
     ]
   },
   "permissions": {
@@ -20,67 +23,13 @@
   },
   "model": "sonnet",
   "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/i-have-adhd.sh",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
     "PreToolUse": [
-      {
-        "matcher": "mcp__jetbrains__execute_run_configuration",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/intellij-run-reminder.sh",
-            "timeout": 5
-          }
-        ]
-      },
       {
         "matcher": "Write",
         "hooks": [
           {
             "type": "command",
             "command": "bash ~/.claude/hooks/protect-tasks-md.sh",
-            "timeout": 5
-          }
-        ]
-      },
-      {
-        "matcher": "Bash",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/idea-guard.sh",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "Edit|Write|NotebookEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/idea-guard.sh",
-            "timeout": 5
-          }
-        ]
-      }
-    ],
-    "UserPromptSubmit": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash ~/.claude/hooks/idea-guard.sh",
             "timeout": 5
           }
         ]
@@ -106,7 +55,10 @@
     "playwright@claude-plugins-official": true,
     "slidev@slidev-dev-marketplace": true,
     "kitty-image@rlemaitre": true,
-    "terminal-browser@terminal-browser": true
+    "md-show@rlemaitre": true,
+    "terminal-browser@terminal-browser": true,
+    "intellij@rlemaitre": true,
+    "worktree-sessions@rlemaitre": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
