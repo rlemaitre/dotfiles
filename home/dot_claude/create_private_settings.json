@@ -8,7 +8,7 @@
   },
   "sandbox": {
     "excludedCommands": [
-      "~/.claude/md-show.sh *",
+      "md-show *",
       "terminal-browser *"
     ]
   },
@@ -106,6 +106,7 @@
     "playwright@claude-plugins-official": true,
     "slidev@slidev-dev-marketplace": true,
     "kitty-image@rlemaitre": true,
+    "md-show@rlemaitre": true,
     "terminal-browser@terminal-browser": true
   },
   "extraKnownMarketplaces": {
