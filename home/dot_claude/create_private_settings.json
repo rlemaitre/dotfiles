@@ -9,7 +9,10 @@
   "sandbox": {
     "excludedCommands": [
       "md-show *",
-      "terminal-browser *"
+      "terminal-browser *",
+      "ws-issue *",
+      "ws-pr-review *",
+      "ws-resume *"
     ]
   },
   "permissions": {
@@ -54,7 +57,8 @@
     "kitty-image@rlemaitre": true,
     "md-show@rlemaitre": true,
     "terminal-browser@terminal-browser": true,
-    "intellij@rlemaitre": true
+    "intellij@rlemaitre": true,
+    "worktree-sessions@rlemaitre": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
