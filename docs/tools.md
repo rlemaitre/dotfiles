@@ -8,7 +8,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 
 | Section | Entries |
 |---|---|
-| [mise tools](#mise-tools) | 68 |
+| [mise tools](#mise-tools) | 69 |
 | [Homebrew taps](#homebrew-taps) | 2 |
 | [Homebrew formulae](#homebrew-formulae) | 26 |
 | [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 60 |
@@ -74,6 +74,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `oh-my-posh@31.9.1` | Prompt renderer; the Catppuccin prompt lives in the repo | both Macs |
 | `op@2.42.0` | 1Password CLI, unlocked by the desktop app | both Macs |
 | `pandoc@3.14` | Document converter; the md-show plugin renders Markdown to HTML with it | both Macs |
+| `pipx:mempalace@3.12.0` | Local memory for AI agents, mines Claude Code sessions into a searchable palace served over MCP (Claude plugin mempalace@mempalace) | athena |
 | `pipx:mlx-lm@0.32.2` | Runs and fine-tunes local LLMs on Apple Silicon with MLX (mlx_lm.generate, mlx_lm.server) | athena |
 | `pnpm@10.34.9` | Node package manager | both Macs |
 | `pre-commit@4.7.0` | Git hook manager | nabla-mac-raphael |

@@ -65,6 +65,7 @@ packages:
       - "zoxide@0.10.0"
     athena:
       - "java@oracle-graalvm-21.0.12"
+      - "pipx:mempalace@3.12.0"
       - "pipx:mlx-lm@0.32.2"
     nabla-mac-raphael:
       - "cargo:just-lsp@0.10.0"

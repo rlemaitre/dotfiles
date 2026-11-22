@@ -54,6 +54,7 @@ mise:
   oh-my-posh: Prompt renderer; the Catppuccin prompt lives in the repo
   op: 1Password CLI, unlocked by the desktop app
   pandoc: Document converter; the md-show plugin renders Markdown to HTML with it
+  pipx:mempalace: Local memory for AI agents, mines Claude Code sessions into a searchable palace served over MCP (Claude plugin mempalace@mempalace)
   pipx:mlx-lm: Runs and fine-tunes local LLMs on Apple Silicon with MLX (mlx_lm.generate, mlx_lm.server)
   pnpm: Node package manager
   pre-commit: Git hook manager

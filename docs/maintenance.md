@@ -261,3 +261,10 @@ missed. idea-guard keeps IntelliJ's own `.idea/` changes out of Claude's commits
 Write, NotebookEdit) and PreToolUse (Bash), it blocks a `git commit` that would include an `.idea` file Claude did not edit
 in the session. A prompt that mentions `.idea` lifts the block for that session. Script 90 removes the old
 `~/.claude/hooks/` copies of both hooks from an existing `settings.json`, so they do not run twice.
+MemPalace (agent memory) is on trial on `athena` only, so its plugin is not in the shared seed: the CLI comes from mise
+(`pipx:mempalace`), the plugin from `claude plugin marketplace add MemPalace/mempalace` and
+`claude plugin install --scope user mempalace@mempalace`. The plugin starts `mempalace-mcp` and adds Stop, PreCompact and
+SessionEnd hooks that file memories. It replaced the `memory` MCP server (`claude mcp remove memory --scope user`). The
+palace is in `~/.config/mempalace/` (not managed); backfill old sessions with
+`mempalace mine ~/.claude/projects/ --mode convos`. To drop it: `claude plugin uninstall mempalace@mempalace`, remove the
+mise entry, and delete `~/.config/mempalace/`.
