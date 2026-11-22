@@ -12,7 +12,8 @@
       "terminal-browser *",
       "ws-issue *",
       "ws-pr-review *",
-      "ws-resume *"
+      "ws-resume *",
+      "pr-flow-config"
     ]
   },
   "permissions": {
@@ -58,7 +59,8 @@
     "md-show@rlemaitre": true,
     "terminal-browser@terminal-browser": true,
     "intellij@rlemaitre": true,
-    "worktree-sessions@rlemaitre": true
+    "worktree-sessions@rlemaitre": true,
+    "pr-flow@rlemaitre": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
