@@ -15,3 +15,7 @@ export ZRCDIR=${ZHOMEDIR}/rc
 export ZDATADIR=${XDG_DATA_HOME}/zsh
 export ZCACHEDIR=${XDG_CACHE_HOME}/zsh
 
+# Puppeteer (used by mermaid-cli's mmdc) drives the Chrome cask: mise skips the postinstall that would download
+# Puppeteer's own chrome-headless-shell. Here, not in env.zsh: Claude Code's shell reads .zshenv but not .zshrc.
+export PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+
