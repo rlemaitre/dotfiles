@@ -43,3 +43,16 @@
 .claude/hooks/intellij-run-reminder.sh
 # cmux removed: Ghostty plus terminal-browser replace it.
 .config/cmux
+# Claude commands never used in any session (usage scan, 2026-11-23); removed to shrink the skill list loaded every session.
+.claude/commands/build-fix.md
+.claude/commands/checkpoint.md
+.claude/commands/e2e.md
+.claude/commands/eval.md
+.claude/commands/go-build.md
+.claude/commands/go-review.md
+.claude/commands/go-test.md
+.claude/commands/python-review.md
+.claude/commands/refactor-clean.md
+.claude/commands/sessions.md
+.claude/commands/setup-pm.md
+.claude/commands/test-coverage.md
