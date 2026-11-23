@@ -24,28 +24,28 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 
 | Tool | What it is | Where |
 |---|---|---|
-| `atuin@18.24.5` | Searchable shell history (Ctrl-R), Catppuccin themed | both Macs |
+| `atuin@18.25.1` | Searchable shell history (Ctrl-R), Catppuccin themed | both Macs |
 | `bat@0.26.1` | cat with syntax highlighting and Git markers; also the man pager | both Macs |
-| `bun@1.4.4` | JavaScript runtime and package manager | both Macs |
+| `bun@1.4.5` | JavaScript runtime and package manager | both Macs |
 | `cargo:just-lsp@0.10.0` | Language server for justfiles | nabla-mac-raphael |
 | `cargo:linear-cli@0.3.28` | Linear issue tracker command line | nabla-mac-raphael |
-| `chezmoi@2.74.0` | The dotfiles manager this repo is built for | both Macs |
-| `cmake@4.4.5` | Build system generator for C and C++ | both Macs |
+| `chezmoi@2.74.1` | The dotfiles manager this repo is built for | both Macs |
+| `cmake@4.5.1` | Build system generator for C and C++ | both Macs |
 | `colima@0.10.3` | Docker container runtime in a lightweight VM, started at login | both Macs |
-| `coursier@2.1.26` | Scala and JVM artifact fetcher and launcher | both Macs |
+| `coursier@2.1.27` | Scala and JVM artifact fetcher and launcher | both Macs |
 | `delta@0.20.1` | Syntax-highlighting pager for git diffs | both Macs |
 | `deno@2.9.8` | JavaScript and TypeScript runtime | both Macs |
-| `docker-cli@29.9.3` | Docker client; the engine runs in Colima | both Macs |
+| `docker-cli@29.10.0` | Docker client; the engine runs in Colima | both Macs |
 | `eza@0.23.5` | ls replacement with icons and Git status (aliased to ls) | both Macs |
 | `fd@10.5.2` | Fast, friendly alternative to find | both Macs |
 | `fzf@0.74.5` | Fuzzy finder used by fzf-tab, zoxide and the shell | both Macs |
-| `gh@2.103.3` | GitHub command-line client | both Macs |
+| `gh@2.105.0` | GitHub command-line client | both Macs |
 | `github:docker/buildx@0.38.2` | Docker buildx plugin, linked into ~/.docker/cli-plugins | both Macs |
-| `github:docker/compose@5.7.0` | Docker Compose plugin, linked into ~/.docker/cli-plugins | both Macs |
+| `github:docker/compose@5.8.0` | Docker Compose plugin, linked into ~/.docker/cli-plugins | both Macs |
 | `github:ivankovic/omnidiff@0.3.0` | Content-aware diff viewer (code, pictures, fonts, archives, PDFs) | both Macs |
 | `glow@3.0.0` | Markdown renderer for the terminal | both Macs |
 | `go:golang.org/x/tools/gopls@0.24.0` | Go language server (Neovim, Claude Code) | both Macs |
-| `go@1.27.3` | Go toolchain | both Macs |
+| `go@1.27.4` | Go toolchain | both Macs |
 | `gum@2.0.2` | Building blocks for pretty shell scripts | both Macs |
 | `hexyl@0.17.0` | Hex viewer | both Macs |
 | `java@openjdk-25.0.2` | JDK, Oracle GraalVM 21 on athena, OpenJDK 25 on nabla-mac-raphael | nabla-mac-raphael |
@@ -56,20 +56,20 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `lazygit@0.66.3` | Terminal UI for git | both Macs |
 | `lima@2.3.0` | Linux VM engine that Colima runs on | both Macs |
 | `lua-language-server@3.19.2` | Lua language server (Neovim, Claude Code) | both Macs |
-| `maven@3.10.0` | Java build tool | both Macs |
+| `maven@3.10.1` | Java build tool | both Macs |
 | `neovim@0.12.6` | Editor, configured with LazyVim | both Macs |
-| `node@24.22.2` | Node.js runtime | both Macs |
+| `node@24.22.3` | Node.js runtime | both Macs |
 | `npm:@mermaid-js/mermaid-cli@12.2.0` | Mermaid CLI (mmdc), renders Mermaid diagrams to SVG, PNG or PDF; the md-show plugin inlines its SVG | both Macs |
 | `npm:@slidev/cli@53.1.0` | Slidev, Markdown slide decks served and exported with the slidev command | both Macs |
 | `npm:@zed-industries/claude-code-acp@0.16.2` | Agent Client Protocol adapter that runs Claude Code inside Zed | nabla-mac-raphael |
 | `npm:better-commits@1.26.1` | Interactive conventional commits and branch names (git aliases bc and bb) | both Macs |
-| `npm:defuddle@0.19.6` | Extracts the main content of a web page as Markdown (the obsidian:defuddle skill) | nabla-mac-raphael |
-| `npm:eslint@10.14.0` | JavaScript and TypeScript linter | both Macs |
+| `npm:defuddle@0.19.13` | Extracts the main content of a web page as Markdown (the obsidian:defuddle skill) | nabla-mac-raphael |
+| `npm:eslint@10.15.0` | JavaScript and TypeScript linter | both Macs |
 | `npm:gitnexus@1.6.12` | Code knowledge graph of a repository, served to agents over MCP | nabla-mac-raphael |
-| `npm:prettier@3.9.10` | Code formatter | both Macs |
+| `npm:prettier@3.10.1` | Code formatter | both Macs |
 | `npm:pyright@1.1.414` | Python type checker and language server (Neovim, Claude Code) | both Macs |
-| `npm:tombi@1.10.0` | TOML formatter, linter and language server | both Macs |
-| `npm:typescript-language-server@6.0.3` | TypeScript language server (Claude Code) | both Macs |
+| `npm:tombi@1.11.3` | TOML formatter, linter and language server | both Macs |
+| `npm:typescript-language-server@6.1.0` | TypeScript language server (Claude Code) | both Macs |
 | `npm:typescript@6.0.3` | TypeScript compiler | both Macs |
 | `oh-my-posh@31.9.1` | Prompt renderer; the Catppuccin prompt lives in the repo | both Macs |
 | `op@2.42.0` | 1Password CLI, unlocked by the desktop app | both Macs |
@@ -78,20 +78,20 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `pipx:mlx-lm@0.32.2` | Runs and fine-tunes local LLMs on Apple Silicon with MLX (mlx_lm.generate, mlx_lm.server) | athena |
 | `pnpm@10.34.9` | Node package manager | both Macs |
 | `pre-commit@4.7.0` | Git hook manager | nabla-mac-raphael |
-| `prek@0.5.10` | Faster drop-in replacement for pre-commit | nabla-mac-raphael |
+| `prek@0.5.11` | Faster drop-in replacement for pre-commit | nabla-mac-raphael |
 | `python@3.12.16` | Python 3.12 | both Macs |
 | `ripgrep@15.2.0` | Fast grep alternative (aliased to grep) | both Macs |
-| `rust@1.99.1` | Rust toolchain through rustup | both Macs |
+| `rust@1.100.0` | Rust toolchain through rustup | both Macs |
 | `sbt@1.13.1` | Scala build tool | both Macs |
 | `shellcheck@0.11.0` | Shell script linter | both Macs |
 | `shfmt@3.14.1` | Shell script formatter | both Macs |
-| `terraform@1.17.1` | Infrastructure as code (work infrastructure) | nabla-mac-raphael |
+| `terraform@1.17.2` | Infrastructure as code (work infrastructure) | nabla-mac-raphael |
 | `tree-sitter@0.27.2` | Parser generator CLI that nvim-treesitter needs | both Macs |
-| `uv@0.13.7` | Fast Python package and project manager | both Macs |
+| `uv@0.13.9` | Fast Python package and project manager | both Macs |
 | `vivid@0.11.1` | Generates LS_COLORS from the Catppuccin theme | both Macs |
 | `worktrunk@0.81.0` | Git worktree manager (wt) | both Macs |
-| `yarn@4.18.1` | Node package manager | both Macs |
-| `yq@4.54.2` | YAML, JSON and TOML processor | both Macs |
+| `yarn@4.19.0` | Node package manager | both Macs |
+| `yq@4.54.3` | YAML, JSON and TOML processor | both Macs |
 | `zoxide@0.10.0` | Smarter cd that jumps to frequently used directories | both Macs |
 
 ## Homebrew taps
