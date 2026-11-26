@@ -11,7 +11,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 | [mise tools](#mise-tools) | 69 |
 | [Homebrew taps](#homebrew-taps) | 2 |
 | [Homebrew formulae](#homebrew-formulae) | 26 |
-| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 60 |
+| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 61 |
 | [App Store apps (mas)](#app-store-apps-mas) | 23 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
 | [Agent skills for Claude Code](#agent-skills-for-claude-code) | 1 |
@@ -139,6 +139,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `1password` | Password manager | both Macs |
 | `adguard` | Ad blocker and DNS filter | both Macs |
 | `adguard-vpn` | VPN | athena |
+| `anarlog` | AI notepad for meetings | nabla-mac-raphael |
 | `audio-hijack` | Records audio from any app | athena |
 | `autodesk-fusion` | CAD, CAM and PCB software | athena |
 | `bambu-studio` | Slicer for Bambu Lab 3D printers | athena |

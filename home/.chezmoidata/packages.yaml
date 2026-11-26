@@ -173,6 +173,7 @@ packages:
         - "vivaldi"
         - "vocaster-hub"
       nabla-mac-raphael:
+        - "anarlog"
         - "intellij-idea"
         - "notion"
         - "postico"
