@@ -141,6 +141,7 @@ casks:
   inkscape: Vector graphics editor
   intellij-idea: JetBrains Java and Kotlin IDE
   jetbrains-toolbox: Manager for JetBrains IDEs
+  lm-studio: Runs local LLMs with a chat UI and an OpenAI-compatible server
   logi-options+: Logitech device software (needs a reboot)
   loopback: Virtual audio devices
   macwhisper: Speech to text

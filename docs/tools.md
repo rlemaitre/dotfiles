@@ -11,7 +11,7 @@ mise, then a Homebrew formula, then a cask, then the App Store. See [how it work
 | [mise tools](#mise-tools) | 69 |
 | [Homebrew taps](#homebrew-taps) | 2 |
 | [Homebrew formulae](#homebrew-formulae) | 26 |
-| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 61 |
+| [Homebrew casks (apps and fonts)](#homebrew-casks-apps-and-fonts) | 62 |
 | [App Store apps (mas)](#app-store-apps-mas) | 23 |
 | [GitHub CLI extensions](#github-cli-extensions) | 2 |
 | [Agent skills for Claude Code](#agent-skills-for-claude-code) | 1 |
@@ -170,6 +170,7 @@ Apps and tools installed by hand are in [manual installs](manual-installs.md).
 | `inkscape` | Vector graphics editor | athena |
 | `intellij-idea` | JetBrains Java and Kotlin IDE | nabla-mac-raphael |
 | `jetbrains-toolbox` | Manager for JetBrains IDEs | both Macs |
+| `lm-studio` | Runs local LLMs with a chat UI and an OpenAI-compatible server | both Macs |
 | `logi-options+` | Logitech device software (needs a reboot) | athena |
 | `loopback` | Virtual audio devices | athena |
 | `macwhisper` | Speech to text | athena |
