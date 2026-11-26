@@ -59,9 +59,7 @@ smartcache eval atuin init zsh
 setopt interactive_comments
 
 zinit cdreplay -q
-if [[ "$TERM_PROGRAM" == "ghostty" ]]; then
-  eval "$(oh-my-posh init zsh --config "${XDG_CONFIG_HOME:-$HOME/.config}"/oh-my-posh/catppuccin.omp.json)"
-fi
+eval "$(oh-my-posh init zsh --config "${XDG_CONFIG_HOME:-$HOME/.config}"/oh-my-posh/catppuccin.omp.json)"
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward
