@@ -1,0 +1,5 @@
+#!/bin/sh
+# terminal-browser puts agent-browser sockets under XDG_RUNTIME_DIR. Ours (~/Library/Caches/TemporaryItems) and the
+# fallback (~/.local/state) make them longer than the 103-byte macOS socket limit, so `terminal-browser action` fails
+# with "could not connect". ~/.cache keeps them short. See docs/upstream-watch.md.
+XDG_RUNTIME_DIR="$HOME/.cache" exec /opt/homebrew/bin/terminal-browser "$@"

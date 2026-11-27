@@ -45,9 +45,11 @@ review that version the same way and replace the entry; if it installs, delete t
 limit. agent-browser reports it, but terminal-browser only prints "could not connect agent-browser to terminal browser".
 Not reported upstream yet ([zenbu-labs/terminal-browser](https://github.com/zenbu-labs/terminal-browser)).
 
-**Workaround in place.** `home/dot_config/zsh/aliases.zsh` wraps `terminal-browser` with `env -u XDG_RUNTIME_DIR`,
-so it falls back to `~/.local/state`.
+**Workaround in place.** `home/dot_local/bin/executable_terminal-browser` runs the Homebrew binary with
+`XDG_RUNTIME_DIR=~/.cache` (about 100 bytes). Unsetting `XDG_RUNTIME_DIR` is not enough: the fallback, `~/.local/state`,
+still gives 106 bytes. A script rather than a zsh function, so non-interactive shells (agents, md-show) use it too;
+`~/.local/bin` comes before Homebrew in `PATH` for that.
 
-**How to check.** `command terminal-browser action -- snapshot` works with a browser open.
+**How to check.** `/opt/homebrew/bin/terminal-browser action -- get title` works with a browser open.
 
-**When it is fixed, switch back:** delete the `terminal-browser` function and this section.
+**When it is fixed, switch back:** delete the wrapper script and this section.

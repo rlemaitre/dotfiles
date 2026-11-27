@@ -74,9 +74,3 @@ lazydocker() {
     CONFIG_DIR="${XDG_CONFIG_HOME}/lazydocker/${THEME_FLAVOR:-latte}" command lazydocker "$@"
 }
 alias lzd='lazydocker'
-
-# terminal-browser puts agent-browser sockets under XDG_RUNTIME_DIR: ours is too long for the 103-byte socket limit,
-# so `terminal-browser action` fails with "could not connect". See docs/upstream-watch.md.
-terminal-browser() {
-    env -u XDG_RUNTIME_DIR terminal-browser "$@"
-}
