@@ -40,7 +40,6 @@
   "enabledPlugins": {
     "kotlin-lsp@claude-plugins-official": true,
     "worktrunk@worktrunk": true,
-    "i-have-adhd@i-have-adhd": true,
     "pyright-lsp@claude-plugins-official": true,
     "typescript-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
@@ -61,7 +60,8 @@
     "intellij@rlemaitre": true,
     "worktree-sessions@rlemaitre": true,
     "pr-flow@rlemaitre": true,
-    "mempalace@mempalace": true
+    "mempalace@mempalace": true,
+    "kaizen@rlemaitre": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -74,12 +74,6 @@
       "source": {
         "source": "github",
         "repo": "max-sixty/worktrunk"
-      }
-    },
-    "i-have-adhd": {
-      "source": {
-        "source": "github",
-        "repo": "ayghri/i-have-adhd"
       }
     },
     "rlemaitre": {

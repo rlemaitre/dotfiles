@@ -56,3 +56,6 @@
 .claude/commands/sessions.md
 .claude/commands/setup-pm.md
 .claude/commands/test-coverage.md
+# Moved to the kaizen plugin (rlemaitre/claude-plugins): the general rules, and the reply style that replaced i-have-adhd.
+.claude/rules
+.claude/.i-have-adhd-always

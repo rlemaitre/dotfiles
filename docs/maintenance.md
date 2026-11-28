@@ -227,31 +227,32 @@ that differ (`M` modified, `A` would be added, `D` would be deleted, `R` a scrip
 
 ## Claude on each Mac
 
-`~/.claude/CLAUDE.md` (from `home/dot_claude/CLAUDE.md`) tells Claude Code that the Mac is managed by chezmoi and sets the
-short rules. The `dotfiles` skill (`home/dot_claude/skills/dotfiles/`) loads on requests that change the setup and points
+`~/.claude/CLAUDE.md` (from `home/dot_claude/CLAUDE.md`) holds what is personal or specific to the Mac (about me, PR
+assignees, IntelliJ, chezmoi, productivity); the general rules and the reply style come from the `kaizen` plugin
+([rlemaitre/claude-plugins](https://github.com/rlemaitre/claude-plugins)), which replaced `home/dot_claude/rules/` and
+i-have-adhd. The `dotfiles` skill (`home/dot_claude/skills/dotfiles/`) loads on requests that change the setup and points
 Claude to this page. `home/dot_claude/agents/` and `commands/` hold the sub-agents (`architect`, `security-reviewer`,
-`build-error-resolver`...) and slash commands that the rules in `home/dot_claude/rules/` refer to (planning, TDD and code review come from the
-superpowers plugin, so those agents and commands are gone); the status line is
+`build-error-resolver`...) and slash commands (planning, TDD and code review come from the superpowers plugin, so those
+agents and commands are gone); the status line is
 `statusline-command.sh`, wired by the `statusLine` key of the settings seed. A command or agent that needs a tool this
-setup lacks is deleted from the repo and listed in `.chezmoiremove`, so chezmoi removes it from every Mac. Plugins (LSP servers, worktrunk, i-have-adhd, superpowers, productivity, security-guidance, obsidian, frontend-design, taste-skill, playwright, slidev, kitty-image, md-show, intellij, worktree-sessions, pr-flow) are listed in `enabledPlugins` of the same seed; the seed is
+setup lacks is deleted from the repo and listed in `.chezmoiremove`, so chezmoi removes it from every Mac. Plugins (LSP servers, worktrunk, kaizen, superpowers, productivity, security-guidance, obsidian, frontend-design, taste-skill, playwright, slidev, kitty-image, md-show, intellij, worktree-sessions, pr-flow) are listed in `enabledPlugins` of the same seed; the seed is
 only created on a new Mac, so add a plugin there and run `claude plugin install <name>@<marketplace>` on the others (`claude plugin marketplace add <owner/repo>` first
 for a marketplace that is not built in).
 `productivity` comes from Raph's own marketplace [rlemaitre/claude-plugins](https://github.com/rlemaitre/claude-plugins):
 a copy of Anthropic's plugin without its bundled MCP servers, which duplicated the claude.ai connectors; that repo
 watches upstream and documents how to sync. `kitty-image` comes from there too: a copy of hood/claude-kitty-image
 without its `prompt.compose` hook, which the built-in `cc-plugin-sec-default` skips in Team and Enterprise
-organizations (a warning at every session start); its guidance is the "Inline images" section of `~/.claude/CLAUDE.md`.
+organizations (a warning at every session start); its guidance is in kaizen's rules ("Documents and images").
 `security-guidance` reviews the diff with the newest Opus when a turn ends and builds a Python venv in
 `~/.claude/security/` (not managed by chezmoi); the settings `env` pins both reviews (`SECURITY_REVIEW_MODEL`, `SG_AGENTIC_MODEL`) to `claude-sonnet-5-5` to save
 tokens; change the id there when a newer Sonnet should take over.
 Other skills in `~/.claude/skills` (from `gh_skills`) are not touched by chezmoi.
 caveman is installed by hand, not from the seed; `~/.config/caveman/config.json` sets its default level to `lite`, which keeps
-full sentences and so reads well with `/i-have-adhd` (wording from caveman, structure from i-have-adhd). Both stop on
-"normal mode"; say "stop caveman" or "stop adhd mode" to turn off only one.
-i-have-adhd is always on: its own SessionStart hook loads the rules into every session while the empty managed file
-`~/.claude/.i-have-adhd-always` exists (from `home/dot_claude/empty_dot_i-have-adhd-always`). Script 90 removes the old
-`~/.claude/hooks/i-have-adhd.sh` entry from an existing `settings.json`. To turn it off for one session, say "stop adhd
-mode"; to remove it, delete the flag file from the repo and list it in `.chezmoiremove`.
+full sentences and so reads well with kaizen's reply style (wording from caveman, structure from kaizen). Both stop on
+"normal mode"; say "stop caveman" or "stop kaizen style" to turn off only one.
+On a Mac set up before kaizen replaced i-have-adhd, run `claude plugin uninstall i-have-adhd@i-have-adhd` and
+`claude plugin install kaizen@rlemaitre`; chezmoi removes `~/.claude/rules/` and the old flag file
+`~/.claude/.i-have-adhd-always` (`.chezmoiremove`).
 The IntelliJ MCP server is added by hand on each Mac, because `~/.claude.json` is not managed:
 `claude mcp add --scope user --transport http jetbrains http://127.0.0.1:64342/stream`, with `execute_terminal_command`
 turned off in IntelliJ (Settings | Tools | MCP Server | Exposed Tools). It runs a configuration only after you approve it in
