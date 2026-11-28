@@ -15,6 +15,10 @@ export ZRCDIR=${ZHOMEDIR}/rc
 export ZDATADIR=${XDG_DATA_HOME}/zsh
 export ZCACHEDIR=${XDG_CACHE_HOME}/zsh
 
+# mise shims, for shells that never read .zshrc (where `mise activate` runs): agents, hooks, commands Rex or an app
+# starts. Interactive shells put the activated tool paths ahead of these.
+export PATH="${XDG_DATA_HOME}/mise/shims:${PATH}"
+
 # Puppeteer (used by mermaid-cli's mmdc) drives the Chrome cask: mise skips the postinstall that would download
 # Puppeteer's own chrome-headless-shell. Here, not in env.zsh: Claude Code's shell reads .zshenv but not .zshrc.
 export PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
