@@ -40,6 +40,7 @@ mise:
   neovim: Editor, configured with LazyVim
   node: Node.js runtime
   npm:@zed-industries/claude-code-acp: Agent Client Protocol adapter that runs Claude Code inside Zed
+  npm:@fission-ai/openspec: OpenSpec CLI, specs and changes (proposal, deltas, design, tasks) that the kaizen plugin drives; telemetry off, see .zshenv
   npm:@mermaid-js/mermaid-cli: Mermaid CLI (mmdc), renders Mermaid diagrams to SVG, PNG or PDF; the md-show plugin inlines its SVG
   npm:@slidev/cli: Slidev, Markdown slide decks served and exported with the slidev command
   npm:better-commits: Interactive conventional commits and branch names (git aliases bc and bb)

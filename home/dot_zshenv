@@ -23,6 +23,10 @@ export PATH="${XDG_DATA_HOME}/mise/shims:${PATH}"
 # Puppeteer's own chrome-headless-shell. Here, not in env.zsh: Claude Code's shell reads .zshenv but not .zshrc.
 export PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
+# OpenSpec (driven by the kaizen plugin) sends anonymous usage stats unless told not to. Here so Claude Code's shell
+# sees it too.
+export OPENSPEC_TELEMETRY=0
+
 # Claude Code only draws inline images in terminals it knows by name (kitty, ghostty). Rex supports the kitty
 # Unicode placeholders it needs, but is not on that list yet. Not inside tmux or screen, where forced images show as
 # empty boxes.

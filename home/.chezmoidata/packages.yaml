@@ -37,6 +37,7 @@ packages:
       - "maven@3.10.0"
       - "neovim@0.12.6"
       - "node@24.22.2"
+      - "npm:@fission-ai/openspec@2.2.0"
       - "npm:@mermaid-js/mermaid-cli@12.2.0"
       - "npm:@slidev/cli@53.1.0"
       - "npm:better-commits@1.26.1"
