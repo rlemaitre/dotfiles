@@ -50,6 +50,7 @@ packages:
       - "oh-my-posh@31.9.1"
       - "op@2.42.0"
       - "pandoc@3.14"
+      - "pipx:mempalace@3.12.0"
       - "pipx:mlx-lm@0.32.2"
       - "pnpm@10.34.9"
       - "python@3.12.16"
@@ -67,7 +68,6 @@ packages:
       - "zoxide@0.10.0"
     athena:
       - "java@oracle-graalvm-21.0.12"
-      - "pipx:mempalace@3.12.0"
     nabla-mac-raphael:
       - "cargo:just-lsp@0.10.0"
       - "cargo:linear-cli@0.3.28"

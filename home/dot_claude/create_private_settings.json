@@ -60,7 +60,8 @@
     "terminal-browser@terminal-browser": true,
     "intellij@rlemaitre": true,
     "worktree-sessions@rlemaitre": true,
-    "pr-flow@rlemaitre": true
+    "pr-flow@rlemaitre": true,
+    "mempalace@mempalace": true
   },
   "extraKnownMarketplaces": {
     "claude-plugins-official": {
@@ -109,6 +110,12 @@
       "source": {
         "source": "github",
         "repo": "zenbu-labs/terminal-browser"
+      }
+    },
+    "mempalace": {
+      "source": {
+        "source": "github",
+        "repo": "MemPalace/mempalace"
       }
     }
   },
