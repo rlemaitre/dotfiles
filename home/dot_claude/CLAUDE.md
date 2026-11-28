@@ -88,6 +88,28 @@ folder, so each Mac has its own copy and nothing is synced.
 - Read the hot cache there when a request mentions tasks, people, projects or internal terms you do not know.
 - If the folder is missing, create it, then run `/productivity:start` and place its files there.
 
+## Memory
+
+Two stores, each for one kind of fact:
+
+- Auto memory (`MEMORY.md`): how you should act every time. My preferences, corrections, recurring workflow steps.
+- MemPalace: what happened or was decided. Decisions and their reasons, project facts, people, past sessions.
+
+Recall:
+
+- Before answering about past work, a prior decision, a project, a person or an earlier session, search MemPalace
+  (`mempalace_search`, `mempalace_kg_query` for facts about an entity) and quote what it returns. Follow the
+  `mempalace:mempalace-recall` skill.
+- Do not search for work with no link to the past (a rename, a typo, a fresh feature).
+- If the MemPalace tools are missing or fail, say so instead of answering from guesswork.
+
+Saving:
+
+- A decision, a project fact or a fact that changed goes to MemPalace: `mempalace_kg_add`, `mempalace_kg_supersede`
+  when it replaces an older fact (object at most 128 characters), `mempalace_add_drawer` for longer text. Use the
+  project's existing wing.
+- A rule about how you should act goes to auto memory, never to both.
+
 ## Inline images
 
 In a kitty-graphics terminal, the kitty-image plugin's `show_image` tool draws images inline.
