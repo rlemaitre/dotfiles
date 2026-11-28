@@ -19,3 +19,9 @@ export ZCACHEDIR=${XDG_CACHE_HOME}/zsh
 # Puppeteer's own chrome-headless-shell. Here, not in env.zsh: Claude Code's shell reads .zshenv but not .zshrc.
 export PUPPETEER_EXECUTABLE_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
+# Claude Code only draws inline images in terminals it knows by name (kitty, ghostty). Rex supports the kitty
+# Unicode placeholders it needs, but is not on that list yet. Not inside tmux or screen, where forced images show as
+# empty boxes.
+if [[ $TERM_PROGRAM == rex && -z $TMUX && -z $STY ]]; then
+  export CLAUDE_CODE_FORCE_TERMINAL_IMAGES=1
+fi

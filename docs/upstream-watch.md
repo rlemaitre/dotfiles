@@ -21,6 +21,24 @@ switch back.
 3. On each Mac: `zinit delete wbingli/zsh-claudecode-completion`, `rm ~/.cache/zsh/completions/_claude`, then `chezmoi apply`.
 4. Delete this section.
 
+## Claude Code inline images in Rex
+
+**Problem.** Claude Code 2.1.311 draws inline images only when the terminal answers the kitty graphics query and its
+XTVERSION name is on a hard-coded list (`kitty` 0.28.0 or later, `ghostty`): the reply alone cannot show support for
+the Unicode placeholders it draws with. Rex supports them (checked on 2026-11-28 with Rex 0.1.0-preview.25) but is not
+on the list. Reported with `/bug`.
+
+**Workaround in place.** `home/dot_zshenv` sets `CLAUDE_CODE_FORCE_TERMINAL_IMAGES=1` when `TERM_PROGRAM` is `rex`, outside
+tmux and GNU screen.
+
+**How to check.** By hand: in Rex, start `env -u CLAUDE_CODE_FORCE_TERMINAL_IMAGES claude` and ask for an image with
+the kitty-image plugin's `show_image`. If it draws, the list includes Rex.
+
+**When it is fixed, switch back:**
+1. In `dot_zshenv`: delete the `if [[ $TERM_PROGRAM == rex ]]` block and its comment.
+2. `chezmoi apply`, then open a new Rex pane.
+3. Delete this section.
+
 ## mermaid-cli: chromium-bidi trust exemption
 
 **Problem.** `mise install npm:@mermaid-js/mermaid-cli@12.0.0` stops with "trust downgrade for
